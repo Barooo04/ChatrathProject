@@ -25,7 +25,7 @@ html, body {
     align-items: center; /* Allinea verticalmente al centro */
     justify-content: space-between; /* Spazio tra logo e menu */
     width: 100%;
-    background-color: #333; /* Colore di sfondo della navbar */
+    background-color: red; /* Colore di sfondo della navbar */
     padding: 15px 0; /* Aumenta il padding per rendere la navbar più alta */
     height: 100px; /* Altezza della navbar */
 }
