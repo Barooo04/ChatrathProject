@@ -1,63 +1,155 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Assicura che padding e margini non influiscano sulle dimensioni */
+    box-sizing: border-box;
 }
 
 html, body {
-    height: 100%; /* Imposta l'altezza al 100% */
-    width: 100%; /* Imposta la larghezza al 100% */
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .landing-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #f4f4f4; /* Colore di sfondo chiaro */
-    color: #333; /* Colore del testo scuro */
-    font-family: 'Arial', sans-serif;
+    margin-top: 0px; /* Aggiungi un margine per spostare il contenuto sotto la navbar */
+
 }
 
 .navbar {
-    display: flex; /* Usa flexbox per allineare il logo e il menu */
-    align-items: center; /* Allinea verticalmente al centro */
-    justify-content: space-between; /* Spazio tra logo e menu */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    background-color: red; /* Colore di sfondo della navbar */
-    padding: 15px 0; /* Aumenta il padding per rendere la navbar più alta */
-    height: 100px; /* Altezza della navbar */
+    padding: 40px;
+    background-color:transparent; /* Sfondo trasparente */
+    position: fixed; /* Fissa la navbar in alto */
+    z-index: 10; /* Porta la navbar sopra il contenuto */
+    border-bottom: 1px solid gray;
+}
+
+.logo {
+    height: 50px;
+    filter: invert(1);
 }
 
 .navbar ul {
     list-style-type: none;
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
-    height: 100%; /* Imposta l'altezza al 100% per centrare verticalmente */
 }
 
 .navbar li {
     margin: 0 15px;
-    display: flex; /* Usa flexbox per centrare verticalmente */
-    align-items: center; /* Allinea verticalmente al centro */
 }
 
 .navbar a {
-    color: white;
+    color: white; /* Colore del testo */
     text-decoration: none;
     font-size: 1.2rem;
 }
 
+.ai-assistant {
+    border: 1px solid white;
+    padding: 12px 17.5px;
+    transition: color 0.3s ease; /* Transizione per il colore del testo */
+    border-radius: 5px;
+}
+
+.ai-assistant:hover {
+    background-color: white;
+    color: black; /* Colore del testo al passaggio del mouse */
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-me {
+    border: 1px solid white;
+    padding: 12px 17.5px;
+    background-color: #002BFF;
+    transition: color 0.3s ease; /* Transizione per il colore del testo */
+    border-radius: 5px;
+}
+
+.contact-me:hover {
+    background-color: blue;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.hamburger-button {
+    background: none;
+    border: none;
+    color: white; /* Colore del pulsante */
+    font-size: 2rem; /* Dimensione dell'icona */
+    cursor: pointer;
+}
+
+.hamburger-menu {
+    display: none; /* Nasconde il menu hamburger */
+}
+
+.menu-hamburger:hover .hamburger-menu {
+    display: block; /* Mostra il menu al passaggio del mouse */
+}
+
+.menu-appear.hidden {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 130px;
+    right: 0;
+    z-index: 99;
+    transform: translateX(200%);
+    transition: 0.3s ease;
+    border: 1px solid white;
+}
+
+.menu-appear.view {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 130px;
+    right: 0;
+    z-index: 99;
+    transform: translateX(0%);
+    transition: 0.3s ease;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.menu-item {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px 40px;
+    transition: 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: white;
+    color: black;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
 .hero-section {
     width: 100%;
-    height: 100vh; /* Aumenta l'altezza della sezione hero */
-    background-image: url('../Images/home2.png'); /* Sostituisci con il percorso della tua immagine */
-    background-size: cover;
-    background-position: center;
+    height: 80vh; /* Altezza della sezione hero */
     position: relative;
+    overflow: hidden; /* Nasconde eventuali overflow */
+}
+
+.hero-video {
+    position: absolute; /* Posizione assoluta per il video */
+    top: 0;
+    left: 0;
+    width: 100%; /* Larghezza al 100% */
+    height: 100%; /* Altezza al 100% */
+    object-fit: cover; /* Copre l'intera area */
+    z-index: -1; /* Porta il video dietro il contenuto */
 }
 
 .hero-overlay {
@@ -66,200 +158,34 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Overlay scuro */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.3)); /* Overlay sfumato */
     display: flex;
-    align-items: center; /* Allinea verticalmente al centro */
-    justify-content: center; /* Centra orizzontalmente */
-    padding: 20px; /* Padding per la sezione */
-}
-
-.hero-text {
+    align-items: center;
+    justify-content: center;
     color: white; /* Colore del testo */
-    max-width: 50%; /* Larghezza massima per il testo */
-    text-align: center; /* Centra il testo */
-    margin-right: 40px; /* Aggiungi margine a destra per distanziare dal quadrato */
 }
 
-.hero-text h1 {
-    font-size: 4rem; /* Aumenta la dimensione del sottotitolo */
-}
-
-.hero-text h2 {
-    font-size: 2.5rem; /* Aumenta la dimensione del sottotitolo */
-    color: #d9d9d9;
-}
-
-.info-box {
-    background-color: white; /* Colore di sfondo del quadrato */
-    padding: 40px; /* Aumenta il padding */
-    border-radius: 10px; /* Angoli arrotondati */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 123, 255, 0.8); /* Ombra e bordo neon */
-    width: 400px; /* Aumenta la larghezza del quadrato */
-    text-align: center; /* Centra il testo */
-    margin-left: 20px; /* Distanza dal testo a sinistra */
-    margin-top: 20px; /* Aggiungi margine superiore per distanziare dal testo */
-}
-
-.info-box p{
-    font-size: 2rem; /* Aumenta la dimensione del sottotitolo */
-    color: black;
-}
-
-.discover-button {
-    padding: 10px 15px;
-    background-color: #007bff; /* Colore blu per il pulsante */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1.5rem;
-}
-
-.discover-button:hover {
-    background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1rem;
-    margin-bottom: 40px;
-    max-width: 600px; /* Larghezza massima per il testo */
-}
-
-.image-placeholder {
-    width: 300px; /* Larghezza dell'immagine */
-    height: 200px; /* Altezza dell'immagine */
-    background-color: #ccc; /* Colore grigio per il placeholder */
-    margin: 20px; /* Margine tra le immagini */
-}
-
-.button-container {
-    margin-top: 20px;
-}
-
-.login-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #007bff; /* Colore blu per il pulsante */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login-button:hover {
-    background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
-}
-
-.logo {
-    height: 50px; /* Altezza del logo */
-    margin-left: 20px; /* Margine a sinistra */
-    filter: invert(1);
-}
-
-.chi-sono-section {
-    height: 100vh; /* Altezza della sezione Chi Sono */
-    display: flex; /* Usa flexbox per le colonne */
-    flex-direction: column; /* Colonne in verticale */
-    align-items: center; /* Centra orizzontalmente */
-    justify-content: center; /* Centra verticalmente */
-    background-color: #f9f9f9; /* Colore di sfondo chiaro per la sezione */
-    text-align: center; /* Centra il testo */
-    padding: 50px; /* Aumenta il padding per rendere la sezione più grande */
-    font-size: 1.5em; /* Aumenta la dimensione del font */
-}
-
-.chi-sono-title {
-    position: relative; /* Posizione relativa per le linee */
-    font-size: 2.5em; /* Aumenta la dimensione del titolo */
-    margin-bottom: 20px; /* Margine sotto il titolo */
-}
-
-.chi-sono-title::before,
-.chi-sono-title::after {
-    content: ""; /* Necessario per creare le linee */
-    position: absolute;
-    top: 50%; /* Allinea verticalmente al centro */
-    width: 100%; /* Larghezza della linea */
-    height: 2px; /* Spessore della linea */
-    background-color: rgba(0, 123, 255, 0.8); /* Colore blu neon */
-}
-
-.chi-sono-title::before {
-    left: -120%; /* Posiziona la linea a sinistra */
-}
-
-.chi-sono-title::after {
-    right: -120%; /* Posiziona la linea a destra */
-}
-
-.chi-sono-description p{
-    font-size: 2rem;
-    line-height: 1.6; /* Aumenta l'interlinea per una migliore leggibilità */
-}
-
-.chi-sono-content {
-    display: flex; /* Usa flexbox per le colonne */
-    width: 100%; /* Larghezza al 100% */
-    max-width: 1200px; /* Larghezza massima per la sezione */
-    align-items: center; /* Centra verticalmente le colonne */
-}
-
-.chi-sono-image {
-    flex: 1; /* Colonna per l'immagine */
+.logo-slider {
+    height: 20vh; /* Altezza dello slider */
+    overflow: hidden; /* Nasconde eventuali overflow */
     display: flex;
-    justify-content: center; /* Centra l'immagine */
-    align-items: center; /* Centra verticalmente */
+    align-items: center;
+    background-color: black;
 }
 
-.chi-sono-image img {
-    max-width: 100%; /* Larghezza massima per l'immagine */
-    height: auto; /* Mantiene le proporzioni */
-    border-radius: 10px; /* Angoli arrotondati per l'immagine */
+.slider {
+    display: flex;
+    animation: scroll 10s linear infinite; /* Animazione per lo slider */
 }
 
-.chi-sono-description {
-    flex: 1; /* Colonna per la descrizione */
-    padding: 20px; /* Padding per la descrizione */
-    text-align: left; /* Allinea il testo a sinistra */
+.slider img {
+    height: 50px; /* Altezza dei loghi */
+    margin: 0 100px; /* Margine tra i loghi */
+    filter: grayscale(100%) brightness(150%);
 }
 
-.social-icons {
-    margin-top: 20px; /* Margine sopra le icone */
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
-
-.social-icons a {
-    margin: 0 10px; /* Margine tra le icone */
-    font-size: 2rem; /* Dimensione delle icone */
-    color: #007bff; /* Colore delle icone */
-    transition: color 0.3s; /* Transizione per il colore */
-    display: inline-flex; /* Usa flexbox per centrare l'icona */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra orizzontalmente */
-    width: 50px; /* Larghezza del pulsante */
-    height: 50px; /* Altezza del pulsante */
-    background-color: white; /* Colore di sfondo bianco */
-    border-radius: 50%; /* Angoli arrotondati per il pulsante */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per il pulsante */
-    text-decoration: none;
-}
-
-.social-icons a:hover {
-    color: #0056b3; /* Colore al passaggio del mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombra più intensa al passaggio del mouse */
-}
-
-
-
 
