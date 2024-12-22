@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "./LandingPage.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Loader from '../Loader/Loader';
 
 import logo from '../Images/chatrathLogo.png';
 import hidev from "../Images/hi-dev.png";
@@ -36,8 +37,26 @@ function LandingPage() {
         };
     }, [isMenuOpen]);
 
+    useEffect(() => {
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        document.body.appendChild(cursor);
+    
+        const moveCursor = (e) => {
+          cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
+          cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
+        };
+        document.addEventListener('mousemove', moveCursor);
+
+        return () => {
+          document.removeEventListener('mousemove', moveCursor);
+          document.body.removeChild(cursor);
+        };
+      }, []);
+
     return (
         <div className="landing-container">
+            <Loader />
             <nav className="navbar">
                 <img src={logo} alt="Logo" className="logo" />
                 <ul>

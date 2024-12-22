@@ -8,6 +8,19 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    cursor: none !important;
+}
+
+.custom-cursor {
+    position: absolute;
+    width: 20px; /* Dimensione del pallino */
+    height: 20px; /* Dimensione del pallino */
+    border-radius: 50%; /* Forma circolare */
+    background-color: #00f; /* Colore del pallino, personalizzabile */
+    border: 3px solid #fff; /* Bordo del cerchio intorno */
+    pointer-events: none; /* Impedisce l'interazione con l'elemento */
+    transition: transform 0.1s ease-in-out; /* Per un movimento fluido */
+    z-index: 99999999;
 }
 
 .landing-container {
@@ -63,7 +76,6 @@ html, body {
     background-color: white;
     color: black; /* Colore del testo al passaggio del mouse */
     transition: 0.3s ease;
-    cursor: pointer;
 }
 
 .contact-me {
@@ -77,7 +89,6 @@ html, body {
 .contact-me:hover {
     background-color: blue;
     transition: 0.3s ease;
-    cursor: pointer;
 }
 
 .hamburger-button {
@@ -85,7 +96,6 @@ html, body {
     border: none;
     color: white; /* Colore del pulsante */
     font-size: 2rem; /* Dimensione dell'icona */
-    cursor: pointer;
 }
 
 .hamburger-menu {
@@ -132,7 +142,6 @@ html, body {
     background-color: white;
     color: black;
     transition: 0.3s ease;
-    cursor: pointer;
 }
 
 .hero-section {
