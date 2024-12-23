@@ -1,26 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import './Loader.css';  
+import './Loader.css';
+import logo from '../Images/chatrathLogo.png'; // Sostituisci con il percorso del tuo logo
 
 function Loader() {
-    const [loading, setLoading] = useState(true);
+    const [progress, setProgress] = useState(0);
+    const [isVisible, setIsVisible] = useState(true); // Stato per controllare la visibilità del loader
 
-    // Simula un caricamento di 2 secondi (adatta questo timer secondo le tue necessità)
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000); // Tempo di durata del caricamento (in ms)
-        
-        return () => clearTimeout(timer); // Pulisce il timer al dismount del componente
+        const interval = setInterval(() => {
+            setProgress((prev) => {
+                if (prev < 100) return prev + 1;
+                clearInterval(interval);
+                return 100;
+            });
+        }, 20); // Incremento della percentuale ogni 20ms
+
+        return () => clearInterval(interval);
     }, []);
 
-    if (!loading) return null; // Se non siamo in fase di caricamento, non rendiamo nulla
+    useEffect(() => {
+        if (progress === 100) {
+            const timer = setTimeout(() => {
+                setIsVisible(false); // Rimuove il loader dopo 1 secondo
+            }, 1000);
+
+            return () => clearTimeout(timer); // Pulisce il timer al dismount del componente
+        }
+    }, [progress]);
+
+    if (!isVisible) return null; // Rimuove il componente dal DOM quando `isVisible` è `false`
 
     return (
         <div className="loader-overlay">
-            <video autoPlay loop muted className="hero-video">
-                <source src={require('../Images/provaLoader.mp4')} type="video/mp4" />
-                Il tuo browser non supporta i video.
-            </video>
+            <div className="loader">
+                <img src={logo} alt="Logo" className="loader-logo" />
+                <div className="loader-percentage">{progress}%</div>
+                <div className="loader-progress-bar">
+                    <div
+                        className="loader-progress"
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                </div>
+            </div>
         </div>
     );
 }

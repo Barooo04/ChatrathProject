@@ -11,16 +11,38 @@ html, body {
     cursor: none !important;
 }
 
+/* Animazione per la comparsa della pagina */
+@keyframes InitialAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Stile iniziale della landing page */
+.landing-container {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Stile della landing page quando appare */
+.landing-appear {
+    animation: InitialAnimation 1s ease forwards;
+}
+
 .custom-cursor {
     position: absolute;
     width: 20px; /* Dimensione del pallino */
     height: 20px; /* Dimensione del pallino */
     border-radius: 50%; /* Forma circolare */
-    background-color: #00f; /* Colore del pallino, personalizzabile */
-    border: 3px solid #fff; /* Bordo del cerchio intorno */
-    pointer-events: none; /* Impedisce l'interazione con l'elemento */
-    transition: transform 0.1s ease-in-out; /* Per un movimento fluido */
+    background-color: #002BFF; /* Colore del pallino */
+    border: 3px solid #fff; /* Bordo bianco */
+    pointer-events: none; /* Impedisce l'interazione */
     z-index: 99999999;
+    transform: translate(-50%, -50%); /* Centra il pallino sul punto del mouse */
+    transition: transform 0.1s ease-in-out;
 }
 
 .landing-container {
@@ -36,10 +58,11 @@ html, body {
     justify-content: space-between;
     width: 100%;
     padding: 40px;
-    background-color:transparent; /* Sfondo trasparente */
+    background-color: transparent; /* Sfondo trasparente */
     position: fixed; /* Fissa la navbar in alto */
     z-index: 10; /* Porta la navbar sopra il contenuto */
     border-bottom: 1px solid gray;
+    transition: background-color 0.3s ease; /* Transizione per il colore di sfondo */
 }
 
 .logo {
@@ -146,19 +169,26 @@ html, body {
 
 .hero-section {
     width: 100%;
-    height: 80vh; /* Altezza della sezione hero */
+    height: 100vh; /* Altezza della sezione hero */
     position: relative;
     overflow: hidden; /* Nasconde eventuali overflow */
+    background: linear-gradient(45deg, #002BFF, #6e6e6e, #e0ff33);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
 }
 
-.hero-video {
-    position: absolute; /* Posizione assoluta per il video */
-    top: 0;
-    left: 0;
-    width: 100%; /* Larghezza al 100% */
-    height: 100%; /* Altezza al 100% */
-    object-fit: cover; /* Copre l'intera area */
-    z-index: -1; /* Porta il video dietro il contenuto */
+@keyframes color {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 .hero-overlay {
@@ -172,14 +202,31 @@ html, body {
     align-items: center;
     justify-content: center;
     color: white; /* Colore del testo */
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title {
+    font-size: 3rem;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: gray;
 }
 
 .logo-slider {
-    height: 20vh; /* Altezza dello slider */
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15vh; /* Altezza dello slider */
     overflow: hidden; /* Nasconde eventuali overflow */
     display: flex;
     align-items: center;
-    background-color: black;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent); /* Overlay sfumato */
+    border-top: 1px solid gray;
+
 }
 
 .slider {
@@ -196,5 +243,16 @@ html, body {
 @keyframes scroll {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
+}
+
+.why-coaching {
+    height: 100vh;
+    background-color: black;
+}
+
+.why-coaching{
+    height: 100vh; /* Altezza della nuova sezione */
+    background-color: black; /* Colore della nuova sezione */
+    /* Rimuovi eventuali proprietà di posizione se presenti */
 }
 
