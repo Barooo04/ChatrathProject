@@ -7,11 +7,13 @@ import hidev from "../Images/hi-dev.png";
 
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // Stato di caricamento
+    const [isLoading, setIsLoading] = useState(true);
+    const [isScrolled, setIsScrolled] = useState(false);
     const cursorRef = useRef(null);
 
     const menuRef = useRef(null);
     const closeButtonRef = useRef(null);
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -33,6 +35,17 @@ function LandingPage() {
             cursorRef.current.style.top = `${event.clientY}px`;
         }
     };
+
+    const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50);
+    };
+    
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         document.addEventListener("mousemove", handleMouseMove);
@@ -63,18 +76,19 @@ function LandingPage() {
         return () => clearTimeout(timer);
     }, []);
 
+ 
+
     const moveTo = (id) => {
         setTimeout(() => {
             const section = document.getElementById(id);
             if (section) {
-                const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: sectionPosition,
-                    behavior: 'smooth'
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start', // Scorre fino all'inizio della sezione
                 });
             }
         }, 150);
-    }
+    };
 
     return (
         <>
@@ -83,7 +97,7 @@ function LandingPage() {
                 <Loader />
             ) : (
                 <div className={`landing-container ${!isLoading ? 'landing-appear' : ''}`}>
-                    <nav className='navbar'>
+                    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
                         <img src={logo} alt="Logo" className="logo" />
                         <ul>
                             <li><a className="ai-assistant" href="#ai-assistant">AI Assistant</a></li>
@@ -127,7 +141,20 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
-                    <div className='why-coaching' id='coaching'></div>
+                    <div className='why-coaching' id='coaching'>
+                        <div className="coaching-content">
+                            <div className="coaching-description">
+                                <h2 className="coaching-title">1. Why Coaching?</h2>
+                                <p className='coaching-text'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
+                            <div className="coaching-card">
+                                <p>Questa è una card con informazioni aggiuntive.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
         </>
