@@ -1,10 +1,8 @@
 .loader-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 1); /* Sfondo bianco */
+    height: 100vh;
+    background-color: black; /* Sfondo bianco */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,16 +11,19 @@
 
 .loader {
     text-align: center;
+    padding: 10px;
 }
+
 
 .loader-logo {
     height: 100px;
     margin-bottom: 20px; /* Spazio tra logo e percentuale */
+    filter: invert(1);
 }
 
 .loader-percentage {
     font-size: 18px;
-    color: #333;
+    color: white;
     margin-bottom: 10px; /* Spazio tra percentuale e barra */
 }
 
@@ -38,6 +39,7 @@
 
 .loader-progress {
     height: 100%;
+    color: #333;
     background-color: #002BFF; /* Colore della barra di progresso */
     border-radius: 5px; /* Angoli arrotondati */
     transition: width 0.2s ease; /* Animazione fluida */

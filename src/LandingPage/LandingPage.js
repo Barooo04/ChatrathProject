@@ -4,16 +4,23 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Loader from '../Loader/Loader';
 import logo from '../Images/chatrathLogo.png';
 import hidev from "../Images/hi-dev.png";
+import bg2 from "../Images/bg3.mp4";
 
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const cursorRef = useRef(null);
+    const scrollRef = useRef(null);
 
     const menuRef = useRef(null);
     const closeButtonRef = useRef(null);
 
+    const [isScrollingHorizontally, setIsScrollingHorizontally] = useState(false);
+    const nickSectionRef = useRef(null);
+    const horizontalScrollRef = useRef(null);
+
+    const [isScrollingLocked, setIsScrollingLocked] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -76,8 +83,6 @@ function LandingPage() {
         return () => clearTimeout(timer);
     }, []);
 
- 
-
     const moveTo = (id) => {
         setTimeout(() => {
             const section = document.getElementById(id);
@@ -89,6 +94,58 @@ function LandingPage() {
             }
         }, 150);
     };
+
+    const cardsData = [
+        {
+            icon: "fas fa-star",
+            title: "Card 1",
+            description: "Questa è una descrizione di esempio che occupa due righe."
+        },
+        {
+            icon: "fas fa-rocket",
+            title: "Card 2",
+            description: "Questa è una descrizione di esempio che occupa due righe."
+        },
+        {
+            icon: "fas fa-brain",
+            title: "Card 3",
+            description: "Questa è una descrizione di esempio che occupa due righe."
+        },
+    ];
+
+    const handleScrollLock = () => {
+        if (isScrollingLocked) {
+            document.body.classList.add('lock-scroll');
+        } else {
+            document.body.classList.remove('lock-scroll');
+        }
+    };
+
+    useEffect(() => {
+        handleScrollLock();
+    }, [isScrollingLocked]);
+
+    const handleScrollEnd = () => {
+        const scrollContainer = document.querySelector('.scroll-container');
+        if (scrollContainer) {
+            const lastChild = scrollContainer.lastElementChild;
+            if (lastChild && lastChild.getBoundingClientRect().bottom <= window.innerHeight) {
+                setIsScrollingLocked(false); // Sblocca lo scorrimento
+            }
+        }
+    };
+
+    useEffect(() => {
+        const scrollContainer = document.querySelector('.scroll-container');
+        if (scrollContainer) {
+            scrollContainer.addEventListener('scroll', handleScrollEnd);
+        }
+        return () => {
+            if (scrollContainer) {
+                scrollContainer.removeEventListener('scroll', handleScrollEnd);
+            }
+        };
+    }, []);
 
     return (
         <>
@@ -121,7 +178,7 @@ function LandingPage() {
                     </nav>
                     <div ref={menuRef} className={isMenuOpen ? 'menu-appear view' : 'menu-appear hidden'}>
                         <p className='menu-item' onClick={() => moveTo('coaching')}>1. Why Coaching</p>
-                        <p className='menu-item'>2. Why Nick</p>
+                        <p className='menu-item' onClick={() => moveTo('nick')}>2. Why Nick</p> {/* Aggiunto il click per "Why Nick" */}
                         <p className='menu-item'>3. How AI coaching works</p>
                         <p className='menu-item'>4. Testimonials</p>
                         <p className='menu-item'>5. Selecting the best coach</p>
@@ -131,7 +188,7 @@ function LandingPage() {
                     <div className="hero-section">
                         <div className="hero-overlay">
                             <h1 className='hero-title' id="title">Welcome to Our AI Assistant</h1>
-                            <h4 className='hero-subtitle'>This is an example of a subtitle, will be cheanged</h4>
+                            <h4 className='hero-subtitle'>This is an example of a subtitle, will be changed</h4>
                         </div>
                         <div className="logo-slider">
                             <div className="slider">
@@ -153,6 +210,32 @@ function LandingPage() {
                             <div className="coaching-card">
                                 <p>Questa è una card con informazioni aggiuntive.</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className='why-nick' id='nick' ref={nickSectionRef}>
+                        <video autoPlay loop muted>
+                            <source src={bg2} type="video/mp4" />
+                            Il tuo browser non supporta i video.
+                        </video>
+                        <div className="scroll-container">
+                            <div className="cards-container">
+                                {cardsData.map((card, index) => (
+                                    <div className="scroll-item" key={index}>
+                                        <div className="card">
+                                            <i className={card.icon}></i>
+                                            <h3>{card.title}</h3>
+                                            <p>{card.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="why-nick-content">
+                            <h2 className="coaching-title">2. Why Nick?</h2>
+                            <p className="description" style={{color: 'white'}}>
+                                Descrizione aggiuntiva qui se necessaria
+                            </p>
                         </div>
                     </div>
                 </div>
