@@ -11,16 +11,12 @@ function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const cursorRef = useRef(null);
-    const scrollRef = useRef(null);
 
     const menuRef = useRef(null);
     const closeButtonRef = useRef(null);
 
-    const [isScrollingHorizontally, setIsScrollingHorizontally] = useState(false);
     const nickSectionRef = useRef(null);
-    const horizontalScrollRef = useRef(null);
 
-    const [isScrollingLocked, setIsScrollingLocked] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -112,40 +108,6 @@ function LandingPage() {
             description: "Questa è una descrizione di esempio che occupa due righe."
         },
     ];
-
-    const handleScrollLock = () => {
-        if (isScrollingLocked) {
-            document.body.classList.add('lock-scroll');
-        } else {
-            document.body.classList.remove('lock-scroll');
-        }
-    };
-
-    useEffect(() => {
-        handleScrollLock();
-    }, [isScrollingLocked]);
-
-    const handleScrollEnd = () => {
-        const scrollContainer = document.querySelector('.scroll-container');
-        if (scrollContainer) {
-            const lastChild = scrollContainer.lastElementChild;
-            if (lastChild && lastChild.getBoundingClientRect().bottom <= window.innerHeight) {
-                setIsScrollingLocked(false); // Sblocca lo scorrimento
-            }
-        }
-    };
-
-    useEffect(() => {
-        const scrollContainer = document.querySelector('.scroll-container');
-        if (scrollContainer) {
-            scrollContainer.addEventListener('scroll', handleScrollEnd);
-        }
-        return () => {
-            if (scrollContainer) {
-                scrollContainer.removeEventListener('scroll', handleScrollEnd);
-            }
-        };
-    }, []);
 
     return (
         <>
