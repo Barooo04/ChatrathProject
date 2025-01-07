@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Alkia Regular'
+    font-family:'Alkia Regular';
 }
 
 html, body {
@@ -17,7 +17,13 @@ html, body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    cursor: none !important;
+    cursor: url("../Images/cursor.png"), auto;
+
+}
+
+/* Aggiungi uno stile per bloccare lo scorrimento del body */
+body.lock-scroll {
+    overflow: hidden; /* Nasconde lo scorrimento del body */
 }
 
 /* Animazione per la comparsa della pagina */
@@ -34,6 +40,8 @@ html, body {
 .landing-container {
     opacity: 0;
     transition: opacity 1s ease, transform 1s ease;
+    cursor: url("../Images/cursor.png"), auto;
+
 }
 
 /* Stile della landing page quando appare */
@@ -41,18 +49,7 @@ html, body {
     animation: InitialAnimation 1s ease forwards;
 }
 
-.custom-cursor {
-    position: absolute;
-    width: 20px; /* Dimensione del pallino */
-    height: 20px; /* Dimensione del pallino */
-    border-radius: 50%; /* Forma circolare */
-    background-color: #002BFF; /* Colore del pallino */
-    border: 3px solid #fff; /* Bordo bianco */
-    pointer-events: none; /* Impedisce l'interazione */
-    z-index: 99999999;
-    transform: translate(-50%, -50%); /* Centra il pallino sul punto del mouse */
-    transition: transform 0.1s ease-in-out;
-}
+
 
 .landing-container {
     display: flex;
@@ -65,7 +62,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 40px;
+    padding: 5px 40px;
     background-color: black; /* Sfondo trasparente */
     position: fixed; /* Fissa la navbar in alto */
     z-index: 10; /* Porta la navbar sopra il contenuto */
@@ -73,19 +70,6 @@ html, body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar.scrolled {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 40px;
-    background-color: black; /* Sfondo trasparente */
-    position: fixed; /* Fissa la navbar in alto */
-    z-index: 10; /* Porta la navbar sopra il contenuto */
-    border-bottom: 1px solid gray;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-}
 
 .logo {
     height: 50px;
@@ -96,6 +80,7 @@ html, body {
     list-style-type: none;
     display: flex;
     align-items: center;
+    justify-content: center;    
     margin: 0;
     padding: 0;
 }
@@ -135,21 +120,28 @@ html, body {
     background-color: blue;
     transition: 0.3s ease;
 }
+.menu-hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
 
 .hamburger-button {
+    position: relative;
     background: none;
     border: none;
     color: white; /* Colore del pulsante */
     font-size: 2rem; /* Dimensione dell'icona */
+    display: flex !important; /* Aggiungi questa riga */
+    align-items: center !important; /* Aggiungi questa riga */
+    justify-content: center !important; /* Aggiungi questa riga */
+    height: 100%; /* Aggiungi questa riga per occupare l'altezza del contenitore */
 }
 
 .hamburger-menu {
     display: none; /* Nasconde il menu hamburger */
 }
 
-.menu-hamburger:hover .hamburger-menu {
-    display: block; /* Mostra il menu al passaggio del mouse */
-}
 
 .menu-appear.hidden {
     position: absolute;
@@ -448,8 +440,175 @@ html, body {
     color: gray; /* Colore del testo */
 }
 
-/* Aggiungi uno stile per bloccare lo scorrimento del body */
-body.lock-scroll {
-    overflow: hidden; /* Nasconde lo scorrimento del body */
+.how-ai-coaching-works {
+    height: 100vh; /* Imposta l'altezza a 100vh */
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
 
+.swiper {
+    width: 80%;
+    height: 80%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: white;
+    border-radius: 10px;
+    /* Center slide text vertically */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.testimonials-section {
+    height: 100vh; /* Imposta l'altezza a 100vh */
+    padding: 40px;
+    background-color: black; /* Colore di sfondo per la sezione */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonials-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+    gap: 20px; /* Spazio tra le card */
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.testimonial-image {
+    width: 80px; /* Dimensione del cerchio */
+    height: 80px; /* Dimensione del cerchio */
+    border-radius: 50%; /* Forma circolare */
+    overflow: hidden; /* Nasconde l'overflow */
+    margin: 0 auto 10px; /* Centra l'immagine */
+}
+
+.testimonial-image img {
+    width: 100%; /* Occupa tutta la larghezza */
+    height: auto; /* Mantiene le proporzioni */
+}
+
+.profession {
+    font-style: italic;
+    color: gray;
+}
+
+.testimonial-description {
+    margin-top: 10px;
+    color: #333; /* Colore del testo */
+}
+
+.testimonial-icon {
+    font-size: 50px; /* Dimensione dell'icona */
+    color: #002BFF; /* Colore dell'icona */
+    margin: 0 auto 10px; /* Centra l'icona */
+}
+
+.myTestimonialsSwiper {
+    width: 100%; /* Larghezza del carosello */
+    max-width: 800px; /* Larghezza massima */
+}
+
+.testimonial-ss {
+    background: linear-gradient(45deg, #002BFF 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
+    background-size: 300% 300%; /* Dimensione del gradiente per l'animazione */
+    animation: gradientAnimation 5s ease infinite; /* Animazione del gradiente */
+}
+
+.testimonial-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 500px;
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.testimonial-icon {
+    font-size: 50px; /* Dimensione dell'icona */
+    color: #002BFF; /* Colore dell'icona */
+    margin: 0 auto 10px; /* Centra l'icona */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #002BFF; /* Colore dei pulsanti */
+    width: 30px; /* Larghezza dei pulsanti */
+    height: 30px; /* Altezza dei pulsanti */
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px; /* Dimensione dell'icona del pulsante */
+}
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+  
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
