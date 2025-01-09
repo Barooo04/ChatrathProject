@@ -1,30 +1,67 @@
-import "./LoginPage.css"
-import { useRef, useEffect } from "react";
+import "./LoginPage.css";
+import { useState } from "react";
 
 function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
-    
-    return ( 
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch("http://localhost:5001/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.status === 200) {
+                setMessage(data.message);
+                // Puoi aggiungere la logica per salvare i dati dell'utente, ad esempio usando il localStorage
+                console.log("Utente loggato:", data.user);
+            } else {
+                setMessage(data.message);
+            }
+        } catch (error) {
+            console.error("Errore durante il login:", error);
+            setMessage("Errore nella connessione al server");
+        }
+    };
+
+    return (
         <div className="background">
             <div className="shape"></div>
             <div className="shape"></div>
-            <form>
+            <form onSubmit={handleLogin}>
                 <h3>Login Here</h3>
 
-                <label htmlFor="username">Username</label>
-                <input type="text" placeholder="Email or Phone" id="username" />
+                <label htmlFor="username">Email</label>
+                <input
+                    type="text"
+                    placeholder="Email"
+                    id="username"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" placeholder="Password" id="password" />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-                <button>Log In</button>
-                <div className="social">
-                    <div className="go"><i className="fab fa-google"></i> Google</div>
-                    <div className="fb"><i className="fab fa-facebook"></i> Facebook</div>
-                </div>
+                <button type="submit">Log In</button>
+                {message && <p>{message}</p>}
             </form>
         </div>
-     );
+    );
 }
 
 export default LoginPage;

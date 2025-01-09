@@ -21,9 +21,9 @@ function LandingPage() {
 
     const nickSectionRef = useRef(null);
 
-
-    const [visibleIndex, setVisibleIndex] = useState(-1);
-    const stepsRef = useRef([]);
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [isFading, setIsFading] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -38,26 +38,6 @@ function LandingPage() {
             setIsMenuOpen(false);
         }
     };
-
-    
-
-    const handleScroll = () => {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        stepsRef.current.forEach((step, index) => {
-            if (step && step.getBoundingClientRect().top < scrollPosition) {
-                setVisibleIndex(index);
-            }
-        });
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -86,29 +66,10 @@ function LandingPage() {
             if (section) {
                 section.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'start', // Scorre fino all'inizio della sezione
                 });
             }
         }, 150);
     };
-
-    const cardsData = [
-        {
-            icon: "fas fa-star",
-            title: "Card 1",
-            description: "Questa è una descrizione di esempio che occupa due righe."
-        },
-        {
-            icon: "fas fa-rocket",
-            title: "Card 2",
-            description: "Questa è una descrizione di esempio che occupa due righe."
-        },
-        {
-            icon: "fas fa-brain",
-            title: "Card 3",
-            description: "Questa è una descrizione di esempio che occupa due righe."
-        },
-    ];
 
     const stepsData = [
         {
@@ -191,10 +152,10 @@ function LandingPage() {
             ) : (
                 <div className={`landing-container ${!isLoading ? 'landing-appear' : ''}`}>
                     <nav className="navbar">
-                        <img src={logo} alt="Logo" className="logo" />
+                        <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
                         <ul>
-                            <li><a className="ai-assistant" href="/login">AI Assistant</a></li>
-                            <li><a className="contact-me" href="#contact-me">Contact Me</a></li>
+                            <li><a className="ai-assistant" href="/login">Client Login</a></li>
+                            <li><a className="contact-me" href="#contact-me">Request Coaching</a></li>
                             <li className="menu-hamburger">
                                 {isMenuOpen ? (
                                     <button
@@ -221,7 +182,7 @@ function LandingPage() {
                         <p className='menu-item'>6. Understanding The Threshold</p>
                     </div>
 
-                    <div className="hero-section">
+                    <div className="hero-section" id='home'>
                         <div className="hero-overlay">
                             <h1 className='hero-title' id="title">Welcome to Our AI Assistant</h1>
                             <h4 className='hero-subtitle'>This is an example of a subtitle, will be changed</h4>
@@ -237,11 +198,13 @@ function LandingPage() {
                     <div className='why-coaching' id='coaching'>
                         <div className="coaching-content">
                             <div className="coaching-description">
-                                <h2 className="coaching-title">1. Why Coaching?</h2>
-                                <p className='coaching-text'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN COACHING?</h3>
+                                <h2 className="coaching-subtitle">Supercharge your leadership effectiveness in a world that is having an AI moment.</h2>
+                                <p className='coaching-text'>
+                                    As AI accelerates, what need will there be for human leaders? Doomers think that AI will wipe out our species. Gloomers think the robots will take all our jobs. I’m a cautious Bloomer: we humans can inspire responsible, sustainable growth, during at least the medium term. In this context, leadership is the vital lever.
+                                    <br /><br />
+                                    AI-human coaching will help you explore the threshold across which you gain new leadership operating systems. You will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
+                                </p>
                             </div>
                             <div className="coaching-card">
                                 <p>Questa è una card con informazioni aggiuntive.</p>
@@ -254,23 +217,70 @@ function LandingPage() {
                             <source src={bg2} type="video/mp4" />
                             Il tuo browser non supporta i video.
                         </video>
-                        <div className="scroll-container">
-                            <div className="cards-container">
-                                {cardsData.map((card, index) => (
-                                    <div className="scroll-item" key={index}>
-                                        <div className="card">
-                                            <i className={card.icon}></i>
-                                            <h3>{card.title}</h3>
-                                            <p>{card.description}</p>
-                                        </div>
+                        <div className="wrapper">
+                            <div className="card" style={{'--delay': '-1'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-star"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 1</span>
+                                        <p>This is the content of the first card.</p>
                                     </div>
-                                ))}
+
+                                </div>
+                                <a href="#">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '0'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-rocket"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 2</span>
+                                        <p>This is the content of the second card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '1'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-brain"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 3</span>
+                                        <p>This is the content of the third card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '2'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-cogs"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 4</span>
+                                        <p>This is the content of the fourth card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '2'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 5</span>
+                                        <p>This is the content of the first card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#">Follow</a>
                             </div>
                         </div>
                         <div className="why-nick-content">
-                            <h2 className="coaching-title">2. Why Nick?</h2>
-                            <p className="description" style={{color: 'white'}}>
-                                Descrizione aggiuntiva qui se necessaria
+                            <h3 className="why-nick-title">WHY CHOOSE NICK AS YOUR COACH?</h3>
+                            <h2 className="why-nick-subtitle">Unlock Your Potential with Personalized Coaching.</h2>
+                            <p className="why-nick-text">
+                                In a rapidly changing world, having a coach who understands your unique challenges is crucial. Nick brings a wealth of experience and a personalized approach to coaching that empowers you to reach your goals.
+                                <br /><br />
+                                With a focus on actionable strategies and continuous support, Nick helps you navigate the complexities of leadership and personal development. His coaching style is tailored to your needs, ensuring that you gain the insights and skills necessary to thrive in any environment.
                             </p>
                         </div>
                     </div>

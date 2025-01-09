@@ -41,7 +41,6 @@ body.lock-scroll {
     opacity: 0;
     transition: opacity 1s ease, transform 1s ease;
     cursor: url("../Images/cursor.png"), auto;
-
 }
 
 /* Stile della landing page quando appare */
@@ -58,11 +57,11 @@ body.lock-scroll {
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
     justify-content: space-between;
     width: 100%;
-    padding: 5px 40px;
+    padding: 3px 40px;
     background-color: black; /* Sfondo trasparente */
     position: fixed; /* Fissa la navbar in alto */
     z-index: 10; /* Porta la navbar sopra il contenuto */
@@ -70,19 +69,21 @@ body.lock-scroll {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .logo {
     height: 50px;
     filter: invert(1);
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .navbar ul {
     list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    margin: 0;
-    padding: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;    
+
 }
 
 .navbar li {
@@ -97,9 +98,10 @@ body.lock-scroll {
 
 .ai-assistant {
     border: 1px solid white;
-    padding: 12px 17.5px;
+    padding: 10px 15px;
     transition: color 0.3s ease; /* Transizione per il colore del testo */
     border-radius: 5px;
+    font-size: 1rem !important;
 }
 
 .ai-assistant:hover {
@@ -110,32 +112,24 @@ body.lock-scroll {
 
 .contact-me {
     border: 1px solid white;
-    padding: 12px 17.5px;
-    background-color: #002BFF;
+    padding: 10px 15px;
+    background-color: #1b49ff;
     transition: color 0.3s ease; /* Transizione per il colore del testo */
     border-radius: 5px;
+    font-size: 1rem !important;
 }
 
 .contact-me:hover {
     background-color: blue;
     transition: 0.3s ease;
 }
-.menu-hamburger {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
 
 .hamburger-button {
-    position: relative;
     background: none;
     border: none;
     color: white; /* Colore del pulsante */
     font-size: 2rem; /* Dimensione dell'icona */
-    display: flex !important; /* Aggiungi questa riga */
-    align-items: center !important; /* Aggiungi questa riga */
-    justify-content: center !important; /* Aggiungi questa riga */
-    height: 100%; /* Aggiungi questa riga per occupare l'altezza del contenitore */
+    margin: 0;
 }
 
 .hamburger-menu {
@@ -147,7 +141,7 @@ body.lock-scroll {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 90px;
+    top: 75px;
     right: 0;
     z-index: 99;
     transform: translateX(200%);
@@ -159,7 +153,7 @@ body.lock-scroll {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 90px;
+    top: 75px;
     right: 0;
     z-index: 99;
     transform: translateX(0%);
@@ -186,7 +180,7 @@ body.lock-scroll {
     height: 100vh; /* Altezza della sezione hero */
     position: relative;
     overflow: hidden; /* Nasconde eventuali overflow */
-    background: linear-gradient(45deg, #002BFF, #6e6e6e, #e0ff33);
+    background: linear-gradient(45deg, #1b49ff, #6e6e6e, #e0ff33);
     background-size: 300% 300%;
     animation: color 12s ease-in-out infinite;
 }
@@ -271,15 +265,10 @@ body.lock-scroll {
     overflow: hidden; /* Nasconde il contenuto all'inizio */
 }
 
-.coaching-title {
-    color: white;
-    font-size: 3rem; /* Altezza del titolo */
-    margin-bottom: 20px; /* Spazio sotto il titolo */
-}
-
 .coaching-content {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: left;
     gap: 10%;
     width: 100%;
     transform: translateX(0%); /* Inizialmente fuori dallo schermo */
@@ -288,6 +277,7 @@ body.lock-scroll {
     padding: 40px;
 }
 
+
 .coaching-content.visible {
     transform: translateX(0); /* Porta il contenuto all'interno dello schermo */
 }
@@ -295,15 +285,27 @@ body.lock-scroll {
 .coaching-description {
     padding: 40px;
     width: 50%; /* Larghezza della parte sinistra */
-    color: gray; /* Colore del testo */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+}
+
+.coaching-title {
+    color: #1b49ff; /* Colore blu per il titolo */
+    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+    text-align: left;
+}
+
+.coaching-subtitle {
+    color: white;
+    font-size: 3rem; /* Altezza del titolo */
+    margin-bottom: 20px; /* Spazio sotto il titolo */
 }
 
 .coaching-text {
-    text-align: center;
+    font-size: 1rem; /* Dimensione più piccola per il contenuto */
+    color: rgb(147, 147, 147); /* Colore del testo */
+    text-align: justify; /* Giustifica il testo */
 }
 
 .coaching-card {
@@ -324,10 +326,10 @@ body.lock-scroll {
     content: '';
     position: absolute;
     inset: -4px;
-    background: conic-gradient(from 0deg, #002BFF, #e0ff33, #002BFF,  #e0ff33, #002BFF);
+    background: conic-gradient(from 0deg, #1b49ff, #e0ff33, #1b49ff,  #e0ff33, #1b49ff);
     z-index: -1;
     border-radius: 5px;
-    animation: spin 3s linear infinite;
+    animation: spin 6s linear infinite;
 }
 
 .coaching-card::before {
@@ -373,71 +375,125 @@ body.lock-scroll {
     z-index: 1; /* Assicura che sia sopra il video */
     display: flex; /* Abilita Flexbox */
     flex-direction: column; /* Dispone gli elementi in colonna */
-    align-items: center; /* Centra orizzontalmente il contenuto */
-    text-align: center; /* Centra il testo */
+    align-items: right; /* Centra orizzontalmente il contenuto */
+    text-align: right; /* Centra il testo */
 }
 
-.scroll-container {
-    width: 50%; /* Larghezza per lo scroller */
-    height: 100%; /* Altezza per occupare tutto il container */
-    max-height: 100vh; /* Limita l'altezza massima a 100vh */
-    overflow-y: auto; /* Abilita lo scorrimento verticale */
+.why-nick-title {
+    color: #1b49ff; /* Colore blu per il titolo */
+    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+    text-align: right;
+}
+
+.why-nick-subtitle {
+    color: white; /* Colore del sottotitolo */
+    font-size: 3rem; /* Dimensione del sottotitolo */
+    margin-bottom: 15px; /* Spazio sotto il sottotitolo */
+}
+
+.why-nick-text {
+    font-size: 1rem; /* Dimensione del testo */
+    color: rgb(147, 147, 147); /* Colore del testo */
+    text-align: right; /* Giustifica il testo */
+    margin-top: 10px; /* Spazio sopra il testo */
+}
+
+.wrapper {
+    width: 30%; /* Larghezza per lo scroller */
+    height: 80vh; /* Altezza per occupare tutto il container */
     position: relative; /* Posizione relativa per il blocco */
-    pointer-events: auto; /* Permette l'interazione */
-    direction: rtl; /* Imposta la direzione da destra a sinistra */
-}
-
-.scroll-container::-webkit-scrollbar {
-    width: 8px; /* Larghezza della scrollbar */
-    background-color: transparent; /* Sfondo trasparente per la scrollbar */
-}
-
-.scroll-container::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3); /* Colore della scrollbar (trasparente) */
-    border-radius: 10px; /* Bordo arrotondato per la scrollbar */
-}
-
-.scroll-container {
-    scrollbar-width: thin; /* Imposta la larghezza della scrollbar */
-    scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* Colore della scrollbar (trasparente) */
-}
-
-.scroll-item {
-    height: auto; /* Altezza automatica per ogni elemento dello scroller */
-    min-height: 90vh; /* Altezza minima di ogni elemento dello scroller */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgb(172, 210, 48); /* Separatore tra gli elementi */
 }
 
-.card {
-    position: relative;
-    width: 80%; /* Larghezza della card */
-    height: auto; /* Altezza automatica per la card */
-    background-color: rgba(223, 223, 223, 0.946); /* Sfondo bianco trasparente */
-    border-radius: 5px; /* Bordo arrotondato */
-    padding: 90px 20px; /* Padding interno */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Ombra per la card */
+.wrapper .card {
+    background-color: white;
+    width: 430px;
     display: flex;
-    flex-direction: column; /* Dispone gli elementi in colonna */
-    align-items: center; /* Centra orizzontalmente */
-    justify-content: center; /* Centra verticalmente */
-    text-align: center; /* Centra il testo */
+    align-items: center;
+    padding: 20px; 
+    opacity: 0;
+    pointer-events: none;
+    position: absolute; 
+    justify-content: space-between;
+    border-radius: 100px 20px 20px 100px;
+    animation: animate 15s linear infinite;
+    animation-delay: calc(var(--delay) * 3s);
 }
 
-.card i {
-    font-size: 3rem; /* Dimensione dell'icona più grande */
-    color: #002BFF; /* Colore blu per le icone */
+.wrapper:hover .card{
+    animation-play-state: paused;
 }
 
-.card h3 {
-    color: black; /* Colore del titolo */
-    margin: 10px 0; /* Margine sopra e sotto il titolo */
+.wrapper .card:last-child {
+    animation-delay: calc(var(--delay) * -3s);
 }
 
-.card p {
-    color: gray; /* Colore del testo */
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) scale(0.5);
+    }
+    5%, 20% {
+        opacity: 0.4;
+        transform: translateY(100%) scale(0.7);
+    }
+    25%, 40% {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0%) scale(1);
+    }
+    45%, 60% {
+        opacity: 0.4;
+        transform: translateY(-100%) scale(0.7);
+    }
+    65%, 100%{
+        opacity: 0;
+        transform: translateY(-100%) scale(0.5);
+    }
+}
+
+.card .content{
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .card .img {
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    left: -5px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .img i {
+    font-size: 50px;
+    color: #1b49ff;
+}
+
+.card .details {
+    margin-left: 80px;
+}
+
+.detsails span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card a {
+    text-decoration: none;
+    padding: 7px 18px;
+    border-radius: 25px;
+    color: white;
+    background: linear-gradient(to bottom, #1b49ff 0%, #e0ff33 100%);
 }
 
 .how-ai-coaching-works {
@@ -455,7 +511,7 @@ body.lock-scroll {
     height: 80%;
   }
   
-  .swiper-slide {
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     background: white;
@@ -464,14 +520,14 @@ body.lock-scroll {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-  }
-  
-  .swiper-slide img {
+}
+
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
 .testimonials-section {
     height: 100vh; /* Imposta l'altezza a 100vh */
@@ -496,11 +552,11 @@ body.lock-scroll {
 }
 
 .testimonial-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 50px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background-color: white; /* Colore di sfondo per la card */
+    border-radius: 10px; /* Bordo arrotondato */
+    padding: 20px; /* Padding interno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra per la card */
+    text-align: center; /* Centra il testo */
 }
 
 .testimonial-image {
@@ -528,7 +584,7 @@ body.lock-scroll {
 
 .testimonial-icon {
     font-size: 50px; /* Dimensione dell'icona */
-    color: #002BFF; /* Colore dell'icona */
+    color: #1b49ff; /* Colore dell'icona */
     margin: 0 auto 10px; /* Centra l'icona */
 }
 
@@ -538,7 +594,7 @@ body.lock-scroll {
 }
 
 .testimonial-ss {
-    background: linear-gradient(45deg, #002BFF 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
+    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
     background-size: 300% 300%; /* Dimensione del gradiente per l'animazione */
     animation: gradientAnimation 5s ease infinite; /* Animazione del gradiente */
 }
@@ -568,20 +624,20 @@ body.lock-scroll {
 
 .testimonial-icon {
     font-size: 50px; /* Dimensione dell'icona */
-    color: #002BFF; /* Colore dell'icona */
+    color: #1b49ff; /* Colore dell'icona */
     margin: 0 auto 10px; /* Centra l'icona */
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #002BFF; /* Colore dei pulsanti */
-    width: 30px; /* Larghezza dei pulsanti */
-    height: 30px; /* Altezza dei pulsanti */
+    color: #1b49ff; /* Colore delle frecce */
+    width: 30px; /* Larghezza delle frecce */
+    height: 30px; /* Altezza delle frecce */
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-    font-size: 20px; /* Dimensione dell'icona del pulsante */
+    font-size: 20px; /* Dimensione dell'icona delle frecce */
 }
 .autoplay-progress {
     position: absolute;
@@ -612,3 +668,12 @@ body.lock-scroll {
     stroke-dasharray: 125.6;
     transform: rotate(-90deg);
   }
+
+.card {
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Aggiungi transizione */
+}
+
+.card.rotate {
+    transform: rotateY(180deg); /* Rotazione dell'elemento */
+    opacity: 0.5; /* Opacità durante la rotazione */
+}
