@@ -176,9 +176,9 @@
     height: 100vh; /* Altezza della sezione hero */
     position: relative;
     overflow: hidden; /* Nasconde eventuali overflow */
-    background: linear-gradient(45deg, #1b49ff, #6e6e6e, #e0ff33);
+    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
     background-size: 300% 300%;
-    animation: color 12s ease-in-out infinite;
+    animation: color 8s ease-in-out infinite;
 }
 
 @keyframes color {
@@ -513,7 +513,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 400px; /* Regola l'altezza della sfumatura */
+    height: 200px; /* Regola l'altezza della sfumatura */
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 1) 0%,
@@ -709,87 +709,15 @@
     align-items: center !important;
 }
 
-
-
 .testimonials-section {
     height: 100vh; /* Imposta l'altezza a 100vh */
     padding: 40px;
-    background-color: black; /* Colore di sfondo per la sezione */
+    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.testimonials-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.testimonials-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
-    gap: 20px; /* Spazio tra le card */
-}
-
-.testimonial-card {
-    background-color: white; /* Colore di sfondo per la card */
-    border-radius: 10px; /* Bordo arrotondato */
-    padding: 20px; /* Padding interno */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra per la card */
-    text-align: center; /* Centra il testo */
-}
-
-.testimonial-image {
-    width: 80px; /* Dimensione del cerchio */
-    height: 80px; /* Dimensione del cerchio */
-    border-radius: 50%; /* Forma circolare */
-    overflow: hidden; /* Nasconde l'overflow */
-    margin: 0 auto 10px; /* Centra l'immagine */
-}
-
-.testimonial-image img {
-    width: 100%; /* Occupa tutta la larghezza */
-    height: auto; /* Mantiene le proporzioni */
-}
-
-.profession {
-    font-style: italic;
-    color: gray;
-}
-
-.testimonial-description {
-    margin-top: 10px;
-    color: #333; /* Colore del testo */
-}
-
-.testimonial-icon {
-    font-size: 50px; /* Dimensione dell'icona */
-    color: #1b49ff; /* Colore dell'icona */
-    margin: 0 auto 10px; /* Centra l'icona */
-}
-
-.myTestimonialsSwiper {
-    width: 100%; /* Larghezza del carosello */
-    max-width: 800px; /* Larghezza massima */
-}
-
-.testimonial-ss {
-    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
-    background-size: 300% 300%; /* Dimensione del gradiente per l'animazione */
     animation: gradientAnimation 5s ease infinite; /* Animazione del gradiente */
-}
-
-.testimonial-card {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    height: 500px;
-    width: 400px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    
 }
 
 @keyframes gradientAnimation {
@@ -804,15 +732,66 @@
     }
 }
 
-.testimonial-icon {
-    font-size: 50px; /* Dimensione dell'icona */
-    color: #1b49ff; /* Colore dell'icona */
-    margin: 0 auto 10px; /* Centra l'icona */
+.testimonials-content {
+    width: 80%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonials-title {
+    color: #1b49ff; /* Colore blu per il titolo */
+    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 0; /* Spazio sotto il titolo */
+    text-align: center;
+}
+
+.testimonials-subtitle {
+    color: white; /* Colore del sottotitolo */
+    font-size: 3rem; /* Dimensione del sottotitolo */
+    margin-bottom: 0; /* Spazio sotto il sottotitolo */
+    text-align: center;
+}
+
+.testimonials-text {
+    font-size: 1rem; /* Dimensione del testo */
+    color: rgb(67, 58, 58); /* Colore del testo */
+    text-align: center; /* Giustifica il testo */
+    margin-top: 0; /* Spazio sopra il testo */
+}
+
+.myTestimonialsSwiper {
+    width: 100%; /* Larghezza del carosello */
+    max-width: 800px; /* Larghezza massima */
+    height: 50vh;
+}
+
+.testimonial-ss {
+    background-color: transparent; /* Sfondo più scuro ma ancora semi-trasparente */
+}
+
+.testimonial-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+}
+
+.profession {
+    font-style: italic;
+    color: gray;
+    padding: 10px;
+}
+
+.testimonial-description {
+    color: #333; /* Colore del testo */
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #1b49ff; /* Colore delle frecce */
+    color: rgb(67, 58, 58) !important; /* Colore delle frecce */
     width: 30px; /* Larghezza delle frecce */
     height: 30px; /* Altezza delle frecce */
 }
@@ -858,4 +837,108 @@
 .card.rotate {
     transform: rotateY(180deg); /* Rotazione dell'elemento */
     opacity: 0.5; /* Opacità durante la rotazione */
+}
+
+.understand-threshold {
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.understand-threshold-content {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.understand-threshold-title {
+    color: #1b49ff;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.understand-threshold-subtitle {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.understand-threshold-text {
+    color: rgb(147, 147, 147);
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.understand-threshold-button {
+    text-decoration: none;
+    background-color: #1b49ff; /* Versione più trasparente del blu originale */
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #1b49ff;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 
+        /* Glow interno */
+        inset 0 0 10px rgba(27, 73, 255, 0.3),
+        /* Glow esterno */
+        0 0 5px rgba(27, 73, 255, 0.5),
+        0 0 15px rgba(27, 73, 255, 0.3),
+        0 0 30px rgba(27, 73, 255, 0.2);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow sul testo */
+}
+
+.understand-threshold-button:hover {
+    background-color: rgba(27, 73, 255, 0.4);
+    box-shadow: 
+        inset 0 0 15px rgba(27, 73, 255, 0.4),
+        0 0 10px rgba(27, 73, 255, 0.6),
+        0 0 20px rgba(27, 73, 255, 0.4),
+        0 0 40px rgba(27, 73, 255, 0.3);
+    transform: scale(1.02); /* Leggero effetto di ingrandimento */
+}
+
+.understand-threshold-button:active {
+    transform: scale(0.98); /* Effetto di pressione */
+}
+
+.understand-threshold-image {
+    height: 70vh;
+    padding: 10px;
+    border: 1px solid #e0ff33; /* Giallo neon */
+    border-radius: 10px;
+    box-shadow: 
+        /* Glow interno */
+        inset 0 0 10px rgba(224, 255, 51, 0.3),
+        /* Glow esterno - multipli livelli per maggiore profondità */
+        0 0 5px rgba(224, 255, 51, 0.5),
+        0 0 20px rgba(224, 255, 51, 0.3),
+        0 0 40px rgba(224, 255, 51, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Opzionale: intensifica il glow al hover */
+.understand-threshold-image:hover {
+    box-shadow: 
+        inset 0 0 15px rgba(224, 255, 51, 0.4),
+        0 0 10px rgba(224, 255, 51, 0.6),
+        0 0 20px rgba(224, 255, 51, 0.4),
+        0 0 40px rgba(224, 255, 51, 0.3);
+}
+
+.understand-threshold-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }

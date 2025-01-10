@@ -1,29 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "./LandingPage.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Loader from '../Loader/Loader';
-import logo from '../Images/chatrathLogo.png';
-import hidev from "../Images/hi-dev.png";
-import bg2 from "../Images/bg3.mp4";
-import bg3 from "../Images/how-ai2.mp4";
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Squash as Hamburger } from 'hamburger-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Squash as Hamburger } from 'hamburger-react'
-import ImageContainer from '../LoginPage/ImageContainer/imageContainer';
-import image1 from '../Images/duomo.jpg';
-import image2 from '../Images/firenze1.jpg';
-import image3 from '../Images/vista.jpg';
+
+import Loader from '../Loader/Loader';
+import logo from '../Images/chatrathLogo.png';
+import hidev from "../Images/hi-dev.png";
+import bg2 from "../Images/bg3.mp4";
+import bg3 from "../Images/how-ai2.mp4";
+import book from "../Images/book.png";
 
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const closeButtonRef = useRef(null);
 
     const nickSectionRef = useRef(null);
 
@@ -100,37 +97,31 @@ function LandingPage() {
 
     const testimonialsData = [
         {
-            icon: "fas fa-user",
             name: "John Doe",
             profession: "Software Engineer",
             description: "This service has changed my life for the better!"
         },
         {
-            icon: "fas fa-user",
             name: "Jane Smith",
             profession: "Product Manager",
             description: "An amazing experience, highly recommend!"
         },
         {
-            icon: "fas fa-user",
             name: "Alice Johnson",
             profession: "UX Designer",
             description: "I learned so much and grew professionally."
         },
         {
-            icon: "fas fa-user",
             name: "Bob Brown",
             profession: "Data Scientist",
             description: "A fantastic program that delivers results."
         },
         {
-            icon: "fas fa-user",
             name: "Charlie Green",
             profession: "Marketing Specialist",
             description: "Incredible insights and support throughout."
         },
         {
-            icon: "fas fa-user",
             name: "Diana White",
             profession: "Business Analyst",
             description: "I can't recommend this enough!"
@@ -258,7 +249,7 @@ function LandingPage() {
                                     <p className='menu-item' onClick={() => moveTo('how-ai-coaching-works')}>3. How AI coaching works</p>
                                     <p className='menu-item' onClick={() => moveTo('testimonials')}>4. Testimonials</p>
                                     <p className='menu-item'>5. Selecting the best coach</p>
-                                    <p className='menu-item'>6. Understanding The Threshold</p>
+                                    <p className='menu-item' onClick={() => moveTo('understand-threshold')}>6. Understanding The Threshold</p>
                                 
                            
                         
@@ -374,12 +365,18 @@ function LandingPage() {
                     <HorizontalScrollCarousel />
 
                     <div className="testimonials-section" id='testimonials'>
-                        <h2 className="coaching-title">Testimonials</h2>
+                        <div className="testimonials-content">
+                            <h3 className="testimonials-title">TESTIMONIALS</h3>
+                            <h2 className="testimonials-subtitle">What Our Clients Say</h2>
+                            <p className="testimonials-text">
+                                Our clients have experienced significant improvements in their leadership effectiveness and personal development.
+                            </p>
+                        </div>
                         <Swiper
                             spaceBetween={30}
                             centeredSlides={true}
                             autoplay={{
-                              delay: 2500,
+                              delay: 6000,
                               disableOnInteraction: false,
                             }}
                             pagination={{
@@ -393,9 +390,6 @@ function LandingPage() {
                             {testimonialsData.map((testimonial, index) => (
                                 <SwiperSlide key={index} className='testimonial-ss'>
                                     <div className="testimonial-card">
-                                        <div className="testimonial-icon">
-                                            <i className={testimonial.icon}></i>
-                                        </div>
                                         <h3>{testimonial.name}</h3>
                                         <p className="profession">{testimonial.profession}</p>
                                         <p className="testimonial-description">"{testimonial.description}"</p>
@@ -409,6 +403,20 @@ function LandingPage() {
                                 <span ref={progressContent}></span>
                             </div>
                         </Swiper>
+                    </div>
+
+                    <div className="understand-threshold" id='understand-threshold'>
+                        <div className="understand-threshold-image">
+                            <img src={book} alt="Understand the Threshold" />
+                        </div>
+                        <div className="understand-threshold-content">
+                            <h3 className="understand-threshold-title">UNDERSTAND THE THRESHOLD</h3>
+                            <h2 className="understand-threshold-subtitle">Unlock Your Potential with Personalized Coaching.</h2>
+                            <p className="understand-threshold-text">
+                            In a rapidly changing world, having a coach who understands your unique challenges is crucial. Nick brings a wealth of experience and a personalized approach to coaching that empowers you to reach your goals.
+                            </p>
+                            <a className="understand-threshold-button" href="https://www.amazon.com/Threshold-Leading-Age-AI/dp/1635767989">Shop</a>
+                        </div>
                     </div>
                 </div>
             )}
