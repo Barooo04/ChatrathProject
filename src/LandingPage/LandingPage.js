@@ -10,46 +10,26 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
-import { Mousewheel, Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Squash as Hamburger } from 'hamburger-react'
+import ImageContainer from '../LoginPage/ImageContainer/imageContainer';
+import image1 from '../Images/duomo.jpg';
+import image2 from '../Images/firenze1.jpg';
+import image3 from '../Images/vista.jpg';
 
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const menuRef = useRef(null);
     const closeButtonRef = useRef(null);
 
     const nickSectionRef = useRef(null);
 
-    const [currentCardIndex, setCurrentCardIndex] = useState(0);
-    const [isFading, setIsFading] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({target: targetRef });
+    const x = useTransform(scrollYProgress, [0, 1], ['0%', '-55%']);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const handleClickOutside = (event) => {
-        if (
-            menuRef.current &&
-            !menuRef.current.contains(event.target) &&
-            (!closeButtonRef.current || !closeButtonRef.current.contains(event.target))
-        ) {
-            setIsMenuOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isMenuOpen]);
 
     useEffect(() => {
         // Simula un caricamento di 2 secondi
@@ -64,13 +44,34 @@ function LandingPage() {
         setTimeout(() => {
             const section = document.getElementById(id);
             if (section) {
-                section.scrollIntoView({
-                    behavior: 'smooth',
+                const scrollPromise = new Promise((resolve) => {
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Funzione per controllare se lo scroll è completato
+                    const checkIfScrollFinished = () => {
+                        const rect = section.getBoundingClientRect();
+                        // Consideriamo lo scroll completato quando la sezione è vicina al top della viewport
+                        if (Math.abs(rect.top) < 50) {
+                            resolve();
+                        } else {
+                            requestAnimationFrame(checkIfScrollFinished);
+                        }
+                    };
+                    
+                    checkIfScrollFinished();
+                });
+
+                // Chiudi il menu solo dopo che lo scroll è completato
+                scrollPromise.then(() => {
+                    setIsMenuOpen(false);
                 });
             }
         }, 150);
     };
 
+    /*
     const stepsData = [
         {
             icon: "fas fa-star",
@@ -98,6 +99,7 @@ function LandingPage() {
             description: "This is the description for the fifth step."
         },
     ];
+    */
 
     const testimonialsData = [
         {
@@ -145,6 +147,8 @@ function LandingPage() {
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
 
+    
+
     return (
         <>
             {isLoading ? (
@@ -156,30 +160,20 @@ function LandingPage() {
                         <ul>
                             <li><a className="ai-assistant" href="/login">Client Login</a></li>
                             <li><a className="contact-me" href="#contact-me">Request Coaching</a></li>
-                            <li className="menu-hamburger">
-                                {isMenuOpen ? (
-                                    <button
-                                        ref={closeButtonRef}
-                                        className="hamburger-button"
-                                        onClick={toggleMenu}
-                                    >
-                                        <i className="fas fa-x"></i>
-                                    </button>
-                                ) : (
-                                    <button className="hamburger-button" onClick={toggleMenu}>
-                                        <i className="fas fa-bars"></i>
-                                    </button>
-                                )}
-                            </li>
+                            <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
                     </nav>
-                    <div ref={menuRef} className={isMenuOpen ? 'menu-appear view' : 'menu-appear hidden'}>
-                        <p className='menu-item' onClick={() => moveTo('coaching')}>1. Why Coaching</p>
-                        <p className='menu-item' onClick={() => moveTo('nick')}>2. Why Nick</p> 
-                        <p className='menu-item' onClick={() => moveTo('how-ai-coaching-works')}>3. How AI coaching works</p>
-                        <p className='menu-item' onClick={() => moveTo('testimonials')}>4. Testimonials</p>
-                        <p className='menu-item'>5. Selecting the best coach</p>
-                        <p className='menu-item'>6. Understanding The Threshold</p>
+                    <div className={`menu-appear ${!isMenuOpen ? 'hidden' : 'view'}`}>
+                        
+                                    <p className='menu-item' onClick={() => moveTo('coaching')}>1. Why Coaching</p>
+                                    <p className='menu-item' onClick={() => moveTo('nick')}>2. Why Nick</p> 
+                                    <p className='menu-item' onClick={() => moveTo('how-ai-coaching-works')}>3. How AI coaching works</p>
+                                    <p className='menu-item' onClick={() => moveTo('testimonials')}>4. Testimonials</p>
+                                    <p className='menu-item'>5. Selecting the best coach</p>
+                                    <p className='menu-item'>6. Understanding The Threshold</p>
+                                
+                           
+                        
                     </div>
 
                     <div className="hero-section" id='home'>
@@ -227,7 +221,7 @@ function LandingPage() {
                                     </div>
 
                                 </div>
-                                <a href="#">Follow</a>
+                                <a href="#i">Follow</a>
                             </div>
                             <div className="card" style={{'--delay': '0'}}>
                                 <div className="content">
@@ -238,7 +232,7 @@ function LandingPage() {
                                     </div>
 
                                 </div>
-                                <a href="#">Follow</a>
+                                <a href="#i">Follow</a>
                             </div>
                             <div className="card" style={{'--delay': '1'}}>
                                 <div className="content">
@@ -249,7 +243,7 @@ function LandingPage() {
                                     </div>
 
                                 </div>
-                                <a href="#">Follow</a>
+                                <a href="#i">Follow</a>
                             </div>
                             <div className="card" style={{'--delay': '2'}}>
                                 <div className="content">
@@ -260,7 +254,7 @@ function LandingPage() {
                                     </div>
 
                                 </div>
-                                <a href="#">Follow</a>
+                                <a href="#i">Follow</a>
                             </div>
                             <div className="card" style={{'--delay': '2'}}>
                                 <div className="content">
@@ -271,7 +265,7 @@ function LandingPage() {
                                     </div>
 
                                 </div>
-                                <a href="#">Follow</a>
+                                <a href="#i">Follow</a>
                             </div>
                         </div>
                         <div className="why-nick-content">
@@ -286,28 +280,14 @@ function LandingPage() {
                     </div>
 
                     <div className="how-ai-coaching-works" id='how-ai-coaching-works'>
-                        <h2 className="coaching-title">How AI Coaching Works</h2>
-                        <Swiper
-                            direction={'vertical'}
-                            slidesPerView={1}
-                            spaceBetween={30}
-                            mousewheel={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            modules={[Mousewheel, Pagination]}
-                            className="mySwiper"
-                        >
-                            {stepsData.map((step, index) => (
-                                <SwiperSlide key={index}>
-                                    <div className='step-item-content'>
-                                        <i className={step.icon}></i>
-                                        <h3>{step.title}</h3>
-                                        <p>{step.description}</p>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <div className="how-ai-coaching-works-content">
+                            <h3 className="how-ai-coaching-works-title">HOW AI COACHING WORKS</h3>
+                            <h2 className="how-ai-coaching-works-subtitle">Step 1: Introduction</h2>   
+                            <p className="how-ai-coaching-works-text">
+                                This is the content of the how-ai-coaching-works section.
+                            </p>
+                        </div>
+                        
                     </div>
 
                     <div className="testimonials-section" id='testimonials'>

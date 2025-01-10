@@ -11,21 +11,6 @@
     box-sizing: border-box;
     font-family:'Alkia Regular';
 }
-
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    cursor: url("../Images/cursor.png"), auto;
-
-}
-
-/* Aggiungi uno stile per bloccare lo scorrimento del body */
-body.lock-scroll {
-    overflow: hidden; /* Nasconde lo scorrimento del body */
-}
-
 /* Animazione per la comparsa della pagina */
 @keyframes InitialAnimation {
     0% {
@@ -40,7 +25,6 @@ body.lock-scroll {
 .landing-container {
     opacity: 0;
     transition: opacity 1s ease, transform 1s ease;
-    cursor: url("../Images/cursor.png"), auto;
 }
 
 /* Stile della landing page quando appare */
@@ -60,13 +44,17 @@ body.lock-scroll {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between;
-    width: 100%;
-    padding: 3px 40px;
-    background-color: black; /* Sfondo trasparente */
-    position: fixed; /* Fissa la navbar in alto */
-    z-index: 10; /* Porta la navbar sopra il contenuto */
-    border-bottom: 1px solid gray;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 80%;
+    margin-left: 10%;
+    top: 20px;
+    padding: 15px 40px;
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
+    backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+    -webkit-backdrop-filter: blur(8px); /* Per supporto Safari */
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
 }
 
 .logo {
@@ -137,42 +125,50 @@ body.lock-scroll {
 }
 
 
-.menu-appear.hidden {
-    position: absolute;
+.menu-appear {
+    position: fixed;
     display: flex;
     flex-direction: column;
-    top: 75px;
-    right: 0;
+    justify-content: space-between;
+    top: 85px;
     z-index: 99;
-    transform: translateX(200%);
-    transition: 0.3s ease;
-    border: 1px solid white;
+    width: 80%;
+    right: 10%;
+    transition: height 0.3s ease;
+    text-align: right;
+    border-radius: 0 0 20px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 0;
+    overflow: hidden;
 }
 
 .menu-appear.view {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 75px;
-    right: 0;
-    z-index: 99;
-    transform: translateX(0%);
-    transition: 0.3s ease;
-    border: 1px solid white;
-    border-radius: 5px;
+    transition: height 0.3s ease;
+    height: 48vh;
 }
 
 .menu-item {
+    position: relative;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 15px 40px;
+    background-color: transparent;
     transition: 0.3s ease;
+    border-radius: 20px;
+    height: 8vh;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    transform-origin: top;
 }
 
 .menu-item:hover {
     background-color: white;
     color: black;
     transition: 0.3s ease;
+    cursor: pointer;
 }
 
 .hero-section {
@@ -506,6 +502,57 @@ body.lock-scroll {
     padding: 40px;
 }
 
+.how-ai-coaching-works-content {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}  
+
+.how-ai-coaching-works-title {
+    color: #1b49ff; /* Colore blu per il titolo */
+    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+    text-align: center;
+}
+
+.how-ai-coaching-works-subtitle {
+    color: white; /* Colore del sottotitolo */
+    font-size: 3rem; /* Dimensione del sottotitolo */
+    margin-bottom: 15px; /* Spazio sotto il sottotitolo */
+    text-align: center;
+}
+
+.how-ai-coaching-works-text {
+    font-size: 1rem; /* Dimensione del testo */
+    color: rgb(147, 147, 147); /* Colore del testo */
+    text-align: center; /* Giustifica il testo */
+    margin-top: 10px; /* Spazio sopra il testo */
+}
+
+.carousel {
+    background-color: gray;
+    height: 80vh;
+}
+
+.contentContainer {
+    height: 80vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 3vw;
+    padding: 0 4rem 0 4rem;
+}
+
 .swiper {
     width: 80%;
     height: 80%;
@@ -522,12 +569,7 @@ body.lock-scroll {
     align-items: center !important;
 }
 
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
 
 .testimonials-section {
     height: 100vh; /* Imposta l'altezza a 100vh */
