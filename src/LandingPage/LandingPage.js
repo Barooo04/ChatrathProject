@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import logo from '../Images/chatrathLogo.png';
 import hidev from "../Images/hi-dev.png";
 import bg2 from "../Images/bg3.mp4";
+import bg3 from "../Images/how-ai2.mp4";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -25,10 +26,6 @@ function LandingPage() {
     const closeButtonRef = useRef(null);
 
     const nickSectionRef = useRef(null);
-
-    const targetRef = useRef(null);
-    const { scrollYProgress } = useScroll({target: targetRef });
-    const x = useTransform(scrollYProgress, [0, 1], ['0%', '-55%']);
 
 
     useEffect(() => {
@@ -71,35 +68,35 @@ function LandingPage() {
         }, 150);
     };
 
-    /*
+    
     const stepsData = [
         {
             icon: "fas fa-star",
             title: "Step 1: Introduction",
-            description: "This is the description for the first step."
+            description: "This is the description for the first step.",
         },
         {
             icon: "fas fa-rocket",
             title: "Step 2: Analysis",
-            description: "This is the description for the second step."
+            description: "This is the description for the second step.",
         },
         {
             icon: "fas fa-brain",
             title: "Step 3: Development",
-            description: "This is the description for the third step."
+            description: "This is the description for the third step.",
         },
         {
             icon: "fas fa-cogs",
             title: "Step 4: Implementation",
-            description: "This is the description for the fourth step."
+            description: "This is the description for the fourth step.",
         },
         {
             icon: "fas fa-check",
             title: "Step 5: Feedback",
-            description: "This is the description for the fifth step."
+            description: "This is the description for the fifth step.",
         },
     ];
-    */
+    
 
     const testimonialsData = [
         {
@@ -148,6 +145,97 @@ function LandingPage() {
     };
 
     
+    const HorizontalScrollCarousel = () => {
+        const targetRef = useRef(null);
+        const { scrollYProgress } = useScroll({
+            target: targetRef,
+        });
+        
+        const x = useTransform(scrollYProgress, [0, 1], ["60%", "-50%"]);
+        
+        return (
+            <section ref={targetRef} className="horizontal-scroll-section">
+                    <div className="horizontal-scroll-overlay"></div>
+
+                <video autoPlay loop muted>
+                    <source src={bg3} type="video/mp4" />
+                    Il tuo browser non supporta i video.
+                </video>
+                <div className="how-ai-coaching-works" id='how-ai-coaching-works'>
+                    <div className="how-ai-coaching-works-content">
+                        <h3 className="how-ai-coaching-works-title">HOW AI COACHING WORKS</h3>
+                        <h2 className="how-ai-coaching-works-subtitle">Step 1: Introduction</h2>   
+                        <p className="how-ai-coaching-works-text">
+                            This is the content of the how-ai-coaching-works section.
+                        </p>
+                    </div>
+                </div>
+                <div className="horizontal-scroll-container">
+                    <motion.div style={{ x }} className="horizontal-scroll-cards-wrapper">
+                        {stepsData.map((card, index) => {
+                            return <Card 
+                                card={card} 
+                                key={card.id} 
+                                index={index}
+                                totalCards={stepsData.length}
+                            />;
+                        })}
+                    </motion.div>
+                </div>
+                <div className="horizontal-scroll-overlay-bottom"></div>
+            </section>
+        );
+    };
+
+    const Card = ({ card, index, totalCards }) => {
+        // Colori neon di base (in formato HSL per facilitare l'interpolazione)
+        const startColor = { h: 210, s: 100, l: 50 }; // Blu neon
+        const endColor = { h: 60, s: 100, l: 50 };    // Giallo neon
+
+        const getInterpolatedColor = (index, total) => {
+            if (index === 0) return 'rgb(0, 123, 255)'; // Prima card: blu neon
+            if (index === total - 1) return 'rgba(224, 255, 51, 1)'; // Ultima card: giallo neon
+            
+            // Calcola il colore intermedio
+            const progress = index / (total - 1);
+            const h = startColor.h + (endColor.h - startColor.h) * progress;
+            return `hsl(${h}, 100%, 50%)`;
+        };
+
+        const cardColor = getInterpolatedColor(index, totalCards);
+
+        return (
+            <div 
+                key={card.id} 
+                className="horizontal-card"
+                style={{
+                    borderColor: cardColor,
+                    boxShadow: `0 0 10px ${cardColor}80,
+                             0 0 20px ${cardColor}40,
+                             0 0 30px ${cardColor}20`,
+                    '--card-color': cardColor, // Variabile CSS personalizzata
+                    '&::before': {
+                        backgroundColor: cardColor
+                    }
+                }}
+            >
+                <div className="horizontal-card-content">
+                    <div className="card-icon">
+                        <i className={card.icon}></i>
+                    </div>
+                    <div className="card-text">
+                        <h3 className="horizontal-card-title">
+                            {card.title}
+                        </h3>
+                        <p className="horizontal-card-description">
+                            {card.description}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
 
     return (
         <>
@@ -163,7 +251,7 @@ function LandingPage() {
                             <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
                     </nav>
-                    <div className={`menu-appear ${!isMenuOpen ? 'hidden' : 'view'}`}>
+                    <div className={`menu-appear ${!isMenuOpen ? '' : 'view'}`}>
                         
                                     <p className='menu-item' onClick={() => moveTo('coaching')}>1. Why Coaching</p>
                                     <p className='menu-item' onClick={() => moveTo('nick')}>2. Why Nick</p> 
@@ -207,6 +295,8 @@ function LandingPage() {
                     </div>
 
                     <div className='why-nick' id='nick' ref={nickSectionRef}>
+                    <div className="why-nick-overlay-top"></div>
+
                         <video autoPlay loop muted>
                             <source src={bg2} type="video/mp4" />
                             Il tuo browser non supporta i video.
@@ -277,18 +367,11 @@ function LandingPage() {
                                 With a focus on actionable strategies and continuous support, Nick helps you navigate the complexities of leadership and personal development. His coaching style is tailored to your needs, ensuring that you gain the insights and skills necessary to thrive in any environment.
                             </p>
                         </div>
+                        <div className="why-nick-overlay-bottom"></div>
+
                     </div>
 
-                    <div className="how-ai-coaching-works" id='how-ai-coaching-works'>
-                        <div className="how-ai-coaching-works-content">
-                            <h3 className="how-ai-coaching-works-title">HOW AI COACHING WORKS</h3>
-                            <h2 className="how-ai-coaching-works-subtitle">Step 1: Introduction</h2>   
-                            <p className="how-ai-coaching-works-text">
-                                This is the content of the how-ai-coaching-works section.
-                            </p>
-                        </div>
-                        
-                    </div>
+                    <HorizontalScrollCarousel />
 
                     <div className="testimonials-section" id='testimonials'>
                         <h2 className="coaching-title">Testimonials</h2>

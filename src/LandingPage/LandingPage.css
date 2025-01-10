@@ -492,18 +492,48 @@
     background: linear-gradient(to bottom, #1b49ff 0%, #e0ff33 100%);
 }
 
+.why-nick-overlay-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Regola l'altezza della sfumatura */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none; /* Permette di cliccare attraverso l'overlay */
+    z-index: 2;
+}
+
+.why-nick-overlay-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px; /* Regola l'altezza della sfumatura */
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none; /* Permette di cliccare attraverso l'overlay */
+    z-index: 2;
+}
+
 .how-ai-coaching-works {
-    height: 100vh; /* Imposta l'altezza a 100vh */
-    background-color: black;
+    height: auto; /* Imposta l'altezza a 100vh */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px;
+    z-index: 99;
 }
 
 .how-ai-coaching-works-content {
-    width: 50%;
+    margin-top: 100px;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -530,27 +560,137 @@
     margin-top: 10px; /* Spazio sopra il testo */
 }
 
-.carousel {
-    background-color: gray;
-    height: 80vh;
+.horizontal-scroll-section {
+    position: relative;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
 }
 
-.contentContainer {
-    height: 80vh;
+.horizontal-scroll-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px; /* Regola l'altezza della sfumatura */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.horizontal-scroll-overlay-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Regola l'altezza della sfumatura */
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.horizontal-scroll-section video {
+    position: absolute; /* Posiziona il video in modo assoluto */
+    top: 0;
+    left: 0;
+    width: 100%; /* Occupa tutta la larghezza */
+    height: 100%; /* Occupa tutta l'altezza */
+    object-fit: cover; /* Copre l'area senza distorsioni */
+    z-index: 0; /* Mette il video sotto gli altri contenuti */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.3)); /* Overlay sfumato */
+}
+
+.horizontal-scroll-container {
     position: sticky;
     top: 0;
     display: flex;
+    height: 100vh;
     align-items: center;
-    justify-content: flex-start;
     overflow: hidden;
 }
 
-.images {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 3vw;
-    padding: 0 4rem 0 4rem;
+.horizontal-scroll-cards-wrapper {
+    display: flex;
+    gap: 5rem; /* equivalente a gap-4 */
+}
+
+.horizontal-card {
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    min-width: 300px;
+    margin-right: 2rem;
+    border-width: 1px;
+    border-style: solid;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 
+        /* Glow interno */
+        inset 0 0 30px rgba(255, 255, 255, 0.1),
+        /* Glow del bordo */
+        0 0 10px var(--card-color),
+        0 0 30px var(--card-color);
+}
+
+.horizontal-card:hover {
+    box-shadow: 
+        inset 0 0 50px rgba(255, 255, 255, 0.2),
+        0 0 20px var(--card-color),
+        0 0 40px var(--card-color),
+        0 0 80px var(--card-color),
+        0 0 100px var(--card-color);
+}
+
+.horizontal-card-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    transition: transform 0.3s ease;
+}
+
+.horizontal-card:hover .horizontal-card-background {
+    transform: scale(1.1);
+}
+
+.horizontal-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.card-icon i {
+    font-size: 4rem;
+    color: white;
+   
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.horizontal-card-title {
+    color: #007bff; /* Blu */
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.horizontal-card-description {
+    color: white;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 .swiper {
