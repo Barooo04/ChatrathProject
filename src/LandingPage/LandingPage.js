@@ -20,11 +20,8 @@ import book from "../Images/book.png";
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
-
     const nickSectionRef = useRef(null);
-
-
+    
     useEffect(() => {
         // Simula un caricamento di 2 secondi
         const timer = setTimeout(() => {
@@ -237,7 +234,7 @@ function LandingPage() {
                     <nav className="navbar">
                         <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
                         <ul>
-                            <li><a className="ai-assistant" href="/login">Client Login</a></li>
+                            <li><a className="ai-assistant" href="/dashboard">Client Login</a></li>
                             <li><a className="contact-me" href="#contact-me">Request Coaching</a></li>
                             <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
