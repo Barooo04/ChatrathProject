@@ -19,7 +19,7 @@ function Chat() {
     const [comment, setComment] = useState('');
     const [threadId, setThreadId] = useState(null);
 
-    const API_URL = 'https://chatrathbackenddeployments.vercel.app/';
+    const API_URL = 'https://chatrathbackenddeployments.vercel.app';
 
     // Aggiungi questo nuovo useEffect per recuperare il nome dell'assistente
     useEffect(() => {

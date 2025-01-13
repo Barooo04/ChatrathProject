@@ -7,7 +7,7 @@ function UserDashboard({ user, onLogout }) {
     console.log('UserDashboard props:', { user, onLogout });
     const [isLoading, setIsLoading] = useState(true);
     const [assistants, setAssistants] = useState([]);
-    const API_URL = 'https://chatrathbackenddeployments.vercel.app/';
+    const API_URL = 'https://chatrathbackenddeployments.vercel.app';
 
     useEffect(() => {
         const fetchAssistants = async () => {
