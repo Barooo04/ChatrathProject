@@ -17,12 +17,16 @@ function LoginPage({ onLogin }) {
             const response = await fetch(`${API_URL}/api/login`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
+                mode: 'cors',
                 body: JSON.stringify({ email, password })
             });
 
             if (!response.ok) {
+                const errorData = await response.text();
+                console.error('Risposta server:', errorData);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
@@ -30,7 +34,7 @@ function LoginPage({ onLogin }) {
             onLogin(data.user);
             navigate('/dashboard');
         } catch (error) {
-            console.error('Errore durante il login:', error);
+            console.error('Errore dettagliato:', error);
             setErrorMessage('Errore durante il login. Riprova più tardi.');
         }
     };
