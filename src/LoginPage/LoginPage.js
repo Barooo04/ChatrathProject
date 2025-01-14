@@ -7,24 +7,32 @@ function LoginPage({ onLogin }) {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const API_URL = 'https://chatrathbackenddeployments.vercel.app';
+    const API_URL = process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3001'  // URL locale
+        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${API_URL}/api/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
+        try {
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ email, password }),
+            });
 
-        const data = await response.json();
-        if (response.ok) {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
             onLogin(data.user);
             navigate('/dashboard');
-        } else {
-            setErrorMessage(data.message);
+        } catch (error) {
+            console.error('Errore durante il login:', error);
+            setErrorMessage('Errore durante il login. Riprova più tardi.');
         }
     };
 
