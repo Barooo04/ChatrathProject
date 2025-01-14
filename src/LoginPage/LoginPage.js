@@ -17,12 +17,9 @@ function LoginPage({ onLogin }) {
             const response = await fetch(`${API_URL}/api/login`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Content-Type': 'application/json'
                 },
-                mode: 'cors',
-                credentials: 'omit',
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password })
             });
 
             if (!response.ok) {
