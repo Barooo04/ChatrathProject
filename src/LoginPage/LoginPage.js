@@ -23,6 +23,12 @@ function LoginPage({ onLogin }) {
                 mode: 'cors',
                 body: JSON.stringify({ email, password })
             });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Errore:', errorData);
+                throw new Error(`Errore: ${response.status} ${errorData.message}`);
+            }
 
             if (!response.ok) {
                 const errorData = await response.text();
