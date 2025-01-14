@@ -18,24 +18,23 @@ function LoginPage({ onLogin }) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                credentials: 'include',
+                mode: 'cors',
+                credentials: 'omit',
                 body: JSON.stringify({ email, password })
             });
             
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Errore:', errorData);
-                throw new Error(`Errore: ${response.status} ${errorData.message}`);
-            }
-
-            if (!response.ok) {
-                const errorData = await response.text();
-                console.error('Risposta server:', errorData);
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
+            console.log('Status:', response.status);
+            console.log('Headers:', response.headers);
+            
             const data = await response.json();
+            console.log('Response data:', data);
+            
+            if (!response.ok) {
+                throw new Error(data.message || 'Errore durante il login');
+            }
+
             onLogin(data.user);
             navigate('/dashboard');
         } catch (error) {
