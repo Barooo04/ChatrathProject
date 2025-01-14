@@ -19,7 +19,7 @@ function LoginPage({ onLogin }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include',
+                credentials: 'omit',
                 body: JSON.stringify({ email, password }),
             });
 
