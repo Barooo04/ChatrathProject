@@ -7,7 +7,7 @@ function LoginPage({ onLogin }) {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const API_URL = process.env.NODE_ENV === 'development' 
+    const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
 
@@ -24,8 +24,7 @@ function LoginPage({ onLogin }) {
             });
 
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
