@@ -14,7 +14,7 @@ function LoginPage({ onLogin }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${API_URL}/api/login`, {
+            const response = await fetch(`/api/login`, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
