@@ -4,7 +4,6 @@ import Loader from '../Loader/Loader';
 import AssistantCard from './AssistantCard';
 
 function UserDashboard({ user, onLogout }) {
-    console.log('UserDashboard props:', { user, onLogout });
     const [isLoading, setIsLoading] = useState(true);
     const [assistants, setAssistants] = useState([]);
     const API_URL = process.env.NODE_ENV === 'development'

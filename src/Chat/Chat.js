@@ -19,7 +19,9 @@ function Chat() {
     const [comment, setComment] = useState('');
     const [threadId, setThreadId] = useState(null);
 
-    const API_URL = 'https://chatrathbackenddeployments.vercel.app';
+    const API_URL = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3001'  // URL locale
+        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
 
     // Aggiungi questo nuovo useEffect per recuperare il nome dell'assistente
     useEffect(() => {
@@ -158,6 +160,7 @@ function Chat() {
 
     // Aggiungi questa funzione per pulire la chat
     const handleNewChat = () => {
+        console.log(assistantToken);
         setMessages([]);
         localStorage.removeItem(`chat_${assistantToken}`);
     };

@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
-    const API_URL = 'https://chatrathbackenddeployments.vercel.app/';
+    const API_URL = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3001'  // URL locale
+        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
     const handleCardClick = async () => {
         try {
             // Prima salva i metadata
