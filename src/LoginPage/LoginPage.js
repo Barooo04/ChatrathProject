@@ -9,7 +9,7 @@ function LoginPage({ onLogin }) {
     const navigate = useNavigate();
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
+        : 'https://chatrathbackend.onrender.com'; // URL di produzione
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,12 +27,6 @@ function LoginPage({ onLogin }) {
                 const errorData = await response.json();
                 console.error('Errore:', errorData);
                 throw new Error(`Errore: ${response.status} ${errorData.message}`);
-            }
-
-            if (!response.ok) {
-                const errorData = await response.text();
-                console.error('Risposta server:', errorData);
-                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
