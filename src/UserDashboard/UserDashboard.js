@@ -8,7 +8,7 @@ function UserDashboard({ user, onLogout }) {
     const [assistants, setAssistants] = useState([]);
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
+        : 'https://chatrathbackend.onrender.com'; // URL di produzione
 
     useEffect(() => {
         const fetchAssistants = async () => {

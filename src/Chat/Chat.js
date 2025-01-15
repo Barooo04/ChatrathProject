@@ -21,7 +21,7 @@ function Chat() {
 
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
+        : 'https://chatrathbackend.onrender.com'; // URL di produzione
 
     // Aggiungi questo nuovo useEffect per recuperare il nome dell'assistente
     useEffect(() => {

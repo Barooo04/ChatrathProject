@@ -6,7 +6,7 @@ function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackenddeployments.vercel.app'; // URL di produzione
+        : 'https://chatrathbackend.onrender.com'; // URL di produzione
     const handleCardClick = async () => {
         try {
             // Prima salva i metadata
