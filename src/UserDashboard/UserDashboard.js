@@ -2,10 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './UserDashboard.css';
 import Loader from '../Loader/Loader';
 import AssistantCard from './AssistantCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 function UserDashboard({ user, onLogout }) {
     const [isLoading, setIsLoading] = useState(true);
     const [assistants, setAssistants] = useState([]);
+    const [showPasswordPopup, setShowPasswordPopup] = useState(false);
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend.onrender.com'; // URL di produzione
@@ -39,6 +47,54 @@ function UserDashboard({ user, onLogout }) {
         fetchAssistants();
     }, [user.id]);
 
+    const handlePasswordChange = async () => {
+        // Resetta i messaggi
+        setErrorMessage('');
+        setSuccessMessage('');
+
+        // Verifica che le nuove password corrispondano
+        if (newPassword !== confirmNewPassword) {
+            setErrorMessage('Passwords do not match');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_URL}/api/change-password`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: user.id,
+                    currentPassword: currentPassword,
+                    newPassword: newPassword,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErrorMessage(data.message || 'Errore durante il cambio della password');
+                return;
+            }
+
+            setSuccessMessage('Password changed successfully');
+        } catch (error) {
+            console.error('Errore durante la richiesta di cambio password:', error);
+            setErrorMessage('Errore durante il cambio della password');
+        }
+    };
+
+    const openPasswordPopup = () => {
+        // Resetta i campi e i messaggi di stato quando il popup viene aperto
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+        setErrorMessage('');
+        setSuccessMessage('');
+        setShowPasswordPopup(true);
+    };
+
     return (
         <>
         {isLoading ? (
@@ -47,7 +103,10 @@ function UserDashboard({ user, onLogout }) {
         <div className="dashboard-container">
             <nav className="dashboard-nav">
                 <h1 className="dashboard-nav-title">Welcome back, {user.name}!</h1>
-            <button className="dashboard-nav-logout" onClick={onLogout}>Logout</button>
+                <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
+                    <p className="change-password" onClick={openPasswordPopup}>Change your password</p>
+                    <button className="dashboard-nav-logout" onClick={onLogout}>Logout</button>
+                </div>
             </nav>
             <div className="assistants-container-content">
                 <h1 className="assistants-container-title">ALL YOUR ASSISTANTS</h1>
@@ -66,6 +125,44 @@ function UserDashboard({ user, onLogout }) {
                     <p>Nessun assistente trovato.</p>
                 )}
             </div>
+            {showPasswordPopup && (
+                <>
+                <div className="overlay" onClick={() => setShowPasswordPopup(false)}></div>
+                <div className="password-popup">
+                    <button className="close-button" onClick={() => setShowPasswordPopup(false)}><FontAwesomeIcon icon={faXmark} /></button>
+                    {successMessage ? (
+                        <div className="success-message">
+                            <FontAwesomeIcon icon={faCheckCircle} size="2x" color="green" />
+                            <p>{successMessage}</p>
+                        </div>
+                    ) : (
+                        <>
+                        <h2>Change your password</h2>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <input 
+                            type="password" 
+                            placeholder="Current password" 
+                            value={currentPassword} 
+                            onChange={(e) => setCurrentPassword(e.target.value)} 
+                        />
+                        <input 
+                            type="password" 
+                            placeholder="New password" 
+                            value={newPassword} 
+                            onChange={(e) => setNewPassword(e.target.value)} 
+                        />
+                        <input 
+                            type="password" 
+                            placeholder="Confirm new password" 
+                            value={confirmNewPassword} 
+                            onChange={(e) => setConfirmNewPassword(e.target.value)} 
+                        />
+                        <button onClick={handlePasswordChange}>Change password</button>
+                        </>
+                    )}
+                </div>
+                </>
+            )}
         </div>
         )}
         </>

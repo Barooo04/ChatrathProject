@@ -28,6 +28,21 @@
     font-weight: bold;
 }
 
+.change-password {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    color: royalblue;
+    transition: 0.3s;
+}
+
+.change-password:hover {
+    color: rgb(73, 117, 248);
+    transition: 0.3s;
+}
+
 .dashboard-nav-logout {
     width: 100px;
     color: white;
@@ -107,5 +122,93 @@
         flex: 1 1 100%; /* 1 card per riga */
     }
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+}
+
+.password-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+}
+
+.password-popup h2 {
+    margin-bottom: 20px;
+    color: #1b49ff;
+}
+
+.password-popup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.password-popup button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1b49ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.password-popup button:hover {
+    background-color: #1553b5;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: green;
+    font-size: 16px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
 
 
