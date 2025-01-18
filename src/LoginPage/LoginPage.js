@@ -39,7 +39,7 @@ function LoginPage({ onLogin }) {
             }
         } catch (error) {
             console.error('Errore dettagliato:', error);
-            setErrorMessage('Errore durante il login. Riprova più tardi.');
+            setErrorMessage(error.message);
         }
     };
 

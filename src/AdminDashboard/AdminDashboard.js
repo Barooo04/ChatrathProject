@@ -3,6 +3,7 @@ import Loader from "../Loader/Loader";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faXmark, faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import bcrypt from 'bcryptjs';
 
 function AdminDashboard({ user, onLogout }) {
 
