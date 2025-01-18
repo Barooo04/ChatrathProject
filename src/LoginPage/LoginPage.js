@@ -31,7 +31,12 @@ function LoginPage({ onLogin }) {
 
             const data = await response.json();
             onLogin(data.user);
-            navigate('/dashboard');
+
+            if (data.user.role === 'admin') {
+                navigate('/admin');
+            } else {
+                navigate('/dashboard');
+            }
         } catch (error) {
             console.error('Errore dettagliato:', error);
             setErrorMessage('Errore durante il login. Riprova più tardi.');

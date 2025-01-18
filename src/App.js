@@ -47,20 +47,37 @@ function App() {
                 <Route
                     path="/login"
                     element={
-                        isAuthenticated ? <Navigate to="/dashboard" /> : <LoginPage onLogin={handleLogin} />
+                        isAuthenticated ? (
+                            user.role === 'admin' ? (
+                                <Navigate to="/admin" />
+                            ) : (
+                                <Navigate to="/dashboard" />
+                            )
+                        ) : (
+                            <LoginPage onLogin={handleLogin} />
+                        )
                     }
                 />
                 <Route
                     path="/dashboard"
                     element={
-                        isAuthenticated ? (
+                        isAuthenticated && user.role !== 'admin' ? (
                             <UserDashboard user={user} onLogout={handleLogout} />
                         ) : (
                             <Navigate to="/login" />
                         )
                     }
                 />
-                <Route path="/admin" element={<AdminDashboard />} />
+                <Route
+                    path="/admin"
+                    element={
+                        isAuthenticated && user.role === 'admin' ? (
+                            <AdminDashboard user={user} onLogout={handleLogout} />
+                        ) : (
+                            <Navigate to="/login" />
+                        )
+                    }
+                />
                 <Route path="/chat/:assistantToken" element={<Chat />} />
             </Routes>
         </Router>

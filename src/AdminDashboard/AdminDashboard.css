@@ -1,0 +1,212 @@
+.admin-container {
+    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height: 100vh;
+}
+
+.analystics-container-content {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.analystics-container-title {
+    color: #1b49ff; /* Colore blu per il titolo */
+    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 0; /* Spazio sotto il titolo */
+    text-align: center;
+}
+
+.analystics-container-subtitle {
+    color: white; /* Colore del sottotitolo */
+    font-size: 3rem; /* Dimensione del sottotitolo */
+    margin-bottom: 0; /* Spazio sotto il sottotitolo */
+    text-align: center;
+}
+
+.admin-nav {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
+    backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.assistant-select {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: rgb(207, 207, 207);
+    font-size: 15px;
+    border: 1px solid white;
+}
+
+.assistant-select:hover {
+    cursor: pointer;
+}
+
+.admin-nav-client {
+    width: auto;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #1b49ff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 0;
+    transition: 0.3s;
+}
+
+.admin-nav-client:hover {
+    background-color: blue;
+    transition: 0.3s;
+}
+
+.admin-nav-logout {
+    width: 100px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 0;
+    transition: 0.3s;
+}
+
+.admin-nav-logout:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+    transition: 0.3s;
+}
+
+.admin-nav-view {
+    width: 100px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #1b49ff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0;
+}
+
+.admin-nav-view:hover {
+    background-color: blue;
+    transition: 0.3s;
+}
+
+.analystics-container {
+    margin-left: 10%;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap; /* Permette il wrapping delle card */
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo più scuro ma ancora semi-trasparente */
+    border-radius: 20px;
+    padding: 20px;
+    gap: 25px;
+}
+
+.stats-container {
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; /* Permette il wrapping delle card */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
+    border-radius: 20px;
+    padding: 20px;
+    gap: 25px;
+}
+
+.stats-container-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Spazio tra le card */
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(25% - 16px); /* Adatta la larghezza delle card */
+    padding: 20px 10px;
+}
+
+.stats-container-content-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.stats-container-content-value {
+    font-size: 18px;
+    text-align: center;
+    color: #1b49ff;
+}
+
+.last-feedbacks-title {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.feedback-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Spazio tra le card */
+}
+
+.feedback-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+.rating-stars {
+    margin-bottom: 8px; /* Spazio tra le stelle e il commento */
+}
+
+.star {
+    color: gold !important; /* Colore delle stelle */
+    margin-right: 2px; /* Spazio tra le stelle */
+}
+
+.feedback-title {
+    font-weight: bold;
+}
+
+
+
+

@@ -106,7 +106,7 @@ function Chat() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!inputMessage.trim() || !userId) return;
+        if (!inputMessage.trim() || !userId || !threadId) return;
 
         const newMessage = {
             text: inputMessage,
@@ -126,7 +126,8 @@ function Chat() {
                 body: JSON.stringify({
                     assistantToken,
                     message: inputMessage,
-                    userId: userId
+                    userId: userId,
+                    threadId: threadId
                 })
             });
 
@@ -146,7 +147,6 @@ function Chat() {
             setMessages(prev => [...prev, assistantMessage]);
         } catch (error) {
             console.error('Errore durante l\'invio del messaggio:', error);
-            // Opzionale: mostra un messaggio di errore all'utente
         } finally {
             setIsLoading(false);
         }
@@ -157,13 +157,6 @@ function Chat() {
             navigate('/login');
         }
     }, [userId, navigate]);
-
-    // Aggiungi questa funzione per pulire la chat
-    const handleNewChat = () => {
-        console.log(assistantToken);
-        setMessages([]);
-        localStorage.removeItem(`chat_${assistantToken}`);
-    };
 
     const handleFeedbackSubmit = async () => {
         try {
@@ -187,6 +180,10 @@ function Chat() {
             });
 
             if (response.ok) {
+                // Rimuovi la sessione dal localStorage
+                const sessionKey = `chat_session_${userId}_${assistantId}`;
+                localStorage.removeItem(sessionKey);
+
                 navigate('/dashboard');
             } else {
                 const errorData = await response.json();
@@ -202,7 +199,6 @@ function Chat() {
             <div className='chat-header'>
                 <h1>{assistantName}</h1>
                 <div className="header-buttons">
-                    <p onClick={handleNewChat} className='clear-button'>New Chat</p>
                     <p onClick={() => setShowFeedbackModal(true)}>Back to Dashboard</p>
                 </div>
             </div>

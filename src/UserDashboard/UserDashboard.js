@@ -30,7 +30,9 @@ function UserDashboard({ user, onLogout }) {
             } catch (error) {
                 console.error('Errore:', error);
             } finally {
-                setIsLoading(false);
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 3000);
             }
         };
 

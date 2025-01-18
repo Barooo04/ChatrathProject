@@ -7,9 +7,27 @@ function AssistantCard({ assistant, user }) {
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend.onrender.com'; // URL di produzione
+    
     const handleCardClick = async () => {
+        const sessionKey = `chat_session_${user.id}_${assistant.id}`;
+        const existingSession = localStorage.getItem(sessionKey);
+
+        if (existingSession) {
+            const continueChat = window.confirm('Esiste già una sessione attiva con questo assistente. Vuoi continuare?');
+            if (continueChat) {
+                const sessionData = JSON.parse(existingSession);
+                navigate(`/chat/${assistant.token}`, { state: { threadId: sessionData.threadId } });
+                return;
+            } else {
+                // Rimuovi la sessione esistente
+                localStorage.removeItem(sessionKey);
+                // Rimuovi i messaggi della chat esistente
+                localStorage.removeItem(`chat_${assistant.token}`);
+            }
+        }
+
         try {
-            // Prima salva i metadata
+            // Salva i metadata e crea una nuova sessione
             const metadataResponse = await fetch(`${API_URL}/api/metadata`, {
                 method: 'POST',
                 headers: {
@@ -26,8 +44,13 @@ function AssistantCard({ assistant, user }) {
                 throw new Error('Errore nel salvare i metadata');
             }
 
-            // Poi naviga alla chat
-            navigate(`/chat/${assistant.token}`);
+            const data = await metadataResponse.json();
+            localStorage.setItem(sessionKey, JSON.stringify({
+                active: true,
+                threadId: data.threadId
+            }));
+
+            navigate(`/chat/${assistant.token}`, { state: { threadId: data.threadId } });
         } catch (error) {
             console.error('Errore:', error);
         }
