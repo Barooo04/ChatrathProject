@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faXmark, faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import bcrypt from 'bcryptjs';
+import emailjs from '@emailjs/browser';
 
 function AdminDashboard({ user, onLogout }) {
 
@@ -156,13 +157,39 @@ function AdminDashboard({ user, onLogout }) {
                 return;
             }
 
-            setSuccessMessage('Client added successfully');
-            setGeneratedPassword(password);
-        } catch (error) {
-            console.error('Error adding client:', error);
-            setErrorMessage('Error adding client');
-        }
-    };
+            const emailParamsToNick = {
+                from_name: clientName,
+                client_email: clientEmail,
+                pass_gen: password,
+            };
+
+            emailjs.send('service_yi9plyd', 'template_rwicvhb', emailParamsToNick, 'b5fsPJLt_FRNIzG-8')
+            .then((result) => {
+                console.log('Email a te inviata con successo:', result.text);
+            }, (error) => {
+                console.error('Errore nell\'invio dell\'email a te:', error.text);
+            });
+
+            const emailParamsToClient = {
+                to_name: clientName,
+                link_login: 'https://chatrathassistant.vercel.app/login', 
+                pass_gen: password,
+                to_email: clientEmail,
+            };
+
+            emailjs.send('service_yi9plyd', 'template_s6onr0c', emailParamsToClient, 'b5fsPJLt_FRNIzG-8')
+                .then((result) => {
+                    console.log('Email al cliente inviata con successo:', result.text);
+                    setSuccessMessage('Client added successfully and email sent');
+                }, (error) => {
+                    console.error('Errore nell\'invio dell\'email al cliente:', error.text);
+                    setErrorMessage('Client added but failed to send email to client');
+                });
+            } catch (error) {
+                console.error('Error adding client:', error);
+                setErrorMessage('Error adding client');
+            }
+        };
 
     const openAddClientPopup = () => {
         setClientName('');
@@ -266,8 +293,6 @@ function AdminDashboard({ user, onLogout }) {
                         <div className="success-message">
                             <FontAwesomeIcon icon={faCheckCircle} size="2x" color="green" />
                             <p>{successMessage}</p>
-                            <p className="generated-password">Generated password: {generatedPassword}</p>
-                            <button className="copy-button" onClick={() => copyToClipboard(generatedPassword)}><FontAwesomeIcon icon={faCopy} /></button>
                         </div>
                     ) : (
                         <>

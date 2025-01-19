@@ -271,18 +271,5 @@
     cursor: pointer;
 }
 
-.generated-password {
-    font-size: 20px;
-    color: #1b49ff;
-}
-
-.copy-button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 10px;
-}
-
 
 
