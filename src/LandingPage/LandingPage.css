@@ -21,6 +21,10 @@
     }
 }
 
+video {
+    pointer-events: none !important;
+}
+
 /* Stile iniziale della landing page */
 .landing-container {
     opacity: 0;
