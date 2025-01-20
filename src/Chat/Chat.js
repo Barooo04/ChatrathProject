@@ -183,6 +183,7 @@ function Chat() {
                 // Rimuovi la sessione dal localStorage
                 const sessionKey = `chat_session_${userId}_${assistantId}`;
                 localStorage.removeItem(sessionKey);
+                localStorage.removeItem(`chat_${assistantToken}`);
 
                 navigate('/dashboard');
             } else {
