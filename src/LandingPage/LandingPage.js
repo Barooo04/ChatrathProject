@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "./LandingPage.css";
+import "./LandingPageResponsive.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -12,6 +13,7 @@ import 'swiper/css/navigation';
 
 import Loader from '../Loader/Loader';
 import logo from '../Images/chatrathLogo.png';
+import logoSmall from '../Images/LogoSmall.png';
 import hidev from "../Images/hi-dev.png";
 import bg2 from "../Images/bg3.mp4";
 import bg3 from "../Images/how-ai2.mp4";
@@ -233,8 +235,9 @@ function LandingPage() {
                 <div className={`landing-container ${!isLoading ? 'landing-appear' : ''}`}>
                     <nav className="navbar">
                         <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
+                        <img src={logoSmall} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>
-                            <li><a className="ai-assistant" href="/dashboard">Client Login</a></li>
+                            <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
                             <li><a className="contact-me" href="#contact-me">Request Coaching</a></li>
                             <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
@@ -355,6 +358,63 @@ function LandingPage() {
                                 With a focus on actionable strategies and continuous support, Nick helps you navigate the complexities of leadership and personal development. His coaching style is tailored to your needs, ensuring that you gain the insights and skills necessary to thrive in any environment.
                             </p>
                         </div>
+                        <div className="wrapper-mobile">
+                            <div className="card" style={{'--delay': '-1'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-star"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 1</span>
+                                        <p>This is the content of the first card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#i">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '0'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-rocket"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 2</span>
+                                        <p>This is the content of the second card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#i">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '1'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-brain"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 3</span>
+                                        <p>This is the content of the third card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#i">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '2'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-cogs"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 4</span>
+                                        <p>This is the content of the fourth card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#i">Follow</a>
+                            </div>
+                            <div className="card" style={{'--delay': '2'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Card 5</span>
+                                        <p>This is the content of the first card.</p>
+                                    </div>
+
+                                </div>
+                                <a href="#i">Follow</a>
+                            </div>
+                        </div>
                         <div className="why-nick-overlay-bottom"></div>
 
                     </div>
@@ -410,9 +470,12 @@ function LandingPage() {
                             <h3 className="understand-threshold-title">UNDERSTAND THE THRESHOLD</h3>
                             <h2 className="understand-threshold-subtitle">Unlock Your Potential with Personalized Coaching.</h2>
                             <p className="understand-threshold-text">
-                            In a rapidly changing world, having a coach who understands your unique challenges is crucial. Nick brings a wealth of experience and a personalized approach to coaching that empowers you to reach your goals.
+                                In a rapidly changing world, having a coach who understands your unique challenges is crucial. Nick brings a wealth of experience and a personalized approach to coaching that empowers you to reach your goals.
                             </p>
                             <a className="understand-threshold-button" href="https://www.amazon.com/Threshold-Leading-Age-AI/dp/1635767989">Shop</a>
+                            <div className="understand-threshold-image-mobile">
+                                <img src={book} alt="Understand the Threshold" />
+                            </div>
                         </div>
                     </div>
                 </div>
