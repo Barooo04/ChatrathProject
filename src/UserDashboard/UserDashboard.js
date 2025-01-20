@@ -4,6 +4,7 @@ import Loader from '../Loader/Loader';
 import AssistantCard from './AssistantCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import video from "../Images/how-ai2.mp4";
 
 function UserDashboard({ user, onLogout }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -101,6 +102,7 @@ function UserDashboard({ user, onLogout }) {
             <Loader />
         ) : (
         <div className="dashboard-container">
+            <video src={video} autoPlay loop muted playsInline className="background-video"></video>
             <nav className="dashboard-nav">
                 <h1 className="dashboard-nav-title">Welcome back, {user.name}!</h1>
                 <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>

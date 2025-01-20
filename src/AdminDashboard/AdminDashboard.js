@@ -3,6 +3,7 @@ import Loader from "../Loader/Loader";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faXmark, faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import video from "../Images/how-ai2.mp4";
 import bcrypt from 'bcryptjs';
 import emailjs from '@emailjs/browser';
 
@@ -22,9 +23,35 @@ function AdminDashboard({ user, onLogout }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [clientName, setClientName] = useState('');
     const [showNotification, setShowNotification] = useState(false);
+    const [globalStats, setGlobalStats] = useState(null);
+
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend.onrender.com';
+
+        useEffect(() => {
+            const fetchGlobalStats = async () => {
+                try {
+                    const response = await fetch(`${API_URL}/api/admin/stats`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+    
+                    if (!response.ok) {
+                        throw new Error('Errore nel recupero delle statistiche globali');
+                    }
+    
+                    const data = await response.json();
+                    setGlobalStats(data);
+                } catch (error) {
+                    console.error('Errore fetching global stats:', error);
+                }
+            };
+    
+            fetchGlobalStats();
+        }, []);
 
     useEffect(() => {
        const fetchAssistants = async () => {
@@ -218,6 +245,7 @@ function AdminDashboard({ user, onLogout }) {
             <Loader />
         ) : (
         <div className="admin-container">
+            <video src={video} autoPlay loop muted playsInline className="background-video"></video>
             <div className="admin-buttons">
                 <button className="admin-nav-client" onClick={openAddClientPopup}>Add a new client</button>
                 <button className="admin-nav-logout" onClick={onLogout}>Logout</button>
@@ -248,8 +276,29 @@ function AdminDashboard({ user, onLogout }) {
                 
             </nav>
             <div className="stats-container">
+                {globalStats && (
+                    <div className="global-stats" style={{width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px'}}>
+                        <div className="card-global">
+                            <p className="stats-container-content-title">CLIENTS</p>
+                            <p className="stats-container-content-value">{globalStats.totalClients}</p>
+                        </div>
+                        <div className="card-global">
+                            <p className="stats-container-content-title">ASSISTANTS</p>
+                            <p className="stats-container-content-value">{globalStats.totalAssistants}</p>
+                        </div>
+                        <div className="card-global">
+                            <p className="stats-container-content-title">CONVERSATIONS</p>
+                            <p className="stats-container-content-value">{globalStats.totalConversations}</p>
+                        </div>
+                        <div className="card-global">
+                            <p className="stats-container-content-title">FEEDBACK</p>
+                            <p className="stats-container-content-value">{globalStats.totalFeedbacks}</p>
+                        </div>
+                    </div>
+                )}
                 {stats && (
                     <>
+                        <h3 className="global-stats-title" style={{textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '3rem'}}>SELECTED ASSISTANT STATS</h3>
                         <div className="stats-container-content">
                             <div className="card">
                                 <p className="stats-container-content-title">CONVERSATIONS</p>

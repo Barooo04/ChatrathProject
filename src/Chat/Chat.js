@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './Chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import video from "../Images/how-ai2.mp4";
 
 function Chat() {
     const { assistantToken } = useParams();
@@ -197,6 +198,7 @@ function Chat() {
 
     return (
         <div className="chat-container">
+            <video src={video} autoPlay loop muted playsInline className="background-video"></video>
             <div className='chat-header'>
                 <h1>{assistantName}</h1>
                 <div className="header-buttons">
