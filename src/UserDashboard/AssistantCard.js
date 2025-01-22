@@ -13,7 +13,7 @@ function AssistantCard({ assistant, user }) {
         const existingSession = localStorage.getItem(sessionKey);
 
         if (existingSession) {
-            const continueChat = window.confirm('Esiste già una sessione attiva con questo assistente. Vuoi continuare?');
+            const continueChat = window.confirm('An active session with this assistant already exists.');
             if (continueChat) {
                 const sessionData = JSON.parse(existingSession);
                 navigate(`/chat/${assistant.token}`, { state: { threadId: sessionData.threadId } });

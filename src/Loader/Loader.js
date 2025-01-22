@@ -13,7 +13,7 @@ function Loader() {
                 clearInterval(interval);
                 return 100;
             });
-        }, 20); // Incremento della percentuale ogni 20ms
+        }, 10); // Incremento della percentuale ogni 20ms
 
         return () => clearInterval(interval);
     }, []);

@@ -1,9 +1,12 @@
 @font-face {
-    font-family: 'Alkia Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Alkia Regular'), url('../Font/alkia-webfont/Alkia.woff') format('woff');
-    }
+    font-family: "Palatino LT Bold";
+    src: url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.eot");
+    src: url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.svg#Palatino LT Bold")format("svg");
+}
 
 * {
     margin: 0;
@@ -223,8 +226,8 @@ video {
 }
 
 .hero-subtitle {
-    font-size: 1rem;
-    color: gray;
+    font-size: 1.2rem;
+    color: rgb(173, 173, 173);
 }
 
 .logo-slider {
@@ -238,23 +241,26 @@ video {
     align-items: center;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent); /* Overlay sfumato */
     border-top: 1px solid gray;
-
 }
 
 .slider {
     display: flex;
-    animation: scroll 10s linear infinite; /* Animazione per lo slider */
+    animation: scroll 50s linear infinite; /* Animazione per lo slider */
 }
 
 .slider img {
-    height: 50px; /* Altezza dei loghi */
-    margin: 0 100px; /* Margine tra i loghi */
+    height: 70px; /* Altezza dei loghi */
+    margin: 0 70px; /* Margine tra i loghi */
     filter: grayscale(100%) brightness(150%);
 }
 
 @keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Scorri solo la metà perché il contenuto è duplicato */
+    }
 }
 
 .why-coaching {
@@ -497,7 +503,7 @@ video {
     margin-left: 100px;
 }
 
-.detsails span {
+.details span {
     font-weight: 600;
     font-size: 18px;
 }
@@ -557,9 +563,16 @@ video {
     flex-direction: column;
 }  
 
+.how-ai-coaching-works-content-2 {
+    margin-top: 50vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}  
+
 .how-ai-coaching-works-title {
     color: #1b49ff; /* Colore blu per il titolo */
-    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    font-size: 3rem; /* Dimensione più piccola per il titolo */
     margin-bottom: 10px; /* Spazio sotto il titolo */
     text-align: center;
 }
@@ -711,6 +724,25 @@ video {
     line-height: 1.4;
 }
 
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: black;
+}
+
+.how-ai-coaching-works-title-2 {
+    font-size: 2rem; /* Dimensione più piccola per il titolo */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+    text-align: center;
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Colore del testo trasparente per mostrare il gradiente */
+}
+
 .swiper {
     width: 80%;
     height: 80%;
@@ -789,6 +821,7 @@ video {
 }
 
 .testimonial-card {
+    max-width: 550px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -964,3 +997,114 @@ video {
     height: 100%;
     object-fit: contain;
 }
+
+.best-coaching-program {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.best-coaching-program video {
+    position: absolute; /* Posiziona il video in modo assoluto */
+    top: 0;
+    left: 0;
+    width: 100%; /* Occupa tutta la larghezza */
+    height: 100%; /* Occupa tutta l'altezza */
+    object-fit: cover; /* Copre l'area senza distorsioni */
+    z-index: 0; /* Mette il video sotto gli altri contenuti */
+}
+
+.best-coaching-program-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}   
+
+.best-coaching-program-title {
+    color: #1b49ff;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.best-coaching-program-subtitle {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.best-coaching-program-subtitle-span {
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.best-coaching-program-text {
+    color: rgb(147, 147, 147);
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.time-line {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: #ccc;
+    transform: translateX(-50%);
+}
+
+.timeline-element {
+    position: relative;
+    width: 50%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.timeline-element.left {
+    text-align: center;
+    padding-right: 40px;
+}
+
+.timeline-element.right {
+    text-align: center;
+    padding-left: 40px;
+    left: 50%;
+}
+
+.timeline-content {
+    background-color: #f9f9f9;
+    padding: 20px 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h4 {
+    color: #1b49ff;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+

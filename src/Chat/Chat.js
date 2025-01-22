@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +19,7 @@ function Chat() {
     const [rating, setRating] = useState(3);
     const [comment, setComment] = useState('');
     const [threadId, setThreadId] = useState(null);
+    const messagesEndRef = useRef(null);
 
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
@@ -196,6 +197,14 @@ function Chat() {
         }
     };
 
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
     return (
         <div className="chat-container">
             <video src={video} autoPlay loop muted playsInline className="background-video"></video>
@@ -218,6 +227,7 @@ function Chat() {
                         <div className="dot"></div>
                     </div>
                 )}
+                <div ref={messagesEndRef} />
             </div>
             <div className="input-container">
                 <form onSubmit={handleSubmit} className="input-form">
@@ -245,7 +255,7 @@ function Chat() {
                                     className={`star ${star <= rating ? 'selected' : ''}`}
                                     onClick={() => setRating(star)}
                                 >
-                                    <FontAwesomeIcon icon={faStar} />
+                                    <FontAwesomeIcon icon={faStar} className={`star-icon ${star <= rating ? 'selected' : ''}`}/>
                                 </span>
                             ))}
                         </div>
@@ -255,6 +265,7 @@ function Chat() {
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
                         />
+                        <p className='feedback-modal-subtitle'>*By leaving this feedback, you won't be able to continue this conversation. You can just start a new one.</p>
 
                         <div className="modal-buttons">
                             <button onClick={handleFeedbackSubmit}>Send Feedback</button>

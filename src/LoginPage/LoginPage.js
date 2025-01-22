@@ -52,10 +52,10 @@ function LoginPage({ onLogin }) {
 
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-                <label htmlFor="username">Email</label>
+                <label htmlFor="username">Username</label>
                 <input
                     type="text"
-                    placeholder="Email"
+                    placeholder="Email Address"
                     id="username"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

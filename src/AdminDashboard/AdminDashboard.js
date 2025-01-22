@@ -84,7 +84,7 @@ function AdminDashboard({ user, onLogout }) {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 1500);
     }, []);
 
     const fetchStats = async () => {
