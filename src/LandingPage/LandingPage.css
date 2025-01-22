@@ -1,11 +1,5 @@
-@font-face {
-    font-family: "Palatino LT Bold";
-    src: url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.eot");
-    src: url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/7928db052837006c0bb5ec7f416cba7d.svg#Palatino LT Bold")format("svg");
+body {
+    font-family: "Helvetica", sans-serif !important;
 }
 
 * {
@@ -32,11 +26,13 @@ video {
 .landing-container {
     opacity: 0;
     transition: opacity 1s ease, transform 1s ease;
+    position: relative;
 }
 
 /* Stile della landing page quando appare */
 .landing-appear {
     animation: InitialAnimation 1s ease forwards;
+    position: relative;
 }
 
 
@@ -314,22 +310,21 @@ video {
 
 .coaching-text {
     font-size: 1rem; /* Dimensione più piccola per il contenuto */
-    color: rgb(147, 147, 147); /* Colore del testo */
+    color: rgb(173, 173, 173); /* Colore del testo */
     text-align: justify; /* Giustifica il testo */
 }
 
 .coaching-card {
     position: relative;
     width: 30%;
-    height: 50vh;
     background-color: white; /* Colore di sfondo della card */
     border-radius: 5px; /* Bordo arrotondato */
-    padding: 40px; /* Padding interno */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra per la card */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 10px;
 }
 
 .coaching-card::after, .coaching-card::before {
@@ -354,6 +349,20 @@ video {
     to {
         transform: rotate(360deg);
     }
+}
+
+.coaching-card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.coaching-card img {
+    width: 100%; /* L'immagine occupa tutta la larghezza della card */
+    height: auto; /* Mantiene il rapporto d'aspetto originale */
+    border-radius: 5px; /* Applica lo stesso bordo arrotondato della card */
+    object-fit:contain; /* Assicura che l'immagine copra l'intera area senza distorsioni */
 }
 
 /* Nuovo div "why-nick" */
@@ -404,7 +413,7 @@ video {
 
 .why-nick-text {
     font-size: 1rem; /* Dimensione del testo */
-    color: rgb(147, 147, 147); /* Colore del testo */
+    color: rgb(173, 173, 173); /* Colore del testo */
     text-align: right; /* Giustifica il testo */
     margin-top: 10px; /* Spazio sopra il testo */
 }
@@ -586,9 +595,20 @@ video {
 
 .how-ai-coaching-works-text {
     font-size: 1rem; /* Dimensione del testo */
-    color: rgb(147, 147, 147); /* Colore del testo */
+    color: rgb(173, 173, 173); /* Colore del testo */
     text-align: center; /* Giustifica il testo */
     margin-top: 10px; /* Spazio sopra il testo */
+}
+
+.linkedin-link {
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .horizontal-scroll-section {
@@ -897,6 +917,7 @@ video {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    background: black;
 }
 
 .understand-threshold-content {
@@ -920,7 +941,7 @@ video {
 }
 
 .understand-threshold-text {
-    color: rgb(147, 147, 147);
+    color: rgb(173, 173, 173);
     font-size: 1rem;
     margin-top: 0;
     text-align: center;
@@ -1005,16 +1026,9 @@ video {
     align-items: center;
     justify-content: center;
     gap: 40px;
-}
-
-.best-coaching-program video {
-    position: absolute; /* Posiziona il video in modo assoluto */
-    top: 0;
-    left: 0;
-    width: 100%; /* Occupa tutta la larghezza */
-    height: 100%; /* Occupa tutta l'altezza */
-    object-fit: cover; /* Copre l'area senza distorsioni */
-    z-index: 0; /* Mette il video sotto gli altri contenuti */
+    height: 250vh;
+    background: transparent;
+    background: linear-gradient(to bottom, black, #202020, black);
 }
 
 .best-coaching-program-content {
@@ -1045,7 +1059,7 @@ video {
 }
 
 .best-coaching-program-text {
-    color: rgb(147, 147, 147);
+    color: rgb(173, 173, 173);
     font-size: 1rem;
     margin-top: 0;
     text-align: center;
@@ -1053,6 +1067,7 @@ video {
 
 .time-line {
     width: 100%;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1064,7 +1079,7 @@ video {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 10px 0; /* Riduci il padding per avvicinare verticalmente gli elementi */
 }
 
 .timeline-line {
@@ -1074,13 +1089,17 @@ video {
     height: 100%;
     background-color: #ccc;
     transform: translateX(-50%);
+    transition: background 0.3s ease-out;
+    top: -20px; /* Sposta la linea verso l'alto */
 }
 
 .timeline-element {
     position: relative;
     width: 50%;
-    padding: 10px 20px;
+    padding: 5px 20px;
     box-sizing: border-box;
+    z-index: 1;
+    margin-top: -40px; /* Aumenta il margine negativo per maggiore sovrapposizione */
 }
 
 .timeline-element.left {
@@ -1095,16 +1114,183 @@ video {
 }
 
 .timeline-content {
-    background-color: #f9f9f9;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px 40px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    background-clip: padding-box;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    padding: 5px; /* Spessore del bordo */
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: -1;
 }
 
 .timeline-content h4 {
     color: #1b49ff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0;
     text-align: center;
 }
 
+.timeline-content h4 span {
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.timeline-content p {
+    color: white;
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.responsible-ai {
+    position: relative;
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.responsible-ai-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.responsible-ai-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.responsible-ai-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.responsible-ai-text {
+    color: white;
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.responsible-ai-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.responsible-ai-card {
+    background-color: rgba(255, 255, 255, 0.7); /* Colore bianco con trasparenza */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordo con trasparenza */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 calc(25% - 40px); /* Adatta quattro card per riga con margine */
+    max-width: calc(25% - 40px); /* Limita la larghezza massima */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px); /* Effetto blur sullo sfondo */
+}
+
+.responsible-ai-card:hover {
+    transform: translateY(-5px); /* Effetto di sollevamento al passaggio del mouse */
+}
+
+.responsible-ai-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333; /* Colore del testo */
+    line-height: 1.5;
+}
+
+.footer {
+    position: absolute;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+    bottom: 60px;
+    padding: 15px 40px;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo più scuro ma ancora semi-trasparente */
+    backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+    -webkit-backdrop-filter: blur(8px); /* Per supporto Safari */
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer p {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer-privacy-credits {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Distanza tra gli elementi */
+    color: white; /* Colore del testo */
+    font-size: 14px;
+    width: 100%;
+}
+
+.main-container { /* Assicurati di avere un selettore per il contenitore principale */
+    position: relative;
+}

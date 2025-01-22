@@ -15,7 +15,6 @@ import Loader from '../Loader/Loader';
 import logo from '../Images/chatrathLogo.png';
 import logoSmall from '../Images/LogoSmall.png';
 
-import hidev from "../Images/hi-dev.png";
 import trainline from "../Images/trainline.png";
 import uss from "../Images/uss.png";
 import spurgeons from "../Images/spurgeons.png";
@@ -29,9 +28,13 @@ import nhs from "../Images/nhs.png";
 import pu from "../Images/pu.png";
 import qb from "../Images/qb.png";
 
+import card from "../Images/card-image.jpeg";
+
 import bg2 from "../Images/bg3.mp4";
 import bg3 from "../Images/how-ai2.mp4";
+import bg4 from "../Images/bg4.mp4";
 import book from "../Images/book.png";
+import book2 from "../Images/book2.png";
 
 function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +48,26 @@ function LandingPage() {
         }, 1500);
 
         return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const timeline = document.querySelector('.timeline-line');
+            const timelineHeight = timeline.offsetHeight;
+            const scrollPosition = window.scrollY + window.innerHeight / 1.5;
+            const timelineTop = timeline.getBoundingClientRect().top + window.scrollY;
+            
+            let percentage = (scrollPosition - timelineTop) / timelineHeight;
+            percentage = Math.min(Math.max(percentage, 0), 1); // Clamp between 0 and 1
+
+            timeline.style.background = `linear-gradient(to bottom, #00f ${percentage * 100}%, #ccc ${percentage * 100}%)`;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     const moveTo = (id) => {
@@ -248,7 +271,6 @@ function LandingPage() {
         );
     };
 
-
     return (
         <>
             {isLoading ? (
@@ -272,7 +294,7 @@ function LandingPage() {
                                     <p className='menu-item' onClick={() => moveTo('testimonials')}>4. Testimonials</p>
                                     <p className='menu-item' onClick={() => moveTo('understand-threshold')}>5. Understanding The Threshold</p>
                                     <p className='menu-item' onClick={() => moveTo('best-coaching-program')}>6. Selecting the best coach</p>   
-                                    <p className='menu-item'>7. Sections</p>
+                                    <p className='menu-item' onClick={() => moveTo('responsible-ai')}>7. Responsible AI</p>
                            
                         
                     </div>
@@ -323,15 +345,15 @@ function LandingPage() {
                         <div className="coaching-content">
                             <div className="coaching-description">
                                 <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN COACHING?</h3>
-                                <h2 className="coaching-subtitle">Supercharge your leadership effectiveness in a world that is having an AI moment.</h2>
+                                <h2 className="coaching-subtitle">Supercharge your team's effectiveness in a world that is increasingly AI-fueled</h2>
                                 <p className='coaching-text'>
-                                    As AI accelerates, what need will there be for human leaders? Doomers think that AI will wipe out our species. Gloomers think the robots will take all our jobs. I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, during at least the medium term. In this context, leadership is the vital lever.
+                                As AI accelerates, what need will there be for human leaders?  Doomers think that AI will wipe out our species.  Gloomers think the robots will take all our jobs.  Bloomers are more optimistic, seeing the disruption and taking the view that AI can unlock unprecedented human flourishing.
                                     <br /><br />
-                                    AI-human coaching will help you explore the threshold across which you gain new leadership operating systems. You will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
+                                    I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, at least during the medium term.  In this context, leadership and teamwork are vital levers.  AI-human coaching will help your leaders explore the threshold across which you gain new leadership operating systems.  Participants will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
                                 </p>
                             </div>
                             <div className="coaching-card">
-                                <p>Questa è una card con informazioni aggiuntive.</p>
+                                <img src={card} alt="Descrizione dell'immagine" />
                             </div>
                         </div>
                     </div>
@@ -422,7 +444,7 @@ function LandingPage() {
 
                                 <br /><br />
                                 I work with leaders who are looking for their next level of success. I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation.  Learn more about my journey here.  I'm here on
-                                LinkedIn too.
+                                <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" className="linkedin-link"> LinkedIn</a> too.
                                 I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results. Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.  They also appreciate the wide ranges of tools I bring to bear.
                             </p>
                         </div>
@@ -491,7 +513,7 @@ function LandingPage() {
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 1: JOIN (Weeks 1-2)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'white'}}>
+                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
                                 Each participant completes their intake and goal-setting process:<br />
                                 - Complete onboarding videos and reflections<br />
                                 - Submit intake forms<br />
@@ -501,7 +523,7 @@ function LandingPage() {
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 2: KICK-OFF (Weeks 3-4)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'white'}}>
+                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
                                 Threshold develops and releases two types of AI coaches:<br />
                                 - A custom AI coach for each participant.  No other participant sees your custom AI coach, which incorporates your name, goals and preferences.<br />
                                 - Dozens of generic AI coaches, including "How do I improve mental focus?" "How do I lead situationally?" and "How do I master conflict?"<br />
@@ -511,7 +533,7 @@ function LandingPage() {
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 3: IMPLEMENT (Months 2-5)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'white'}}>
+                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
                             The group attends Masterclass II: Lead others (live with Nick, only for your group).<br />
                             Each participant:<br />
                             - Submits two Virtual Check-Ins per month to Nick, receiving custom feedback the next day (via WhatsApp, email or Video depending on individual preference)<br />
@@ -521,7 +543,7 @@ function LandingPage() {
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 4: SUSTAIN SUCCESS (Month 6)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'white'}}>
+                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
                             Month 6: Wrap-up of six-month program, including feedback
                             Each participant completes Capability Build 4 (the 77 Minute Program, which sets them up for sustained action planning aligned to your purpose)
                             The group attends Masterclass III: Lead others part 2, or Lead organization:<br />
@@ -584,9 +606,7 @@ function LandingPage() {
                             <p className="understand-threshold-text">
                                 The Threshold is an inspiring and practical framework for how you can thrive as a leader in the Age of AI, by nurturing the qualities that make you uniquely human
                                 Available at good book shops
-                            </p>
-                            <a className="understand-threshold-button" href="https://www.amazon.com/Threshold-Leading-Age-AI/dp/1635767989">Shop</a>
-                            <div className="understand-threshold-image-mobile">
+                            </p>                            <div className="understand-threshold-image-mobile">
                                 <img src={book} alt="Understand the Threshold" />
                             </div>
                         </div>
@@ -600,14 +620,12 @@ function LandingPage() {
                                 - Embodying intelligence: Machines are not made of flesh, and this fact matters more than we think.  Leverage this insight daily<br />
                                 - Thinking independently: Move beyond subservient, derivative or superficial thinking, and bring your finest humanity to how you and your teams think<br />
                                 - Maturing consciousness: Leadership excellence will increasingly be fueled not only by skill and mindset, but also by stage of adult psychological development.  Master higher-order styles of leadership to navigate ambiguity and complexity well
-                            </p>
-                            <a className="understand-threshold-button" href="https://www.amazon.com/Threshold-Leading-Age-AI/dp/1635767989">Shop</a>
-                            <div className="understand-threshold-image-mobile">
+                            </p>                            <div className="understand-threshold-image-mobile">
                                 <img src={book} alt="Understand the Threshold" />
                             </div>
                         </div>
                         <div className="understand-threshold-image">
-                            <img src={book} alt="Understand the Threshold" />
+                            <img src={book2} alt="Understand the Threshold" />
                         </div>
                     </div>
 
@@ -622,27 +640,27 @@ function LandingPage() {
                                 <div className="timeline-line"></div>
                                 <div className="timeline-element left">
                                     <div className="timeline-content">
-                                        <h4>Define What You Need</h4>
+                                        <h4><span>1.</span> Define What You Need</h4>
                                         <p>Start by reflecting on your goals and key needs. Has your company recently scaled, giving you a group of recently promoted high-performing tech-or-IQ-focused Individual Contributors, newly thrust into management yet lacking EQ skills? Do you have teams mired in conflict, lack of trust or inattention to results? Do you want to support leaders navigating a complex professional challenge? Consider whether a mix of 1:1 coaching, group learning, and innovative tools fits your needs.  
                                         Think practically. Do you need flexibility, expertise in a specific area, or coaching that integrates cutting-edge AI technology with human wisdom? Understanding these priorities will set the foundation for choosing a program that delivers transformational results.</p>
                                     </div>
                                 </div>
                                 <div className="timeline-element right">
                                     <div className="timeline-content">
-                                        <h4>Do Your Research</h4>
-                                        <p>electing a coaching program is like hiring a top-tier consultant—it requires diligence. Look for programs with proven results, diverse methodologies, and testimonials from leaders who’ve achieved breakthroughs in situations like yours.  
-                                        Explore the program’s structure. Does it offer personalized support, group dynamics for collaborative growth, and tools to track progress? Evaluate the balance of human and AI-driven coaching to ensure the program aligns with your style and goals</p>
+                                        <h4><span>2.</span> Do Your Research</h4>
+                                        <p>electing a coaching program is like hiring a top-tier consultant—it requires diligence. Look for programs with proven results, diverse methodologies, and testimonials from leaders who've achieved breakthroughs in situations like yours.  
+                                        Explore the program's structure. Does it offer personalized support, group dynamics for collaborative growth, and tools to track progress? Evaluate the balance of human and AI-driven coaching to ensure the program aligns with your style and goals</p>
                                     </div>
                                 </div>
                                 <div className="timeline-element left">
                                     <div className="timeline-content">
-                                        <h4>Assess the Fit</h4>
+                                        <h4><span>3.</span> Assess the Fit</h4>
                                         <p>Compatibility matters. Meet with the program leader or coaching team to understand their approach, vision, and commitment to your success. Look for programs that challenge you constructively, inspire growth, and align with your leadership aspirations.</p>
                                     </div>
                                 </div>
                                 <div className="timeline-element right">
                                     <div className="timeline-content">
-                                        <h4>Why Threshold Coaching Stands Above the Rest</h4>
+                                        <h4><span>4.</span> Why Threshold Coaching Stands Above the Rest</h4>
                                         <p>At Threshold Coaching, we combine personalized human insight with the power of AI to deliver a transformational group coaching experience: <br />
 •⁠  Holistic Leadership Mastery:* Our unique program blends decades of leadership expertise with innovative methods to meet the demands of modern leadership – at the levels of lead self, lead others and lead organization.  <br />
 •⁠  A Multi-Faceted Approach:* Enjoy 1:1 coaching, group coaching, AI-powered insights, and masterclasses designed to expand your thinking, refine your skills and enhance your mindsets.  
@@ -651,6 +669,43 @@ function LandingPage() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="responsible-ai" id='responsible-ai'>
+                        <video src={bg4} autoPlay loop muted playsInline className="responsible-ai-video"></video>
+                        <div className="responsible-ai-content">
+                            <h3 className="responsible-ai-title">RESPONSIBLE AI</h3>
+                            <p className="responsible-ai-text">
+                                At Threshold Coaching, we believe in the transformative potential of AI to empower leaders while keeping humanity at the heart of every interaction. Our commitment to responsible AI ensures that our coaching solutions are not only innovative but also ethical, safe, and inclusive.
+                                For example:
+                            </p>
+                            <div className="responsible-ai-cards">
+                                <div className="responsible-ai-card">
+                                    <p>We sign up to generally recognised principles of data privacy and responsible AI, including the Microsoft Responsible AI Standard (v2, June 2022), the International Standard ISO/IEC 42001 (2023) and ML Commons AI benchmarks for general-purpose AI chat models.</p>
+                                </div>
+                                <div className="responsible-ai-card">
+                                    <p>We combine advanced AI technology with human judgment forged over decades of leadership development, creating a testing process that is transparent, secure, and profoundly effective.</p>
+                                </div>
+                                <div className="responsible-ai-card">
+                                    <p>We pay close attention to potential biases in prompt, testing and deployment, enabling growth that is both meaningful and responsible.</p>
+                                </div>
+                                <div className="responsible-ai-card">
+                                    <p>We regularly review our model selection, to ensure that underlying tools align with positive human values. Your growth deserves nothing less.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="footer">
+                        <div className="footer-content">
+                            <h1>Let's grow your impact!</h1>
+                            <p>Threshold Development Ltd. | Company number 15862633</p>
+                        </div>
+                    </div>
+                    <div className="footer-privacy-credits">
+                        <p>Privacy Policy</p>
+                        <p>|</p>
+                        <p>Hidev</p>
                     </div>
                 </div>
             )}

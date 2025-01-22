@@ -2,11 +2,9 @@ import "./AdminDashboard.css"
 import Loader from "../Loader/Loader";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faXmark, faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faXmark, faCheckCircle, faRedo } from '@fortawesome/free-solid-svg-icons';
 import video from "../Images/how-ai2.mp4";
-import bcrypt from 'bcryptjs';
 import emailjs from '@emailjs/browser';
-
 function AdminDashboard({ user, onLogout }) {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +20,6 @@ function AdminDashboard({ user, onLogout }) {
     const [generatedPassword, setGeneratedPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [clientName, setClientName] = useState('');
-    const [showNotification, setShowNotification] = useState(false);
     const [globalStats, setGlobalStats] = useState(null);
 
     const API_URL = process.env.NODE_ENV === 'development'
@@ -88,7 +85,7 @@ function AdminDashboard({ user, onLogout }) {
     }, []);
 
     const fetchStats = async () => {
-        if (!assistantId || !startDate || !endDate) {
+        if (!assistantId && !startDate && !endDate) {
             setError('Please fill all fields.');
             return;
         }
@@ -99,7 +96,11 @@ function AdminDashboard({ user, onLogout }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ assistantId, startDate, endDate }),
+                body: JSON.stringify({ 
+                    assistantId: assistantId === 'all' ? null : assistantId,
+                    startDate: startDate || null,
+                    endDate: endDate || null
+                }),
             });
 
             if (!response.ok) {
@@ -115,7 +116,14 @@ function AdminDashboard({ user, onLogout }) {
         }
     };
 
-
+    const resetFilters = () => {
+        setAssistantId('');
+        setStartDate('');
+        setEndDate('');
+        setStats(null);
+        setError('');
+        document.querySelector('.assistant-select:nth-of-type(2)').value = '';
+    };
 
     const handlePeriodChange = (event) => {
         const selectedPeriod = event.target.value;
@@ -134,6 +142,9 @@ function AdminDashboard({ user, onLogout }) {
                 break;
             case 'year':
                 start.setFullYear(today.getFullYear() - 1);
+                break;
+            case 'all':
+                start = new Date(0);
                 break;
             default:
                 return;
@@ -227,16 +238,6 @@ function AdminDashboard({ user, onLogout }) {
         setShowAddClientPopup(true);
     };
 
-    const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text).then(() => {
-            setShowNotification(true);
-            setTimeout(() => {
-                setShowNotification(false);
-            }, 4000);
-        }).catch(err => {
-            console.error('Errore durante la copia negli appunti:', err);
-        });
-    };
 
     return (
 
@@ -258,6 +259,7 @@ function AdminDashboard({ user, onLogout }) {
                 <div style={{display: 'flex', gap: '20px'}}>
                     <select className="assistant-select" value={assistantId} onChange={(e) => setAssistantId(e.target.value)}>  
                         <option value="">Select an assistant</option>
+                        <option value="all">All Assistants</option>
                         {assistants.map(assistant => (
                             <option key={assistant.id} value={assistant.id}>
                                 {assistant.name}
@@ -266,14 +268,19 @@ function AdminDashboard({ user, onLogout }) {
                     </select>
                     <select className="assistant-select" onChange={handlePeriodChange}>
                         <option value="">Select a time period</option>
+                        <option value="all">No Period Time</option>
                         <option value="today"> last Day</option>
                         <option value="week">last Week</option>
                         <option value="month">last Month</option>
                         <option value="year">last Year</option>
                     </select>
                 </div>
-                <button className="admin-nav-view" onClick={fetchStats}>View</button>
-                
+                <div style={{display: 'flex', gap: '20px'}}>
+                    <button className="admin-nav-view" onClick={fetchStats}>View</button>
+                    <button className="admin-nav-view" onClick={resetFilters}>
+                        <FontAwesomeIcon icon={faRedo} />
+                    </button>
+                </div>
             </nav>
             <div className="stats-container">
                 {globalStats && (
