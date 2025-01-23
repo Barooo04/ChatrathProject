@@ -6,7 +6,6 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Alkia Regular';
 }
 /* Animazione per la comparsa della pagina */
 @keyframes InitialAnimation {
@@ -398,7 +397,6 @@ video {
 
 /* Nuovo div "why-nick" */
 .why-nick {
-    min-height: 100vh;
     position: relative;
     display: flex;
     overflow: hidden; /* Nasconde il contenuto in eccesso */
