@@ -1241,7 +1241,10 @@ video {
 }
 
 .responsible-ai-title {
-    color: white;
+    background: linear-gradient(45deg, #000000, #e0ff33, #000000); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-size: 2rem;
     margin-bottom: 0;
     text-align: center;
