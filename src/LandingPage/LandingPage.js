@@ -692,7 +692,8 @@ function LandingPage() {
                     </div>
 
                     <div className="responsible-ai" id='responsible-ai'>
-                        <video src={bg4} autoPlay loop muted playsInline className="responsible-ai-video"></video>
+                        <div className='responsible-ai-overlay'></div>
+                        <video src={bg4} autoPlay loop muted playsInline className="responsible-ai-video" style={{opacity: 0.7}}></video>
                         <div className="responsible-ai-content">
                             <h3 className="responsible-ai-title">RESPONSIBLE AI</h3>
                             <p className="responsible-ai-text">
