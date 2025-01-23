@@ -1058,7 +1058,6 @@ video {
     align-items: center;
     justify-content: center;
     gap: 40px;
-    height: 250vh;
     background: transparent;
     background: linear-gradient(to bottom, black, #202020, black);
 }
