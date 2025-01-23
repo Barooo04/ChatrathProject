@@ -83,14 +83,26 @@ video {
     margin-left: 10%;
     top: 20px;
     padding: 15px 40px;
-    background-color: rgba(0, 0, 0, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
+    background: linear-gradient(45deg, rgba(27, 73, 255, 0.5), rgba(224, 255, 51, 0.5));
     backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
-    -webkit-backdrop-filter: blur(8px); /* Per supporto Safari */
+    -webkit-backdrop-filter: blur(8px);
     position: fixed;
     z-index: 10;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
 }
+
+
+.gradient-blur {
+    background: linear-gradient(45deg, rgba(27, 73, 255, 0.5), rgba(224, 255, 51, 0.5));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.black-opacity {
+    background: rgba(0, 0, 0, 0.7);
+}
+
 
 .logo-mobile {
     display: none;
@@ -1305,6 +1317,7 @@ video {
     margin-left: 10%;
     bottom: 60px;
     padding: 15px 40px;
+    background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
     background-color: rgba(0, 0, 0, 0.5); /* Sfondo più scuro ma ancora semi-trasparente */
     backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
     -webkit-backdrop-filter: blur(8px); /* Per supporto Safari */

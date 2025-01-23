@@ -41,6 +41,47 @@ function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
     const nickSectionRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Supponiamo che l'elemento da modificare abbia l'id 'myElement'
+const myElement = document.getElementById('myElement');
+
+// Funzione per determinare lo sfondo sottostante
+function updateBackground() {
+    const myElement = document.getElementById('myElement');
+    if (!myElement) {
+        console.warn('Elemento myElement non trovato nel DOM');
+        return;
+    }
+
+    const boundingRect = myElement.getBoundingClientRect();
+    const elementsBelow = document.elementsFromPoint(boundingRect.left + boundingRect.width / 2, boundingRect.top + boundingRect.height / 2);
+
+    let isOverBlackBackground = false;
+
+    for (const element of elementsBelow) {
+        const style = window.getComputedStyle(element);
+        const backgroundColor = style.backgroundColor;
+
+        // Controlla se il colore di sfondo è nero o simile
+        if (backgroundColor === 'rgb(0, 0, 0)' || backgroundColor === 'rgba(0, 0, 0, 0.7)') {
+            isOverBlackBackground = true;
+            break;
+        }
+    }
+
+    if (isOverBlackBackground) {
+        myElement.classList.add('gradient-blur');
+        myElement.classList.remove('black-opacity');
+    } else {
+        myElement.classList.add('black-opacity');
+        myElement.classList.remove('gradient-blur');
+    }
+}
+
+// Chiamare la funzione all'inizio e ogni volta che è necessario aggiornare
+updateBackground();
+window.addEventListener('scroll', updateBackground);
+window.addEventListener('resize', updateBackground);
     
     useEffect(() => {
         // Simula un caricamento di 2 secondi

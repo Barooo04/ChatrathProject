@@ -126,7 +126,7 @@ function AdminDashboard({ user, onLogout }) {
                     assistantId: assistantId === 'all' ? null : assistantId,
                     startDate: startDate || null,
                     endDate: endDate || null,
-                    userId: selectedUserId || null
+                    userId: selectedUserId === 'all' ? null : selectedUserId
                 }),
             });
 
