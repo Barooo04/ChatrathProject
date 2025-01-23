@@ -410,27 +410,24 @@ function LandingPage() {
                                         <span className="title">Contribution</span>
                                         <p>Add more value to your organization</p>
                                     </div>
-
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '3'}}>
+                            <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
                                         <span className="title">AI</span>
                                         <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
                                     </div>
-
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '3'}}>
+                            <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
                                         <span className="title">Integrated</span>
                                         <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -453,8 +450,8 @@ function LandingPage() {
                                 <div className="content">
                                     <div className="img"><i className="fas fa-star"></i></div>
                                     <div className="details"> 
-                                        <span className="title">Card 1</span>
-                                        <p>This is the content of the first card.</p>
+                                        <span className="title">Time</span>
+                                        <p>Save time and create energy for what matters most</p>
                                     </div>
 
                                 </div>
@@ -464,8 +461,8 @@ function LandingPage() {
                                 <div className="content">
                                     <div className="img"><i className="fas fa-rocket"></i></div>
                                     <div className="details"> 
-                                        <span className="title">Card 2</span>
-                                        <p>This is the content of the second card.</p>
+                                        <span className="title">Team</span>
+                                        <p>Improve team performance</p>
                                     </div>
 
                                 </div>
@@ -475,8 +472,8 @@ function LandingPage() {
                                 <div className="content">
                                     <div className="img"><i className="fas fa-brain"></i></div>
                                     <div className="details"> 
-                                        <span className="title">Card 3</span>
-                                        <p>This is the content of the third card.</p>
+                                        <span className="title">Mindset</span>
+                                        <p>Address mindsets such as being too controlling, protective or people-pleasing</p>
                                     </div>
 
                                 </div>
@@ -486,8 +483,8 @@ function LandingPage() {
                                 <div className="content">
                                     <div className="img"><i className="fas fa-cogs"></i></div>
                                     <div className="details"> 
-                                        <span className="title" >Card 4</span>
-                                        <p>This is the content of the fourth card.</p>
+                                        <span className="title" >Purpose</span>
+                                        <p>Connect your work with your purpose</p>
                                     </div>
 
                                 </div>
@@ -497,12 +494,10 @@ function LandingPage() {
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
-                                        <span className="title">Card 5</span>
-                                        <p>This is the content of the first card.</p>
+                                        <span className="title">Contribution</span>
+                                        <p>Add more value to your organization</p>
                                     </div>
-
                                 </div>
-                                <a href="#i">Follow</a>
                             </div>
                         </div>
                         <div className="why-nick-overlay-bottom"></div>

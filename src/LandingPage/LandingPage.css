@@ -447,13 +447,14 @@ video {
     position: absolute; 
     justify-content: space-between;
     border-radius: 100px 20px 20px 100px;
-    animation: animate 15s linear infinite;
+    animation: animate 15s linear infinite; 
     animation-delay: calc(var(--delay) * 3s);
 }
 
 .wrapper:hover .card{
     animation-play-state: paused;
 }
+
 
 .wrapper .card:last-child {
     animation-delay: calc(var(--delay) * -3s);
