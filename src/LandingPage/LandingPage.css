@@ -975,7 +975,7 @@ video {
 .understand-threshold-text {
     color: rgb(173, 173, 173);
     font-size: 1rem;
-    margin-top: 0;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -1092,7 +1092,7 @@ video {
 .best-coaching-program-text {
     color: rgb(173, 173, 173);
     font-size: 1rem;
-    margin-top: 0;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -1130,18 +1130,20 @@ video {
     padding: 5px 20px;
     box-sizing: border-box;
     z-index: 1;
-    margin-top: -40px; /* Aumenta il margine negativo per maggiore sovrapposizione */
+     /* Aumenta il margine negativo per maggiore sovrapposizione */
 }
 
 .timeline-element.left {
     text-align: center;
     padding-right: 40px;
+    margin-top: -100px;
 }
 
 .timeline-element.right {
     text-align: center;
     padding-left: 40px;
     left: 50%;
+    margin-top: -100px;
 }
 
 .timeline-content {
