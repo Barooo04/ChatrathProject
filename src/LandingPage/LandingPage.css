@@ -1268,7 +1268,7 @@ video {
 
 .responsible-ai-card p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #333; /* Colore del testo */
     line-height: 1.5;
 }
