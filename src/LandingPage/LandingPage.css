@@ -291,7 +291,6 @@ video {
 }
 
 .why-coaching {
-    height: 100vh;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -312,7 +311,6 @@ video {
     transition: transform 0.5s ease; /* Transizione per l'animazione */
     border-radius: 5px;
     padding: 40px;
-    background-color: red;
 }
 
 
@@ -325,7 +323,6 @@ video {
     width: 50%; /* Larghezza della parte sinistra */
     display: flex;
     flex-direction: column;
-    background-color: blue;
     height: 70vh;
 }
 
