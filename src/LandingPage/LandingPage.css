@@ -865,7 +865,6 @@ video {
 .myTestimonialsSwiper {
     width: 100%; /* Larghezza del carosello */
     max-width: 800px; /* Larghezza massima */
-    height: 50vh;
 }
 
 .testimonial-ss {
@@ -890,6 +889,7 @@ video {
 
 .testimonial-description {
     color: #333; /* Colore del testo */
+    font-size: 0.8rem;
 }
 
 .swiper-button-next,
