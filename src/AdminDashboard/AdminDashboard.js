@@ -21,6 +21,8 @@ function AdminDashboard({ user, onLogout }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [clientName, setClientName] = useState('');
     const [globalStats, setGlobalStats] = useState(null);
+    const [users, setUsers] = useState([]);
+    const [selectedUserId, setSelectedUserId] = useState('');
 
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
@@ -84,8 +86,32 @@ function AdminDashboard({ user, onLogout }) {
         }, 1500);
     }, []);
 
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(`${API_URL}/api/users`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Errore nel recupero degli utenti');
+                }
+
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.error('Errore fetching users:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
     const fetchStats = async () => {
-        if (!assistantId && !startDate && !endDate) {
+        if (!assistantId && !startDate && !endDate && !selectedUserId) {
             setError('Please fill all fields.');
             return;
         }
@@ -99,7 +125,8 @@ function AdminDashboard({ user, onLogout }) {
                 body: JSON.stringify({ 
                     assistantId: assistantId === 'all' ? null : assistantId,
                     startDate: startDate || null,
-                    endDate: endDate || null
+                    endDate: endDate || null,
+                    userId: selectedUserId || null
                 }),
             });
 
@@ -120,6 +147,7 @@ function AdminDashboard({ user, onLogout }) {
         setAssistantId('');
         setStartDate('');
         setEndDate('');
+        setSelectedUserId('');
         setStats(null);
         setError('');
         document.querySelector('.assistant-select:nth-of-type(2)').value = '';
@@ -238,6 +266,47 @@ function AdminDashboard({ user, onLogout }) {
         setShowAddClientPopup(true);
     };
 
+    const downloadCSV = () => {
+        if (!stats) {
+            setError('No data available to download.');
+            return;
+        }
+
+        const csvRows = [];
+        const headers = ['Conversations', 'Average Duration', 'Average Rating', 'Feedback', 'Rating', 'Comment'];
+        csvRows.push(headers.join(','));
+
+        const values = [
+            stats.totalConversations,
+            Math.round(stats.averageDuration),
+            parseFloat(stats.averageRating).toFixed(1),
+            stats.totalFeedbacks
+        ];
+        csvRows.push(values.join(','));
+
+        stats.recentFeedbacks.forEach(feedback => {
+            const feedbackRow = [
+                '',
+                '',
+                '',
+                '',
+                feedback.rating,
+                feedback.comment
+            ];
+            csvRows.push(feedbackRow.join(','));
+        });
+
+        const csvContent = csvRows.join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.setAttribute('hidden', '');
+        a.setAttribute('href', url);
+        a.setAttribute('download', 'stats.csv');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
 
     return (
 
@@ -274,12 +343,22 @@ function AdminDashboard({ user, onLogout }) {
                         <option value="month">last Month</option>
                         <option value="year">last Year</option>
                     </select>
+                    <select className="assistant-select" value={selectedUserId} onChange={(e) => setSelectedUserId(e.target.value)}>
+                        <option value="">Select a user</option>
+                        <option value="all">All Users</option>
+                        {users.map(user => (
+                            <option key={user.id} value={user.id}>
+                                {user.id}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div style={{display: 'flex', gap: '20px'}}>
                     <button className="admin-nav-view" onClick={fetchStats}>View</button>
                     <button className="admin-nav-view" onClick={resetFilters}>
                         <FontAwesomeIcon icon={faRedo} />
                     </button>
+                    <button className="admin-nav-view" onClick={downloadCSV}>Download CSV</button>
                 </div>
             </nav>
             <div className="stats-container">

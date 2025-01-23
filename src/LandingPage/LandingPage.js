@@ -40,6 +40,7 @@ function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const nickSectionRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     useEffect(() => {
         // Simula un caricamento di 2 secondi
@@ -271,6 +272,14 @@ function LandingPage() {
         );
     };
 
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <>
             {isLoading ? (
@@ -282,7 +291,7 @@ function LandingPage() {
                         <img src={logoSmall} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>
                             <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
-                            <li><a className="contact-me" href="#contact-me">Book a call</a></li>
+                            <li><a className="contact-me" href="#contact-me" onClick={openModal}>Book a call</a></li>
                             <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
                     </nav>
@@ -298,6 +307,22 @@ function LandingPage() {
                            
                         
                     </div>
+
+                    {isModalOpen && (
+                        <div className="overlay">
+                            <div className="modal-card">
+                                <span className="close" onClick={closeModal}>&times;</span>
+                                <iframe
+                                    src="https://form.typeform.com/to/asaYLGla"
+                                    title="Book a call"
+                                    width="100%"
+                                    height="500px"
+                                    frameBorder="0"
+                                    allow="camera; microphone; autoplay; encrypted-media;"
+                                ></iframe>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="hero-section" id='home'>
                         <div className="hero-overlay">
@@ -441,7 +466,7 @@ function LandingPage() {
 
                                 <br /><br />
                                 I work with leaders who are looking for their next level of success. I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation.  Learn more about my journey here.  I'm here on
-                                <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" className="linkedin-link"> LinkedIn</a> too.
+                                <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a> too.
                                 I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results. Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.  They also appreciate the wide ranges of tools I bring to bear.
                             </p>
                         </div>

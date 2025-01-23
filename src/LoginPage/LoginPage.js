@@ -43,6 +43,10 @@ function LoginPage({ onLogin }) {
         }
     };
 
+    const handleBackToHome = () => {
+        navigate('/');
+    };
+
     return (
         <div className="background">
             <div className="shape"></div>
@@ -70,6 +74,9 @@ function LoginPage({ onLogin }) {
                 />
 
                 <button type="submit">Log In</button>
+                <button type="button" className="back-button" onClick={handleBackToHome}>
+                    ← Back to Home
+                </button>
             </form>
         </div>
     );
