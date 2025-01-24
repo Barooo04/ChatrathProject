@@ -1,0 +1,35 @@
+.assistant-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assistant-table th, .assistant-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.assistant-table th {
+    background-color: #1b49ff;
+    color: white;
+    font-weight: bold;
+}
+
+.assistant-row {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.assistant-row:hover {
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+}
+
+.assistant-row:hover td {
+    background-color: #f0f0f0;
+    color: black;
+}

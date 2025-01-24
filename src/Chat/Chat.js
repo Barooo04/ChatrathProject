@@ -235,10 +235,10 @@ function Chat() {
                         type="text"
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
-                        placeholder="Scrivi un messaggio..."
+                        placeholder="Type a message..."
                         className="message-input"
                     />
-                    <button className="send-button" onClick={handleSubmit}>Invia</button>
+                    <button className="send-button" onClick={handleSubmit}>Send</button>
                 </form>
             </div>
             

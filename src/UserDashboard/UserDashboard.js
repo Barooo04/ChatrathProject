@@ -5,6 +5,7 @@ import AssistantCard from './AssistantCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import video from "../Images/how-ai2.mp4";
+import AssistantTable from './AssistantTable';
 
 function UserDashboard({ user, onLogout }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,7 @@ function UserDashboard({ user, onLogout }) {
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [viewMode, setViewMode] = useState('card');
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend.onrender.com'; // URL di produzione
@@ -113,18 +115,60 @@ function UserDashboard({ user, onLogout }) {
             <div className="assistants-container-content">
                 <h1 className="assistants-container-title">ALL YOUR ASSISTANTS</h1>
                 <h3 className="assistants-container-subtitle">Select an assistant to start chatting!</h3>
+                <div className="view-mode-buttons">
+                    <div className="view-mode-button-overlay">
+                        <button 
+                            className={viewMode === 'card' ? 'view-mode-button active' : 'view-mode-button inactive'} 
+                            onClick={() => setViewMode('card')}
+                        >
+                            Card View
+                        </button>
+                        <button 
+                            className={viewMode === 'line' ? 'view-mode-button active' : 'view-mode-button inactive'} 
+                            onClick={() => setViewMode('line')}
+                        >
+                            Line View
+                        </button>
+                    </div>
+                </div>
             </div>
             <div className="assistants-container">
-                {assistants.length > 0 ? (
-                    assistants.map(assistant => (
-                        <AssistantCard 
-                            key={assistant.id} 
-                            assistant={assistant} 
-                            user={user}
-                        />
-                    ))
+                {viewMode === 'card' ? (
+                    assistants.length > 0 ? (
+                        assistants.map(assistant => (
+                            <AssistantCard 
+                                key={assistant.id} 
+                                assistant={assistant} 
+                                user={user}
+                            />
+                        ))
+                    ) : (
+                        <p>Nessun assistente trovato.</p>
+                    )
                 ) : (
-                    <p>Nessun assistente trovato.</p>
+                    <table className="assistant-table">
+                        <thead>
+                            <tr>
+                                <th>Assistant</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            {
+                                assistants.length > 0 ? (
+                                    assistants.map(assistant => (
+                                        <AssistantTable
+                                            key={assistant.id} 
+                                            assistant={assistant} 
+                                            user={user}
+                                        />
+                                    ))
+                            ) : (
+                                <p>Nessun assistente trovato.</p>
+                            )
+                        }
+                        </tbody>
+                    </table>
                 )}
             </div>
             {showPasswordPopup && (
