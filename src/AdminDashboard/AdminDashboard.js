@@ -315,14 +315,15 @@ function AdminDashboard({ user, onLogout }) {
         }
 
         const csvRows = [];
-        const headers = ['Conversations', 'Average Duration', 'Average Rating', 'Feedback', 'Rating', 'Comment'];
+        const headers = ['Conversations', 'Average Duration', 'Average Rating', 'Feedback', 'Assistant', 'Rating', 'Comment'];
         csvRows.push(headers.join(','));
 
         const values = [
             stats.totalConversations,
             Math.round(stats.averageDuration),
             parseFloat(stats.averageRating).toFixed(1),
-            stats.totalFeedbacks
+            stats.totalFeedbacks,
+            '' // Placeholder for assistant name in the summary row
         ];
         csvRows.push(values.join(','));
 
@@ -332,6 +333,7 @@ function AdminDashboard({ user, onLogout }) {
                 '',
                 '',
                 '',
+                feedback.assistant_name,
                 feedback.rating,
                 feedback.comment
             ];
