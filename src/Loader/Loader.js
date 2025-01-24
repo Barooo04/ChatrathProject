@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Loader.css';
-import logo from '../Images/chatrathLogo.png'; // Sostituisci con il percorso del tuo logo
+import logo from '../Images/logonick.png'; // Sostituisci con il percorso del tuo logo
 
 function Loader() {
     const [progress, setProgress] = useState(0);

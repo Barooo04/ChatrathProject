@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./LoginPage.css";
+import logo from '../Images/logonick.png';
 
 function LoginPage({ onLogin }) {
     const [email, setEmail] = useState('');
@@ -49,8 +50,9 @@ function LoginPage({ onLogin }) {
 
     return (
         <div className="background">
-            <div className="shape"></div>
-            <div className="shape"></div>
+            <div className="shape">
+                <img src={logo} alt="Logo" className="logo" style={{height: '130px', zIndex: '1000'}} />
+            </div>
             <form onSubmit={handleSubmit}>
                 <h3>Login</h3>
 

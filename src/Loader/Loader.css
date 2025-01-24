@@ -10,15 +10,14 @@
 }
 
 .loader {
+    width: 80%;
     text-align: center;
     padding: 10px;
 }
 
-
 .loader-logo {
-    height: 100px;
+    height: 120px;
     margin-bottom: 20px; /* Spazio tra logo e percentuale */
-    filter: invert(1);
 }
 
 .loader-percentage {
@@ -28,7 +27,7 @@
 }
 
 .loader-progress-bar {
-    width: 80%; /* Larghezza della barra */
+    width: 50% !important; /* Larghezza della barra */
     height: 8px; /* Altezza della barra */
     background-color: rgba(0, 0, 0, 0.1); /* Sfondo della barra */
     border-radius: 5px; /* Angoli arrotondati */
@@ -40,7 +39,7 @@
 .loader-progress {
     height: 100%;
     color: #333;
-    background-color: #002BFF; /* Colore della barra di progresso */
+    background: linear-gradient(to right, #002BFF, #e0ff33); /* Colore della barra di progresso */
     border-radius: 5px; /* Angoli arrotondati */
     transition: width 0.2s ease; /* Animazione fluida */
 }

@@ -109,8 +109,7 @@ video {
 }
 
 .logo {
-    height: 50px;
-    filter: invert(1);
+    height: 60px;
 }
 
 .logo:hover {
@@ -368,7 +367,7 @@ video {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+    padding: 0px;
 }
 
 .coaching-card::after, .coaching-card::before {
@@ -416,6 +415,7 @@ video {
     overflow: hidden; /* Nasconde il contenuto in eccesso */
     align-items: center; /* Centra verticalmente */
     justify-content: center; /* Centra orizzontalmente */
+
 }
 
 .why-nick video {
@@ -425,7 +425,6 @@ video {
     width: 100%; /* Occupa tutta la larghezza */
     height: 100%; /* Occupa tutta l'altezza */
     object-fit: cover; /* Copre l'area senza distorsioni */
-    z-index: 0; /* Mette il video sotto gli altri contenuti */
 }
 
 .why-nick-content {
@@ -974,21 +973,18 @@ video {
     color: #1b49ff;
     font-size: 1.5rem;
     margin-bottom: 0;
-    text-align: center;
 }
 
 .understand-threshold-subtitle {
     color: white;
     font-size: 3rem;
     margin-bottom: 0;
-    text-align: center;
 }
 
 .understand-threshold-text {
     color: rgb(173, 173, 173);
     font-size: 1rem;
     margin-top: 10px;
-    text-align: center;
 }
 
 .understand-threshold-button {
@@ -1129,7 +1125,7 @@ video {
     position: absolute;
     left: 50%;
     width: 4px;
-    height: 100%;
+    height: 75%;
     background-color: #ccc;
     transform: translateX(-50%);
     transition: background 0.3s ease-out;
@@ -1148,14 +1144,13 @@ video {
 .timeline-element.left {
     text-align: center;
     padding-right: 40px;
-    margin-top: -90px;
 }
 
 .timeline-element.right {
     text-align: center;
     padding-left: 40px;
     left: 50%;
-    margin-top: -90px;
+    transform: translateY(-50%);
 }
 
 .timeline-content {

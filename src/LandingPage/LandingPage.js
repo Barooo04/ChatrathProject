@@ -12,7 +12,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 
 import Loader from '../Loader/Loader';
-import logo from '../Images/chatrathLogo.png';
+import logo from '../Images/logonick.png';
 import logoSmall from '../Images/LogoSmall.png';
 
 import trainline from "../Images/trainline.png";
@@ -42,8 +42,6 @@ function LandingPage() {
     const nickSectionRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Supponiamo che l'elemento da modificare abbia l'id 'myElement'
-const myElement = document.getElementById('myElement');
 
 // Funzione per determinare lo sfondo sottostante
 function updateBackground() {
@@ -112,26 +110,40 @@ window.addEventListener('resize', updateBackground);
         };
     }, []);
 
-    const moveTo = (id) => {
+    const moveTo = (id, offset = 100) => {
         setTimeout(() => {
             const section = document.getElementById(id);
             if (section) {
                 const scrollPromise = new Promise((resolve) => {
-                    section.scrollIntoView({
+                    let scrollPosition;
+
+                    if (id === 'responsible-ai') {
+                        // Scorri fino in fondo alla pagina
+                        scrollPosition = document.body.scrollHeight - window.innerHeight;
+                    } else {
+                        // Calcola la posizione di scorrimento con l'offset
+                        const rect = section.getBoundingClientRect();
+                        scrollPosition = window.scrollY + rect.top - offset;
+                    }
+
+                    window.scrollTo({
+                        top: scrollPosition,
                         behavior: 'smooth'
                     });
-                    
+
                     // Funzione per controllare se lo scroll è completato
                     const checkIfScrollFinished = () => {
-                        const rect = section.getBoundingClientRect();
-                        // Consideriamo lo scroll completato quando la sezione è vicina al top della viewport
-                        if (Math.abs(rect.top) < 50) {
-                            resolve();
-                        } else {
-                            requestAnimationFrame(checkIfScrollFinished);
-                        }
+                        const currentRect = section.getBoundingClientRect();
+                        if (id === 'responsible-ai') {
+                            // Controlla se siamo in fondo alla pagina
+                            if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
+                                resolve();
+                            } else {
+                                requestAnimationFrame(checkIfScrollFinished);
+                            }
+                        } 
                     };
-                    
+
                     checkIfScrollFinished();
                 });
 
@@ -148,22 +160,22 @@ window.addEventListener('resize', updateBackground);
         {
             icon: "fas fa-star",
             title: "STEP 1: JOIN (weeks 1-2)",
-            description: "To understand the process and set goals",
+            description: "Understand the process and set goals",
         },
         {
             icon: "fas fa-rocket",
             title: "STEP 2: KICK-OFF (weeks 3-4)",
-            description: "To build accountability and form early habits",
+            description: "Build accountability, understand limiting mindsets and form habits",
         },
         {
             icon: "fas fa-brain",
             title: "STEP 3: IMPLEMENT (months 2-5)",
-            description: "To experiment, embed habits and address additional opportunities and challenges",
+            description: "Experiment, embed habits and address additional mindset and capability",
         },
         {
             icon: "fas fa-cogs",
             title: "STEP 4: SUSTAIN SUCCESS (month 6)",
-            description: "To set you up for sustainable success, independent of your coach",
+            description: "Set up for sustained success, independent of your coaches",
         }
     ];
     
@@ -172,7 +184,7 @@ window.addEventListener('resize', updateBackground);
         {
             name: "Charles",
             role: "Founder",
-            description: "I came to Nick doing well but my communication wasn't cutting through.  Others have tried to coach me on this, but after ten minutes with Nick and I was ready to practice something new.  Seriously impressive as I'm used to people saying 'three bags full' to me. Nick stood toe to toe with me and gave me constructive, insightful, actionable input",
+            description: "I came to Nick doing well but my communication wasn't cutting through.  Others have tried to coach me on this, but after ten minutes with Nick I was ready to practice something new.  Seriously impressive as I'm used to people saying 'three bags full' to me. Nick stood toe to toe with me and gave me constructive, insightful, actionable input",
             location: "NA",
             sector: "Financial services"
         },
@@ -184,7 +196,7 @@ window.addEventListener('resize', updateBackground);
             sector: "Professional Services"
         },
         {
-            name: "Jos",
+            name: "Susanne",
             role: "Leadership Development Manager",
             description: "Through leading a series of group coaching and leadership development programs, Nick helped us improve leadership productivity by 15% among hundreds of teams",
             location: "Europe",
@@ -192,7 +204,7 @@ window.addEventListener('resize', updateBackground);
         },
         {
             name: "Susan",
-            role: "BU head of HR",
+            role: "Business Unit Head of HR",
             description: "Our environment is extremely high-pressure and we are tough raters.  Nick designed and delivered our highest-rated leadership program, 'Advanced Coaching'. All 75 participants in the most recent five cohorts rated the program 7/7 on 'value for time spent'",
             location: "UK",
             sector: "Professional Services"
@@ -200,7 +212,7 @@ window.addEventListener('resize', updateBackground);
         {
             name: "Sajid",
             role: "Former Chancellor of the Exchequer",
-            description: "'Extremely insightful' – in relation to a keynote I delivered about AI and leadership, in the UK parliament",
+            description: "'Extremely insightful' - in relation to a keynote Nick delivered about AI and leadership, in the UK parliament",
             location: "UK",
             sector: "Public Sector"
         },
@@ -241,13 +253,14 @@ window.addEventListener('resize', updateBackground);
                     <div className="how-ai-coaching-works-content">
                         <h3 className="how-ai-coaching-works-title">HOW AI COACHING WORKS</h3>
                         <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%'}}>
-                        Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.
-                        We offer a six-month coaching program delivered by Nick and AI coaches.  The program is for a group of up to five people.  Why choose integrated AI and Human Coaching?
+                            Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.<br />
+                            We offer a six-month coaching program delivered by Nick and AI coaches.<br />
+                            The program is for a group of up to five people.
                         </p>
-
                     </div>
                 </div>
-                <div className="horizontal-scroll-container">
+                <div className="horizontal-scroll-container" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '100px'}}>
+                    <h2 style={{color: 'white', fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '20px'}}>OVERVIEW</h2>
                     <motion.div style={{ x }} className="horizontal-scroll-cards-wrapper">
                         {stepsData.map((card, index) => {
                             return <Card 
@@ -328,7 +341,10 @@ window.addEventListener('resize', updateBackground);
             ) : (
                 <div className={`landing-container ${!isLoading ? 'landing-appear' : ''}`}>
                     <nav className="navbar">
-                        <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
+                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0px'}}>
+                            <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
+                            <p style={{color: 'white', fontSize: '0.8rem', fontWeight: 'bold'}}>Threshold Coaching</p>
+                        </div>
                         <img src={logoSmall} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>
                             <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
@@ -338,13 +354,13 @@ window.addEventListener('resize', updateBackground);
                     </nav>
                     <div className={`menu-appear ${!isMenuOpen ? '' : 'view'}`}>
                         
-                                    <p className='menu-item' onClick={() => moveTo('coaching')}>1. Why Coaching</p>
-                                    <p className='menu-item' onClick={() => moveTo('nick')}>2. Why Nick</p> 
-                                    <p className='menu-item' onClick={() => moveTo('how-ai-coaching-works')}>3. How AI coaching works</p>
-                                    <p className='menu-item' onClick={() => moveTo('testimonials')}>4. Testimonials</p>
-                                    <p className='menu-item' onClick={() => moveTo('understand-threshold')}>5. Understanding The Threshold</p>
-                                    <p className='menu-item' onClick={() => moveTo('best-coaching-program')}>6. Selecting the best coach</p>   
-                                    <p className='menu-item' onClick={() => moveTo('responsible-ai')}>7. Responsible AI</p>
+                                    <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why Coaching</p>
+                                    <p className='menu-item' onClick={() => { moveTo('nick'); setIsMenuOpen(false); }}>2. Why Nick</p> 
+                                    <p className='menu-item' onClick={() => { moveTo('how-ai-coaching-works'); setIsMenuOpen(false); }}>3. How AI coaching works</p>
+                                    <p className='menu-item' onClick={() => { moveTo('testimonials'); setIsMenuOpen(false); }}>4. Testimonials</p>
+                                    <p className='menu-item' onClick={() => { moveTo('understand-threshold'); setIsMenuOpen(false); }}>5. Understanding The Threshold</p>
+                                    <p className='menu-item' onClick={() => { moveTo('best-coaching-program'); setIsMenuOpen(false); }}>6. Selecting the best coaching program</p>   
+                                    <p className='menu-item' onClick={() => { moveTo('responsible-ai'); setIsMenuOpen(false); }}>7. Responsible AI</p>
                            
                         
                     </div>
@@ -413,9 +429,16 @@ window.addEventListener('resize', updateBackground);
                                 <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN COACHING?</h3>
                                 <h2 className="coaching-subtitle">Supercharge your team's effectiveness in a world that is increasingly AI-fueled</h2>
                                 <p className='coaching-text'>
-                                As AI accelerates, what need will there be for human leaders?  Doomers think that AI will wipe out our species.  Gloomers think the robots will take all our jobs.  Bloomers are more optimistic, seeing the disruption and taking the view that AI can unlock unprecedented human flourishing.
+                                    As AI accelerates, what need will there be for human leaders?<br />
+                                    Doomers think that AI will wipe out our species.<br />
+                                    Gloomers think the robots will take all our jobs.<br />
+                                    Bloomers are more optimistic, seeing the disruption and taking the view that AI can unlock unprecedented human flourishing.
                                     <br /><br />
-                                    I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, at least during the medium term.  In this context, leadership and teamwork are vital levers.  AI-human coaching will help your leaders explore the threshold across which you gain new leadership operating systems.  Participants will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
+                                    I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, at least during the medium term.<br />
+                                    In this context, leadership and teamwork are vital levers.<br />
+                                    AI-human coaching will help your leaders gain new leadership operating
+                                    systems, crossing the threshold to a more effective way of working.<br />
+                                    Participants will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
                                 </p>
                             </div>
                             <div className="coaching-card">
@@ -427,7 +450,7 @@ window.addEventListener('resize', updateBackground);
                     <div className='why-nick' id='nick' ref={nickSectionRef}>
                     <div className="why-nick-overlay-top"></div>
 
-                        <video autoPlay loop muted>
+                        <video autoPlay loop muted style={{opacity: 0.3}}>
                             <source src={bg2} type="video/mp4" />
                             Il tuo browser non supporta i video.
                         </video>
@@ -501,14 +524,14 @@ window.addEventListener('resize', updateBackground);
                             <h3 className="why-nick-title">WHY NICK</h3>
                             <h2 className="why-nick-subtitle">Unlock Your Potential with Personalized Coaching.</h2>
                             <p className="why-nick-text">
-                            I'm Nick Chatrath. I'm delighted you're here, because you and I are very
-                            similar. We are both trying to perform as well as we can and have a
-                            positive impact on the world around us, while enjoying life.
-
+                                I'm Nick Chatrath.<br />
+                                I'm delighted you're here, because you and I are very similar. <br />
+                                We are both trying to perform as well as we can and have a positive impact on the world around us, while enjoying life.
                                 <br /><br />
-                                I work with leaders who are looking for their next level of success. I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation.  Learn more about my journey here.  I'm here on
-                                <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a> too.
-                                I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results. Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.  They also appreciate the wide ranges of tools I bring to bear.
+                                I work with leaders who are looking for their next level of success. <br />
+                                I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br /> <br/>
+                                I'm here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>.
+                                I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.  They also appreciate the wide ranges of tools I bring to bear.
                             </p>
                         </div>
                         <div className="wrapper-mobile">
@@ -572,46 +595,56 @@ window.addEventListener('resize', updateBackground);
 
                     <HorizontalScrollCarousel />
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
+                        <h2 style={{color: 'white', fontSize: '3rem', fontWeight: 'bold'}}>DETAILED STEPS</h2>
+                    </div>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 1: JOIN (Weeks 1-2)</h3>
                             <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
                                 Each participant completes their intake and goal-setting process:<br />
-                                - Complete onboarding videos and reflections<br />
-                                - Submit intake forms<br />
-                                - Participate in 1:1 goal-setting and tracking meeting with Nick<br />
+                                - Onboarding videos and reflections<br />
+                                - Intake forms<br />
+                                - 1:1 goal-setting and tracking meeting with Nick<br />
                                 - Participate in 1:1 goal-setting and tracking meeting with Nick
                             </p>    
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 2: KICK-OFF (Weeks 3-4)</h3>
                             <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
-                                Threshold develops and releases two types of AI coaches:<br />
-                                - A custom AI coach for each participant.  No other participant sees your custom AI coach, which incorporates your name, goals and preferences.<br />
-                                - Dozens of generic AI coaches, including "How do I improve mental focus?" "How do I lead situationally?" and "How do I master conflict?"<br />
-                                The group attends Masterclass I: Lead Self (live with Nick, only for your group).<br />
-                                Each participant submits a Virtual Check-In to Nick, receiving custom feedback the next day (via WhatsApp, email or Video depending on individual preference)
+                                Threshold coaching develops and releases two types of AI coaches: <br />
+                                - A custom AI coach private to each participant<br />
+                                - Dozens of generic AI coaches, including "How do I improve mental focus?" "How do I lead situationally?" and "How do I master conflict?"<br /><br/>
+                                - Your group attends Masterclass I: Lead Self (live with Nick)<br />
+                                - Individually, you submit a Virtual Check in, with Nick providing custom<br />
+                                feedback the next day (via WhatsApp, email or Video depending on individual<br />
+                                preference)
                             </p>    
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 3: IMPLEMENT (Months 2-5)</h3>
                             <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
-                            The group attends Masterclass II: Lead others (live with Nick, only for your group).<br />
-                            Each participant:<br />
-                            - Submits two Virtual Check-Ins per month to Nick, receiving custom feedback the next day (via WhatsApp, email or Video depending on individual preference)<br />
-                            - Completes Capability Builds 1, 2 and 3 (recorded workshops on Productivity Through Stillness, Thinking Independently and Leading in Complexity; these Capability Builds integrate with the Virtual Check-Ins)
-                            Threshold updates each participant's custom AI coach based on their Virtual Check-In feedback.
+                                Your group attends Masterclass II: Lead others (live with Nick).<br />
+                                Individually:<br />
+                                - Submit two Virtual Check-Ins per month to Nick, receiving custom feedback<br />
+                                the next day (via WhatsApp, email or Video depending on individual<br />
+                                preference)<br /><br />
+                                - Complete Capability Builds 1, 2 and 3 (recorded workshops on Productivity<br />
+                                Through Stillness, Thinking Independently and Leading in Complexity; these<br />
+                                Capability Builds integrate with the Virtual Check-Ins)<br />
+                                Threshold Coaching updates your custom AI coach based on your Virtual<br />
+                                Check-In feedback.
                             </p>    
                         </div>
                         <div className="steps-container" style={{maxWidth: '80%'}}>
                             <h3 className="how-ai-coaching-works-title-2">STEP 4: SUSTAIN SUCCESS (Month 6)</h3>
                             <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}>
-                            Month 6: Wrap-up of six-month program, including feedback
-                            Each participant completes Capability Build 4 (the 77 Minute Program, which sets them up for sustained action planning aligned to your purpose)
-                            The group attends Masterclass III: Lead others part 2, or Lead organization:<br />
-                            - Topic depending on your context<br />
-                            - This Masterclass is live with Nick and only for your group<br />
-                            - This masterclass also includes goal-setting, leveraging the 77 Minute Program and setting you up for sustained success<br />
-                            Each participant submits feedback, including about impact made
+                                Wrap-up of six-month program, including feedback<br />
+                                Individually Complete Capability Build 4 (the 77 Minute Program, which sets<br />
+                                you up for sustained action planning aligned to your purpose)<br />
+                                As a group, attend Masterclass III: <br />
+                                - Lead others part 2, or Lead organization (topic depending on your context)<br />
+                                - Set goals for your next phase, leveraging the 77 Minute Program<br />
+                                - Submit feedback, including about impact made
                             </p>    
                         </div>
                     </div>
@@ -661,27 +694,29 @@ window.addEventListener('resize', updateBackground);
                         <div className="understand-threshold-image">
                             <img src={book} alt="Understand the Threshold" />
                         </div>
-                        <div className="understand-threshold-content">
+                        <div className="understand-threshold-content" style={{textAlign: 'right'}}>
                             <h3 className="understand-threshold-title">UNDERSTANDING THE THRESHOLD</h3>
-                            <h2 className="understand-threshold-subtitle">What is the threshold?</h2>
+                            <h2 className="understand-threshold-subtitle">What is the Threshold?</h2>
                             <p className="understand-threshold-text">
-                                The Threshold is an inspiring and practical framework for how you can thrive as a leader in the Age of AI, by nurturing the qualities that make you uniquely human
+                                The Threshold is an inspiring and practical framework for how you can thrive as a leader in the Age of AI, by nurturing the qualities that make you uniquely human.<br />
                                 Available at good book shops
-                            </p>                            <div className="understand-threshold-image-mobile">
+                            </p>                           
+                             <div className="understand-threshold-image-mobile">
                                 <img src={book} alt="Understand the Threshold" />
                             </div>
                         </div>
                     </div>
                     <div className="understand-threshold" id='understand-threshold'>
-                        <div className="understand-threshold-content">
+                        <div className="understand-threshold-content" style={{textAlign: 'left'}}>
                             <h3 className="understand-threshold-title">UNDERSTANDING THE THRESHOLD</h3>
                             <h2 className="understand-threshold-subtitle">What are the four pathways to the Threshold?</h2>
                             <p className="understand-threshold-text">
                                 - Cultivating stillness: Create spaces where productivity and silence meet<br />
-                                - Embodying intelligence: Machines are not made of flesh, and this fact matters more than we think.  Leverage this insight daily<br />
+                                - Embodying intelligence: The fact that machines are not made of flesh matters more than many of us think<br />
                                 - Thinking independently: Move beyond subservient, derivative or superficial thinking, and bring your finest humanity to how you and your teams think<br />
                                 - Maturing consciousness: Leadership excellence will increasingly be fueled not only by skill and mindset, but also by stage of adult psychological development.  Master higher-order styles of leadership to navigate ambiguity and complexity well
-                            </p>                            <div className="understand-threshold-image-mobile">
+                            </p>                            
+                            <div className="understand-threshold-image-mobile">
                                 <img src={book} alt="Understand the Threshold" />
                             </div>
                         </div>
@@ -692,40 +727,89 @@ window.addEventListener('resize', updateBackground);
 
                     <div className="best-coaching-program" id='best-coaching-program'>
                         <div className="best-coaching-program-content">
-                            <h3 className="best-coaching-program-title"> SELECTING YOUR BEST COACHING PROGRAM</h3>
+                            <h3 className="best-coaching-program-title"> SELECTING THE BEST COACHING PROGRAM</h3>
                             <h2 className="best-coaching-program-subtitle">Finding and working with the<br/> <span className="best-coaching-program-subtitle-span">Best Leadership Coaching Program</span></h2>
-                            <p className="best-coaching-program-text">Choosing the best leadership coaching program is a pivotal decision that can redefine your growth, performance, and influence. The right program doesn't just provide guidance—it empowers you to unlock potential, overcome challenges, and achieve extraordinary results. Finding that ideal program requires thoughtful consideration. </p>
+                            <p className="best-coaching-program-text">
+                                Choosing the best leadership coaching program is a pivotal decision that can redefine the growth, performance and influence of your team. <br/>
+                                The right program doesn't just provide guidance—it empowers you to unlock potential, overcome challenges, and achieve extraordinary results.<br/>
+                                Finding that ideal program requires thoughtful consideration. 
+                            </p>
                         </div>
                         <div className="time-line">
                             <div className="timeline-container">
                                 <div className="timeline-line"></div>
                                 <div className="timeline-element left">
                                     <div className="timeline-content">
-                                        <h4><span>1.</span> Define What You Need</h4>
-                                        <p>Start by reflecting on your goals and key needs. Has your company recently scaled, giving you a group of recently promoted high-performing tech-or-IQ-focused Individual Contributors, newly thrust into management yet lacking EQ skills? Do you have teams mired in conflict, lack of trust or inattention to results? Do you want to support leaders navigating a complex professional challenge? Consider whether a mix of 1:1 coaching, group learning, and innovative tools fits your needs.  
-                                        Think practically. Do you need flexibility, expertise in a specific area, or coaching that integrates cutting-edge AI technology with human wisdom? Understanding these priorities will set the foundation for choosing a program that delivers transformational results.</p>
+                                        <h4><span>1.</span> Define Your Goals</h4>
+                                        <p>
+                                            Start by identifying what you need.<br/><br/>
+                                            - Are you supporting newly promoted high-performing contributors who lack EQ skills?<br/><br/>
+                                            - Addressing team challenges such as conflict, distrust, or lack of focus?<br/><br/>
+                                            - Or helping leaders navigate complex transitions?<br/><br/>
+                                            Consider the ideal blend of 1:1 coaching, group learning, and innovative tools.<br/>
+                                            Practical priorities like flexibility, expertise in specific areas, or integrating cutting-edge AI with
+                                            human insights should guide your decision.<br/>
+                                            Clearly defining your goals lays the foundation for transformational results.
+                                        </p>
                                     </div>
                                 </div>
                                 <div className="timeline-element right">
                                     <div className="timeline-content">
-                                        <h4><span>2.</span> Do Your Research</h4>
-                                        <p>electing a coaching program is like hiring a top-tier consultant—it requires diligence. Look for programs with proven results, diverse methodologies, and testimonials from leaders who've achieved breakthroughs in situations like yours.  
-                                        Explore the program's structure. Does it offer personalized support, group dynamics for collaborative growth, and tools to track progress? Evaluate the balance of human and AI-driven coaching to ensure the program aligns with your style and goals</p>
+                                        <h4><span>2.</span> Assess Your Starting Point</h4>
+                                        <p>
+                                            Evaluate your current leadership and team development landscape.<br/><br/>
+                                            - What is happening right now regarding your goals?<br/><br/>
+                                            - What have you tried already, and what were the outcomes?<br/><br/>
+                                            - How do you feel about where your leaders and/or managers are right now?<br/><br/>
+                                            - What patterns or recurring themes do you notice, in how you have tried to improve mindsets and behaviors in your organization?<br/><br/>
+                                            Understanding where you are today helps clarify the gaps the coaching program must address.
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="timeline-element left">
+                                <div className="timeline-element left" style={{transform: 'translateY(-100%)'}}>
                                     <div className="timeline-content">
-                                        <h4><span>3.</span> Assess the Fit</h4>
-                                        <p>Compatibility matters. Meet with the program leader or coaching team to understand their approach, vision, and commitment to your success. Look for programs that challenge you constructively, inspire growth, and align with your leadership aspirations.</p>
+                                        <h4><span>3.</span> Research Your Options</h4>
+                                        <p>
+                                            Investigate programs with proven results and diverse methodologies.<br/><br/>
+                                            - Seek testimonials from leaders with similar challenges and review the program structure.<br/><br/>
+                                            - Does it offer a balance of personalized coaching, group dynamics, and tools for tracking progress?<br/><br/>
+                                            Ensure the program aligns with your values and leadership style, including the integration of human and AI-driven coaching approaches.
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="timeline-element right">
+                                <div className="timeline-element right" style={{transform: 'translateY(-100%)'}}>
                                     <div className="timeline-content">
-                                        <h4><span>4.</span> Why Threshold Coaching Stands Above the Rest</h4>
-                                        <p>At Threshold Coaching, we combine personalized human insight with the power of AI to deliver a transformational group coaching experience: <br />
-•⁠  Holistic Leadership Mastery:* Our unique program blends decades of leadership expertise with innovative methods to meet the demands of modern leadership – at the levels of lead self, lead others and lead organization.  <br />
-•⁠  A Multi-Faceted Approach:* Enjoy 1:1 coaching, group coaching, AI-powered insights, and masterclasses designed to expand your thinking, refine your skills and enhance your mindsets.  
-•⁠  Real, Measurable Results:* Whether your challenge is time, team, money, or mindset, we deliver coaching that creates lasting impact.</p>
+                                        <h4><span>4.</span> Move Forward: Chemistry and Questions</h4>
+                                        <p>
+                                            Once you’ve shortlisted programs, schedule meetings with potential providers.<br/><br/>
+                                            Prepare questions, such as:<br/><br/>
+                                            - How do you tailor coaching to individual and team dynamics?<br/><br/>
+                                            - What tools or methods do you use to track and measure progress?<br/><br/>
+                                            - Can you share success stories from leaders facing similar challenges?<br/><br/>
+
+                                            These insights will help you find a program that not only fits but inspires growth and
+                                            success.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="timeline-element left" style={{transform: 'translateY(-100%)'}}>
+                                    <div className="timeline-content">
+                                        <h4><span>5.</span> Why Threshold Coaching Stands Above the Rest</h4>
+                                        <p>
+                                            At Threshold Coaching, we combine personalized human insight with the power of AI to
+                                            deliver a transformational group coaching experience:
+                                            - <span style={{fontWeight: 'bold'}}>Holistic Leadership Mastery:</span> Our unique program blends decades of leadership
+                                            expertise with innovative methods to meet the demands of modern leadership – at the
+                                            levels of lead self, lead others and lead organization.<br/><br/>
+                                            - <span style={{fontWeight: 'bold'}}>A Multi-Faceted Approach:</span> Enjoy 1:1 coaching, group coaching, AI-powered insights,
+                                            and masterclasses designed to expand your thinking, refine your skills and enhance your
+                                            mindsets.<br/><br/>
+                                            - <span style={{fontWeight: 'bold'}}>Real, Measurable Results:</span> Whether your challenge is time, team, money, or mindset,
+                                            we deliver coaching that creates lasting impact.<br/><br/>
+                                            Experience coaching that’s bold, dynamic, and designed to propel you forward. If you’re
+                                            looking for reliable, inspiring, innovative coaching program that will help you deliver, you’ve
+                                            found your match in Threshold Coaching.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
