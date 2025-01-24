@@ -76,6 +76,7 @@ function updateBackground() {
     }
 }
 
+
 // Chiamare la funzione all'inizio e ogni volta che è necessario aggiornare
 updateBackground();
 window.addEventListener('scroll', updateBackground);
@@ -738,7 +739,7 @@ window.addEventListener('resize', updateBackground);
                         <div className="time-line">
                             <div className="timeline-container">
                                 <div className="timeline-line"></div>
-                                <div className="timeline-element left">
+                                <div className="timeline-element left" style={{marginTop: '0'}}>
                                     <div className="timeline-content">
                                         <h4><span>1.</span> Define Your Goals</h4>
                                         <p>
@@ -766,7 +767,7 @@ window.addEventListener('resize', updateBackground);
                                         </p>
                                     </div>
                                 </div>
-                                <div className="timeline-element left" style={{transform: 'translateY(-100%)'}}>
+                                <div className="timeline-element left">
                                     <div className="timeline-content">
                                         <h4><span>3.</span> Research Your Options</h4>
                                         <p>
@@ -777,7 +778,7 @@ window.addEventListener('resize', updateBackground);
                                         </p>
                                     </div>
                                 </div>
-                                <div className="timeline-element right" style={{transform: 'translateY(-100%)'}}>
+                                <div className="timeline-element right">
                                     <div className="timeline-content">
                                         <h4><span>4.</span> Move Forward: Chemistry and Questions</h4>
                                         <p>
@@ -792,7 +793,7 @@ window.addEventListener('resize', updateBackground);
                                         </p>
                                     </div>
                                 </div>
-                                <div className="timeline-element left" style={{transform: 'translateY(-100%)'}}>
+                                <div className="timeline-element left">
                                     <div className="timeline-content">
                                         <h4><span>5.</span> Why Threshold Coaching Stands Above the Rest</h4>
                                         <p>

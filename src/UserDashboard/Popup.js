@@ -11,7 +11,7 @@ function Popup({ message, onContinue, onNewChat, onClose }) {
                         RESUME
                     </button>
                     <button className="btn btn-new-chat" onClick={onNewChat}>
-                        NEW CHAT
+                        START NEW
                     </button>
                 </div>
                 <button className="btn btn-close" onClick={onClose}>

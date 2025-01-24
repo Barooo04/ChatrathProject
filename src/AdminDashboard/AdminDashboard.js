@@ -15,6 +15,7 @@ function AdminDashboard({ user, onLogout }) {
     const [endDate, setEndDate] = useState('');
     const [error, setError] = useState('');
     const [showAddClientPopup, setShowAddClientPopup] = useState(false);
+    const [showRemoveClientPopup, setShowRemoveClientPopup] = useState(false);
     const [clientEmail, setClientEmail] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [generatedPassword, setGeneratedPassword] = useState('');
@@ -191,6 +192,43 @@ function AdminDashboard({ user, onLogout }) {
         return password;
     };
 
+    const handleRemoveClient = async () => {
+        setErrorMessage('');
+        setSuccessMessage('');
+
+        if (!clientEmail) {
+            setErrorMessage('Please insert an email.');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_URL}/api/remove-client`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: clientEmail }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                if (data.message === 'Email not found') {
+                    setErrorMessage('The email does not exist in the users.');
+                } else {
+                    setErrorMessage(data.message || 'Error removing client');
+                }
+                return;
+            } else {
+                console.log('Client removed successfully');
+                setSuccessMessage('Client removed successfully');
+            }
+        } catch (error) {
+            console.error('Error removing client:', error);
+            setErrorMessage('Error removing client');
+        }
+    };
+
     const handleAddClient = async () => {
         setErrorMessage('');
         setSuccessMessage('');
@@ -266,6 +304,10 @@ function AdminDashboard({ user, onLogout }) {
         setShowAddClientPopup(true);
     };
 
+    const openRemoveClientPopup = () => {
+        setShowRemoveClientPopup(true);
+    };
+
     const downloadCSV = () => {
         if (!stats) {
             setError('No data available to download.');
@@ -317,6 +359,7 @@ function AdminDashboard({ user, onLogout }) {
         <div className="admin-container">
             <video src={video} autoPlay loop muted playsInline className="background-video"></video>
             <div className="admin-buttons">
+                <button className="admin-nav-client" onClick={openRemoveClientPopup}>Remove a Client</button>
                 <button className="admin-nav-client" onClick={openAddClientPopup}>Add a new client</button>
                 <button className="admin-nav-logout" onClick={onLogout}>Logout</button>
             </div>
@@ -337,7 +380,7 @@ function AdminDashboard({ user, onLogout }) {
                     </select>
                     <select className="assistant-select" onChange={handlePeriodChange}>
                         <option value="">Select a time period</option>
-                        <option value="all">No Period Time</option>
+                        <option value="all">No Time Period</option>
                         <option value="today"> last Day</option>
                         <option value="week">last Week</option>
                         <option value="month">last Month</option>
@@ -435,7 +478,7 @@ function AdminDashboard({ user, onLogout }) {
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
                         <input 
                             type="text" 
-                            placeholder="Nome" 
+                            placeholder="Name" 
                             value={clientName} 
                             onChange={(e) => setClientName(e.target.value)} 
                         />
@@ -451,7 +494,32 @@ function AdminDashboard({ user, onLogout }) {
                 </div>
                 </>
             )}
-            
+            {showRemoveClientPopup && (
+                <>
+                <div className="overlay"></div>
+                <div className="password-popup">
+                    <button className="close-button" onClick={() => setShowRemoveClientPopup(false)}><FontAwesomeIcon icon={faXmark} /></button>
+                    {successMessage ? (
+                        <div className="success-message">
+                            <FontAwesomeIcon icon={faCheckCircle} size="2x" color="green" />
+                            <p>{successMessage}</p>
+                        </div>
+                    ) : (
+                        <>
+                        <h2>Remove a client</h2>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <input 
+                            type="email" 
+                            placeholder="Email" 
+                            value={clientEmail} 
+                            onChange={(e) => setClientEmail(e.target.value)} 
+                        />
+                        <button onClick={handleRemoveClient}>Remove Client</button>
+                        </>
+                    )}
+                </div>
+                </>
+            )}
         </div>
         )}
         </>

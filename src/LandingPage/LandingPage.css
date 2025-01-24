@@ -71,7 +71,6 @@ video {
     display: flex;
     flex-direction: column;
     margin-top: 0px; /* Aggiungi un margine per spostare il contenuto sotto la navbar */
-    gap: 10vh;
     background-color: black;
 }
 
@@ -1115,21 +1114,18 @@ video {
 
 .timeline-container {
     position: relative;
-    width: 100%;
-    max-width: 800px;
+    width: 80%;
     margin: 0 auto;
-    padding: 10px 0; /* Riduci il padding per avvicinare verticalmente gli elementi */
+    padding: 10px 0; 
 }
 
 .timeline-line {
     position: absolute;
     left: 50%;
     width: 4px;
-    height: 75%;
+    height: 100%;
     background-color: #ccc;
-    transform: translateX(-50%);
     transition: background 0.3s ease-out;
-    top: -20px; /* Sposta la linea verso l'alto */
 }
 
 .timeline-element {
@@ -1138,7 +1134,7 @@ video {
     padding: 5px 20px;
     box-sizing: border-box;
     z-index: 1;
-     /* Aumenta il margine negativo per maggiore sovrapposizione */
+    margin-top: -10vh; /* Sovrapposizione delle sezioni */
 }
 
 .timeline-element.left {
@@ -1150,7 +1146,6 @@ video {
     text-align: center;
     padding-left: 40px;
     left: 50%;
-    transform: translateY(-50%);
 }
 
 .timeline-content {
