@@ -119,10 +119,8 @@ window.addEventListener('resize', updateBackground);
                     let scrollPosition;
 
                     if (id === 'responsible-ai') {
-                        // Scorri fino in fondo alla pagina
                         scrollPosition = document.body.scrollHeight - window.innerHeight;
                     } else {
-                        // Calcola la posizione di scorrimento con l'offset
                         const rect = section.getBoundingClientRect();
                         scrollPosition = window.scrollY + rect.top - offset;
                     }

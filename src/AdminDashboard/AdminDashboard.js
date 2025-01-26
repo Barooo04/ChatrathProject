@@ -323,7 +323,7 @@ function AdminDashboard({ user, onLogout }) {
             Math.round(stats.averageDuration),
             parseFloat(stats.averageRating).toFixed(1),
             stats.totalFeedbacks,
-            '' // Placeholder for assistant name in the summary row
+            ''
         ];
         csvRows.push(values.join(','));
 
