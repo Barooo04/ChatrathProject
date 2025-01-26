@@ -52,7 +52,6 @@ video {
     cursor: pointer;
 }
 
-/* Stile iniziale della landing page */
 .landing-container {
     opacity: 0;
     transition: opacity 1s ease, transform 1s ease;
