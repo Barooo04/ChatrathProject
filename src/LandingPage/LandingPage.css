@@ -80,14 +80,14 @@ video {
     width: 80%;
     margin-left: 10%;
     top: 20px;
-    padding: 15px 40px;
+    padding: 5px 40px;
     background: linear-gradient(45deg, rgba(27, 73, 255, 0.5), rgba(224, 255, 51, 0.5));
     backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
     -webkit-backdrop-filter: blur(8px);
     position: fixed;
     z-index: 10;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 
@@ -224,9 +224,15 @@ video {
     height: 100vh; /* Altezza della sezione hero */
     position: relative;
     overflow: hidden; /* Nasconde eventuali overflow */
-    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%) , rgba(255, 255, 255, 0.8);
-    background-size: 300% 300%;
-    animation: color 8s ease-in-out infinite;
+    background-color: black;
+}
+
+.hero-image {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 @keyframes color {
@@ -243,28 +249,57 @@ video {
     }
 }
 
+.hero-overlay-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) , rgba(0, 0, 0, 0)); /* Overlay sfumato */
+}
+
+
+.hero-overlay-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) , rgba(0, 0, 0, 0)); /* Overlay sfumato */
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.3)); /* Overlay sfumato */
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white; /* Colore del testo */
     display: flex;
     flex-direction: column;
+    width: 50%;
+    margin-left: 40%;
+    gap: 20px;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, #1b49ff, white, #e0ff33); /* Gradiente lineare */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    color: rgb(212, 212, 212);
+    font-size: 1.5rem;
+    color: white;
+    text-align: left;
 }
 
 .logo-slider {
@@ -276,7 +311,6 @@ video {
     overflow: hidden; /* Nasconde eventuali overflow */
     display: flex;
     align-items: center;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent); /* Overlay sfumato */
     border-top: 1px solid gray;
 }
 
@@ -654,7 +688,7 @@ video {
 
 .horizontal-scroll-section {
     position: relative;
-    height: 200vh;
+    height: 250vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -710,16 +744,16 @@ video {
 }
 
 .horizontal-scroll-cards-wrapper {
+    margin-top: 50px;
     display: flex;
-    gap: 5rem; /* equivalente a gap-4 */
+    gap: 10rem; /* equivalente a gap-4 */
 }
 
 .horizontal-card {
     padding: 20px 40px;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    min-width: 300px;
-    margin-right: 2rem;
+    width: 400px;
     border-width: 1px;
     border-style: solid;
     position: relative;
@@ -786,12 +820,14 @@ video {
 }
 
 .steps-container {
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
 }
 
 .how-ai-coaching-works-title-2 {
@@ -1334,6 +1370,11 @@ video {
     font-size: 1rem;
     margin-bottom: 0;
     text-align: center;
+}
+
+.footer-terms {
+    color: white;
+    cursor: pointer !important;
 }
 
 .footer-privacy-credits {
