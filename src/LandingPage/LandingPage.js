@@ -174,7 +174,7 @@ window.addEventListener('resize', updateBackground);
             icon: "fas fa-brain",
             title: "STEP 3: IMPLEMENT (months 2-5)",
             description: "Experiment, embed habits and address additional mindset and capabilities",
-            text: "Your group attends Masterclass II: Lead others (live with Nick).<br />Individually:<br />- Submit two Virtual Check-Ins per month to Nick, receiving custom feedback<br />the next day (via WhatsApp, email or Video depending on individual<br />preference)<br /><br />- Complete Capability Builds 1, 2 and 3 (recorded workshops on Productivity<br />Through Stillness, Thinking Independently and Leading in Complexity; these<br />Capability Builds integrate with the Virtual Check-Ins)<br />Threshold Coaching updates your custom AI coach based on your Virtual<br />Check-In feedback.",
+            text: "Your group attends Masterclass II: Lead others (live with Nick). Individually:<br />- Submit two Virtual Check-Ins per month to Nick, receiving custom feedback<br />the next day (via WhatsApp, email or Video depending on individual preference)<br /><br />- Complete Capability Builds 1, 2 and 3 (recorded workshops on Productivity<br />Through Stillness, Thinking Independently and Leading in Complexity; these Capability Builds integrate with the Virtual Check-Ins)<br />Threshold Coaching updates your custom AI coach based on your Virtual<br />Check-In feedback.",
         },
         {
             icon: "fas fa-cogs",
@@ -244,7 +244,7 @@ window.addEventListener('resize', updateBackground);
             target: targetRef,
         });
         
-        const x = useTransform(scrollYProgress, [0, 1], ["60%", "-50%"]);
+        const x = useTransform(scrollYProgress, [0, 1], ["60%", "-30%"]);
         
         return (
             <section ref={targetRef} className="horizontal-scroll-section">
