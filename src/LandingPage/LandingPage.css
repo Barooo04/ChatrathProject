@@ -288,7 +288,7 @@ video {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     background: linear-gradient(45deg, #1b49ff, white, #e0ff33); /* Gradiente lineare */
     -webkit-background-clip: text;
     background-clip: text;
@@ -741,6 +741,7 @@ video {
     height: 100vh;
     align-items: center;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .horizontal-scroll-cards-wrapper {
