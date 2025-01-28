@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faXmark, faCheckCircle, faRedo } from '@fortawesome/free-solid-svg-icons';
 import video from "../Images/how-ai2.mp4";
 import emailjs from '@emailjs/browser';
+import { format } from 'date-fns';
+
 function AdminDashboard({ user, onLogout }) {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -309,33 +311,28 @@ function AdminDashboard({ user, onLogout }) {
     };
 
     const downloadCSV = () => {
-        if (!stats) {
+        if (!stats || !stats.recentFeedbacks) {
             setError('No data available to download.');
             return;
         }
 
         const csvRows = [];
-        const headers = ['Conversations', 'Average Duration', 'Average Rating', 'Feedback', 'Assistant', 'Rating', 'Comment'];
+        const headers = ['Assistant Name', 'Assistant ID', 'User ID', 'Conversation ID', 'Start Date', 'End Date', 'Rating', 'Comment'];
         csvRows.push(headers.join(','));
 
-        const values = [
-            stats.totalConversations,
-            Math.round(stats.averageDuration),
-            parseFloat(stats.averageRating).toFixed(1),
-            stats.totalFeedbacks,
-            ''
-        ];
-        csvRows.push(values.join(','));
-
         stats.recentFeedbacks.forEach(feedback => {
+            const startDate = feedback.data_apertura ? format(new Date(feedback.data_apertura), 'dd/MM/yyyy HH:mm') : '';
+            const endDate = feedback.data_chiusura ? format(new Date(feedback.data_chiusura), 'dd/MM/yyyy HH:mm') : '';
+
             const feedbackRow = [
-                '',
-                '',
-                '',
-                '',
-                feedback.assistant_name,
-                feedback.rating,
-                feedback.comment
+                feedback.assistant_name || '',
+                feedback.assistant_id || '',
+                feedback.user_id || '',
+                feedback.thread_id || '',
+                startDate,
+                endDate,
+                feedback.rating || '',
+                feedback.comment || ''
             ];
             csvRows.push(feedbackRow.join(','));
         });
@@ -450,16 +447,18 @@ function AdminDashboard({ user, onLogout }) {
                         </div>
                         <h3 className="last-feedbacks-title">ALL FEEDBACKS</h3>
                         <ul className="feedback-list">
-                            {stats.recentFeedbacks.map((feedback, index) => (
-                                <li key={index} className="feedback-card">
-                                    <div className="rating-stars">
-                                        {Array.from({ length: feedback.rating }, (_, i) => (
-                                             <FontAwesomeIcon icon={faStar} className="star"/>
-                                        ))}
-                                    </div>
-                                    <p className="feedback-comment">"{feedback.comment}"</p>
-                                </li>
-                            ))}
+                            {stats.recentFeedbacks
+                                .filter(feedback => feedback.comment && feedback.comment.trim() !== '')
+                                .map((feedback, index) => (
+                                    <li key={index} className="feedback-card">
+                                        <div className="rating-stars">
+                                            {Array.from({ length: feedback.rating }, (_, i) => (
+                                                <FontAwesomeIcon icon={faStar} className="star" />
+                                            ))}
+                                        </div>
+                                        <p className="feedback-comment">"{feedback.comment}"</p>
+                                    </li>
+                                ))}
                         </ul>
                     </>
                 )}
