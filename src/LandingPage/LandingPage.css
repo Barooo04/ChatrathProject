@@ -742,7 +742,7 @@ video {
     align-items: center;
     overflow: hidden;
     margin-bottom: 100px;
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
 }
 
 .horizontal-scroll-cards-wrapper {
@@ -920,12 +920,11 @@ video {
 
 .testimonial-card {
     max-width: 550px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 20px 40px;
     background-color: rgba(255, 255, 255, 0.3);
-    
 }
 
 .profession {
