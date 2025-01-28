@@ -356,7 +356,7 @@ window.addEventListener('resize', updateBackground);
                     <nav className="navbar">
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0px'}}>
                             <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
-                            <p style={{color: 'white', fontSize: '0.8rem', fontWeight: 'bold'}}>Threshold Coaching</p>
+                            <p style={{color: 'white', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'Palatino Linotype'}}>Threshold Coaching</p>
                         </div>
                         <img src={logo} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>

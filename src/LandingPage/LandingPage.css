@@ -7,7 +7,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-/* Animazione per la comparsa della pagina */
+
 @keyframes InitialAnimation {
     0% {
         opacity: 0;
@@ -669,7 +669,7 @@ video {
 }
 
 .how-ai-coaching-works-text {
-    font-size: 1rem; /* Dimensione del testo */
+    font-size: 0.8rem; /* Dimensione del testo */
     color: rgb(173, 173, 173); /* Colore del testo */
     text-align: center; /* Giustifica il testo */
     margin-top: 10px; /* Spazio sopra il testo */
@@ -688,7 +688,7 @@ video {
 
 .horizontal-scroll-section {
     position: relative;
-    height: 250vh;
+    height: 300vh;
     display: flex;
     flex-direction: column;
     align-items: center;
