@@ -265,7 +265,6 @@ window.addEventListener('resize', updateBackground);
                     </div>
                 </div>
                 <div className="horizontal-scroll-container" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                    <h2 style={{color: 'white', fontSize: '3rem', fontWeight: 'bold', textAlign: 'center', marginTop: '20px'}}>OVERVIEW</h2>
                     <motion.div style={{ x }} className="horizontal-scroll-cards-wrapper">
                         {stepsData.map((card, index) => {
                             return <Card 
@@ -361,13 +360,13 @@ window.addEventListener('resize', updateBackground);
                         <img src={logo} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>
                             <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
-                            <li><a className="contact-me" href="#contact-me" onClick={openModal}>Book a call</a></li>
+                            <li><a className="contact-me" href="#contact-me" onClick={openModal}>Book a Call</a></li>
                             <Hamburger size={30} toggle={setIsMenuOpen} toggled={isMenuOpen} color='white'/>
                         </ul>
                     </nav>
                     <div className={`menu-appear ${!isMenuOpen ? '' : 'view'}`}>
                         
-                                    <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why integrated AI-human coaching</p>
+                                    <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why integrated AI-Human coaching</p>
                                     <p className='menu-item' onClick={() => { moveTo('nick'); setIsMenuOpen(false); }}>2. Why Nick</p> 
                                     <p className='menu-item' onClick={() => { moveTo('how-ai-coaching-works'); setIsMenuOpen(false); }}>3. How AI coaching works</p>
                                     <p className='menu-item' onClick={() => { moveTo('testimonials'); setIsMenuOpen(false); }}>4. Testimonials</p>
@@ -399,7 +398,7 @@ window.addEventListener('resize', updateBackground);
                         <div className="hero-overlay-bottom"></div>
                         <img src={nick1} alt="Nick" className="hero-image" />
                         <div className="hero-overlay">
-                            <h1 className='hero-title' id="title">Integrated AI-human Leadership Coaching<br /></h1>
+                            <h1 className='hero-title' id="title">Integrated AI-Human Leadership Coaching<br /></h1>
                             <p className='hero-subtitle'>Accomplish your next level of success and satisfaction:
                             </p>
                             <ul className='hero-subtitle'>
@@ -451,8 +450,8 @@ window.addEventListener('resize', updateBackground);
                                     Bloomers are more optimistic, seeing the disruption and taking the view that AI can unlock unprecedented human flourishing.
                                     <br /><br />
                                     I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, at least during the medium term.<br />
-                                    From chess to fraud detection to dermatology, AI-human integration has outperformed AI-only or human-only approaches. Similarly, due to recent integrated AI-human developments can enable greater growth in leaders and teams.<br /><br />
-                                    An AI-human coaching program will help your leaders gain new leadership operating
+                                    From chess to fraud detection to dermatology, AI-Human integration has outperformed AI-only or human-only approaches. Similarly, due to recent integrated AI-Human developments can enable greater growth in leaders and teams.<br /><br />
+                                    An AI-Human coaching program will help your leaders gain new leadership operating
                                     systems, crossing the threshold to a more effective way of working.<br />
                                     Participants will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
                                 </p>

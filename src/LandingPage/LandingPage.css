@@ -746,7 +746,7 @@ video {
 }
 
 .horizontal-scroll-cards-wrapper {
-    margin-top: 50px;
+    margin-top: 15vh;
     display: flex;
     gap: 10rem; /* equivalente a gap-4 */
 }
@@ -756,6 +756,7 @@ video {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     width: 400px;
+    height: 200px;
     border-width: 1px;
     border-style: solid;
     position: relative;
@@ -796,7 +797,7 @@ video {
 }
 
 .card-icon i {
-    font-size: 4rem;
+    font-size: 3rem;
     color: white;
    
 }
@@ -810,7 +811,7 @@ video {
 .horizontal-card-title {
     color: #007bff; /* Blu */
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -833,7 +834,7 @@ video {
 }
 
 .how-ai-coaching-works-title-2 {
-    font-size: 1.5rem; /* Dimensione più piccola per il titolo */
+    font-size: 1.2rem; /* Dimensione più piccola per il titolo */
     margin-bottom: 10px; /* Spazio sotto il titolo */
     text-align: center;
     background: linear-gradient(45deg, #1b49ff, #e0ff33); /* Gradiente lineare */
