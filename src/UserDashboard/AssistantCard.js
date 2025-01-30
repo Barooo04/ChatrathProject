@@ -68,9 +68,28 @@ function AssistantCard({ assistant, user }) {
         createNewSession();
     };
 
+    const getBackgroundColor = (group) => {
+        switch (group) {
+            case "Overarching":
+                return "rgb(208, 214, 36)";
+            case "Lead Self":
+                return "rgb(107, 149, 247)";
+            case "Lead Organization":
+                return "rgb(90, 196, 87)";
+            case "Lead Others":
+                return "rgb(94, 27, 136)";
+            default:
+                return "rgb(78, 78, 78)"; // colore di default
+        }
+    };
+
     return (
         <div>
-            <div className="assistant-card" onClick={handleCardClick}>
+            <div
+                className="assistant-card"
+                onClick={handleCardClick}
+                style={{ backgroundColor: getBackgroundColor(assistant.group) }}
+            >
                 <img className="assistant-icon" src={assistant.icon_url} alt={assistant.name} />
                 <div className="assistant-info">
                     <h2 className="assistant-name">{assistant.name}</h2>
