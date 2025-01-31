@@ -291,6 +291,7 @@
 .assistant-row {
     transition: background-color 0.3s, color 0.3s;
     width: 100%; /* Assicura che le righe riempiano tutto lo spazio orizzontale */
+    background: linear-gradient(to right, red, transparent,transparent,transparent,transparent, red);
 }
 
 .assistant-row:hover {

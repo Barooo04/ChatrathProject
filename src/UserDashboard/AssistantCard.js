@@ -3,6 +3,12 @@ import './AssistantCard.css';
 import { useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 
+import leadself from "../Images/IconCard/leadself.png";
+import leadorganization from "../Images/IconCard/leadorganization.png";
+import leadothers from "../Images/IconCard/leadothers.png";
+import overarching from "../Images/IconCard/overarching.png";
+
+
 function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
@@ -83,6 +89,21 @@ function AssistantCard({ assistant, user }) {
         }
     };
 
+    const getImageSrc = (iconUrl) => {
+        switch (iconUrl) {
+            case "Overarching":
+                return overarching;
+            case "Lead Self":
+                return leadself;
+            case "Lead Organization":
+                return leadorganization;
+            case "Lead Others":
+                return leadothers;
+            default:
+                return ""; // colore di default
+        }
+    };
+
     return (
         <div>
             <div
@@ -90,7 +111,7 @@ function AssistantCard({ assistant, user }) {
                 onClick={handleCardClick}
                 style={{ backgroundColor: getBackgroundColor(assistant.group) }}
             >
-                <img className="assistant-icon" src={assistant.icon_url} alt={assistant.name} />
+                <img className="assistant-icon" src={getImageSrc(assistant.group)} alt={assistant.name} />
                 <div className="assistant-info">
                     <h2 className="assistant-name">{assistant.name}</h2>
                     <p className="assistant-description">{assistant.description}</p>

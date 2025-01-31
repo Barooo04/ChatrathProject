@@ -68,12 +68,28 @@ function AssistantTable({ assistant, user }) {
             createNewSession();
         };
 
+        const getBackgroundColor = (group) => {
+            switch (group) {
+                case "Overarching":
+                    return "rgb(208, 214, 36)";
+                case "Lead Self":
+                    return "rgb(107, 149, 247)";
+                case "Lead Organization":
+                    return "rgb(90, 196, 87)";
+                case "Lead Others":
+                    return "rgb(94, 27, 136)";
+                default:
+                    return "rgb(78, 78, 78)"; // colore di default
+            }
+        };
+
     return (
         <>
             <tr 
                 key={assistant.id} 
                 onClick={handleRowClick}
                 className="assistant-row"
+                style={{ background: `linear-gradient(to right, ${getBackgroundColor(assistant.group)}, transparent, transparent, transparent, transparent, ${getBackgroundColor(assistant.group)})` }}
             >
                 <td>{assistant.name}</td>
                 <td>{assistant.description}</td>
