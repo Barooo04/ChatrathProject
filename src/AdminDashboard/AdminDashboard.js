@@ -278,7 +278,7 @@ function AdminDashboard({ user, onLogout }) {
 
             const emailParamsToClient = {
                 to_name: clientName,
-                link_login: 'https://chatrathassistant.vercel.app/login', 
+                link_login: 'https://www.threshold.coach/login', 
                 pass_gen: password,
                 to_email: clientEmail,
             };
