@@ -70,13 +70,13 @@ function AssistantTable({ assistant, user }) {
 
         const getBackgroundColor = (group) => {
             switch (group) {
-                case "Overarching":
+                case "overarching":
                     return "rgb(208, 214, 36)";
-                case "Lead Self":
+                case "leadself":
                     return "rgb(107, 149, 247)";
-                case "Lead Organization":
+                case "leadorganization":
                     return "rgb(90, 196, 87)";
-                case "Lead Others":
+                case "leadothers":
                     return "rgb(94, 27, 136)";
                 default:
                     return "rgb(78, 78, 78)"; // colore di default
