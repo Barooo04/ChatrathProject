@@ -592,14 +592,6 @@ video {
     font-size: 18px;
 }
 
-.card a {
-    text-decoration: none;
-    padding: 7px 18px;
-    border-radius: 25px;
-    color: white;
-    background: linear-gradient(to bottom, #1b49ff 0%, #e0ff33 100%);
-}
-
 .why-nick-overlay-top {
     position: absolute;
     top: 0;

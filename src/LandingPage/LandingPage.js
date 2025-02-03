@@ -15,7 +15,6 @@ import Loader from '../Loader/Loader';
 import logo from '../Images/logonick.png';
 
 import nick1 from "../Images/FOTO1.jpg";
-import nick2 from "../Images/FOTO3.png";
 
 import trainline from "../Images/trainline.png";
 import uss from "../Images/uss.png";
@@ -43,7 +42,6 @@ function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
     const nickSectionRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
 
 // Funzione per determinare lo sfondo sottostante
 function updateBackground() {
@@ -134,7 +132,6 @@ window.addEventListener('resize', updateBackground);
 
                     // Funzione per controllare se lo scroll è completato
                     const checkIfScrollFinished = () => {
-                        const currentRect = section.getBoundingClientRect();
                         if (id === 'responsible-ai') {
                             // Controlla se siamo in fondo alla pagina
                             if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
@@ -471,7 +468,7 @@ window.addEventListener('resize', updateBackground);
                         </video>
                         
                         <div className="wrapper">
-                            <div className="card" style={{'--delay': '-1'}}>
+                            <div className="card" style={{'--delay': '0'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-star"></i></div>
                                     <div className="details"> 
@@ -480,7 +477,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '0'}}>
+                            <div className="card" style={{'--delay': '2'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-rocket"></i></div>
                                     <div className="details"> 
@@ -489,7 +486,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '1'}}>
+                            <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-brain"></i></div>
                                     <div className="details"> 
@@ -498,7 +495,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '2'}}>
+                            <div className="card" style={{'--delay': '6'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-cogs"></i></div>
                                     <div className="details"> 
@@ -508,7 +505,7 @@ window.addEventListener('resize', updateBackground);
 
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '3'}}>
+                            <div className="card" style={{'--delay': '8'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
@@ -517,7 +514,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '4'}}>
+                            <div className="card" style={{'--delay': '10'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
@@ -526,14 +523,14 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '4'}}>
+                            <div className="card" style={{'--delay': '12'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
                                         <span className="title">Integrated</span>
                                         <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
                                     </div>
-                            </div>
+                                </div>
                             </div>
                         </div>
                         <div className="why-nick-content">
@@ -595,12 +592,30 @@ window.addEventListener('resize', updateBackground);
                                 </div>
     
                             </div>
-                            <div className="card" style={{'--delay': '2'}}>
+                            <div className="card" style={{'--delay': '3'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
                                         <span className="title">Contribution</span>
                                         <p>Add more value to your organization</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card" style={{'--delay': '4.14'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">AI</span>
+                                        <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card" style={{'--delay': '5.14'}}>
+                                <div className="content">
+                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="details"> 
+                                        <span className="title">Integrated</span>
+                                        <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
                                     </div>
                                 </div>
                             </div>
