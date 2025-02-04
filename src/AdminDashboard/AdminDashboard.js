@@ -138,6 +138,7 @@ function AdminDashboard({ user, onLogout }) {
             }
 
             const data = await response.json();
+            console.log(data);
             setStats(data);
             setError('');
         } catch (error) {

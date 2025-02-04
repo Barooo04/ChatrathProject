@@ -217,7 +217,11 @@ function Chat() {
             <div className="messages-container">
                 {messages.map((message, index) => (
                     <div key={index} className={`message ${message.isUser ? 'user-message' : 'assistant-message'}`}>
-                        {message.text}
+                        {message.isUser ? (
+                            message.text
+                        ) : (
+                            <span dangerouslySetInnerHTML={{ __html: message.text }} />
+                        )}
                     </div>
                 ))}
                 {isLoading && (
