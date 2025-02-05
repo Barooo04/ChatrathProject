@@ -106,6 +106,15 @@
     align-self: flex-start;
 }
 
+.assistant-message ul {
+    padding-left: 20px; /* Aggiungi spazio a sinistra per l'indentazione */
+    margin: 0; /* Rimuovi il margine superiore e inferiore */
+}
+
+.assistant-message li {
+    margin-bottom: 5px; /* Spazio tra gli elementi della lista */
+}
+
 .input-container {
     position: relative;
     margin-top: 20px;
