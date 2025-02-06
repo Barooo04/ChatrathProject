@@ -109,10 +109,12 @@
 .assistant-message ul {
     padding-left: 20px; /* Aggiungi spazio a sinistra per l'indentazione */
     margin: 0; /* Rimuovi il margine superiore e inferiore */
+    margin-bottom: 30px;
 }
 
 .assistant-message li {
     margin-bottom: 5px; /* Spazio tra gli elementi della lista */
+    margin-left: 20px;
 }
 
 .input-container {

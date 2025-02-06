@@ -4,6 +4,7 @@ import './Chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import video from "../Images/how-ai2.mp4";
+import ReactMarkdown from 'react-markdown';
 
 function Chat() {
     const { assistantToken } = useParams();
@@ -220,7 +221,7 @@ function Chat() {
                         {message.isUser ? (
                             message.text
                         ) : (
-                            <span dangerouslySetInnerHTML={{ __html: message.text }} />
+                            <ReactMarkdown>{message.text}</ReactMarkdown>
                         )}
                     </div>
                 ))}
