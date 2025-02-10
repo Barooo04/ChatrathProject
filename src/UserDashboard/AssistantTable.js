@@ -8,7 +8,7 @@ function AssistantTable({ assistant, user }) {
     const [showPopup, setShowPopup] = useState(false);
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackend.onrender.com'; // URL di produzione
+        : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
 
         const handleRowClick = async () => {
             const sessionKey = `chat_session_${user.id}_${assistant.id}`;

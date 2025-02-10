@@ -29,7 +29,7 @@ function AdminDashboard({ user, onLogout }) {
 
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackend.onrender.com';
+        : 'https://chatrathbackend-kcux.onrender.com';
 
         useEffect(() => {
             const fetchGlobalStats = async () => {

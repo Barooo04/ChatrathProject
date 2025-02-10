@@ -10,7 +10,7 @@ function LoginPage({ onLogin }) {
     const navigate = useNavigate();
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
-        : 'https://chatrathbackend.onrender.com'; // URL di produzione
+        : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
 
     const handleSubmit = async (e) => {
         e.preventDefault();
