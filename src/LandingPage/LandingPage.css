@@ -335,12 +335,10 @@ video {
 }
 
 .why-coaching {
-    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Allinea a sinistra */
     justify-content: center;
-    gap: 10vh;
     padding: 40px;
     overflow: hidden; /* Nasconde il contenuto all'inizio */
 }
@@ -349,12 +347,12 @@ video {
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 10%;
     width: 100%;
     transform: translateX(0%); /* Inizialmente fuori dallo schermo */
     transition: transform 0.5s ease; /* Transizione per l'animazione */
     border-radius: 5px;
-    padding: 40px;
+    gap: 10%;
+    padding: 60px;
 }
 
 

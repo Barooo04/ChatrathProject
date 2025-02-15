@@ -15,6 +15,7 @@ import Loader from '../Loader/Loader';
 import logo from '../Images/logonick.png';
 
 import nick1 from "../Images/FOTO1.jpg";
+import nick1Responsive from "../Images/Foto1Responsive.jpg";
 
 import trainline from "../Images/trainline.png";
 import uss from "../Images/uss.png";
@@ -352,9 +353,9 @@ window.addEventListener('resize', updateBackground);
                     <nav className="navbar">
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0px'}}>
                             <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
+                            <img src={logo} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                             <p style={{color: 'white', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'Palatino Linotype'}}>Threshold Coaching</p>
                         </div>
-                        <img src={logo} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
                         <ul>
                             <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
                             <li><a className="contact-me" href="#contact-me" onClick={openModal}>Book a Call</a></li>
@@ -394,6 +395,7 @@ window.addEventListener('resize', updateBackground);
                         <div className="hero-overlay-top"></div>
                         <div className="hero-overlay-bottom"></div>
                         <img src={nick1} alt="Nick" className="hero-image" />
+                        <img src={nick1Responsive} alt="Nick" className="hero-image-mobile" />
                         <div className="hero-overlay">
                             <h1 className='hero-title' id="title">Integrated AI-Human Leadership Coaching<br /></h1>
                             <p className='hero-subtitle'>Accomplish your next level of success and satisfaction:
@@ -468,7 +470,7 @@ window.addEventListener('resize', updateBackground);
                         </video>
                         
                         <div className="wrapper">
-                            <div className="card" style={{'--delay': '0'}}>
+                            <div className="card" style={{'--delay': '-1'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-star"></i></div>
                                     <div className="details"> 
@@ -477,7 +479,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '2'}}>
+                            <div className="card" style={{'--delay': '0'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-rocket"></i></div>
                                     <div className="details"> 
@@ -486,7 +488,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '4'}}>
+                            <div className="card" style={{'--delay': '1'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-brain"></i></div>
                                     <div className="details"> 
@@ -495,7 +497,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '6'}}>
+                            <div className="card" style={{'--delay': '2'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-cogs"></i></div>
                                     <div className="details"> 
@@ -505,7 +507,7 @@ window.addEventListener('resize', updateBackground);
 
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '8'}}>
+                            <div className="card" style={{'--delay': '3'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
@@ -514,7 +516,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '10'}}>
+                            <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 
@@ -523,7 +525,7 @@ window.addEventListener('resize', updateBackground);
                                     </div>
                                 </div>
                             </div>
-                            <div className="card" style={{'--delay': '12'}}>
+                            <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
                                     <div className="img"><i className="fas fa-check"></i></div>
                                     <div className="details"> 

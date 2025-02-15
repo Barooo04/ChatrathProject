@@ -9,14 +9,22 @@
         height: 4vh;
     }
 
+    .why-coaching {
+        justify-content: center;
+    }
+
     .coaching-content {
         flex-direction: column;
         padding: 10px;
         justify-content: center;
+        gap: 10vh;
+        padding-bottom: 40px;
+
     }
 
     .coaching-description {
         width: 100%;
+        height: auto;
         padding: 0;
         text-align: center;
     }
@@ -34,9 +42,7 @@
     }
 
     .coaching-card {
-        margin-top: 10vh;
         width: 50%;
-        height: 30vh;
     }
 
     .why-nick {
@@ -67,7 +73,7 @@
     }
 
     .horizontal-scroll-container {
-        height: 100vh;
+        height: 120vh;
     }
 
     .horizontal-card {
@@ -94,6 +100,10 @@
 
 /* Mobile */
 @media (max-width: 769px) {
+    video {
+        display: none;
+    }
+
     .horizontal-scroll-container {
         width: 100%;
     }
@@ -140,6 +150,17 @@
             0 0 40px rgba(224, 255, 51, 0.2);
         transition: all 0.3s ease;
     }
+
+    .horizontal-scroll-container {
+        height: 60vh !important;
+    }
+
+    .horizontal-card {
+        width: 300px;
+        height: 150px;
+    }
+    
+    
 }
 
 /* Mobile */
@@ -151,7 +172,6 @@
     .logo-mobile {
         display: flex;
         height: 50px;
-        filter: invert(1);
     }
 
     .logo {
@@ -162,9 +182,9 @@
         position: fixed !important;
         width: 90%;
         margin-left: 5%;
-        padding: 15px 5px;
-        height: 100px;
+        padding: 15px 15px;
         gap: 0;
+        justify-content: center !important;
     }
 
     .navbar ul {
@@ -178,12 +198,42 @@
         align-items: center;
     }
 
+    .navbar p {
+        font-size: 0.8rem !important;
+    }
+
     .ai-assistant {
-        padding: 10px;
+        padding: 5px;
+        font-size: 0.8rem !important;
     }
 
     .contact-me {
-        padding: 10px;
+        padding: 5px;
+        font-size: 0.8rem !important;
+    }
+
+    .hero-overlay {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .hero-image-mobile {
+        display: flex;
+        margin-top: 40px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        width: 80%;
     }
 
     .hero-title, .coaching-subtitle, .why-nick-subtitle, .how-ai-coaching-works-subtitle, .testimonials-subtitle, .understand-threshold-subtitle {
