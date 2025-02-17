@@ -149,6 +149,24 @@
     gap: 25px;
 }
 
+.search-input {
+    width: 70%;
+    margin-left: 15%;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Sfondo più scuro ma ancora semi-trasparente */
+    backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.search-input::placeholder {
+    color: white;
+}
+
 .assistants-container p {
     text-align: center;
     color: #717171;

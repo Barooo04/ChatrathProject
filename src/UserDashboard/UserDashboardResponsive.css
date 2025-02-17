@@ -1,0 +1,46 @@
+@media (max-width: 768px) {
+    .dashboard-container {
+        background: linear-gradient(to bottom, gray, #000000, gray, #000000);
+    }
+
+    .dashboard-nav {
+        width: 90%;
+        left: 5%;
+        padding: 15px;
+    }
+
+    .dashboard-nav-title {
+        font-size: 14px;
+    }
+
+    .change-password {
+        font-size: 12px;
+    }
+
+    .dashboard-nav-logout {
+        font-size: 14px;
+        width: 80px;
+        padding: 10px;
+    }
+    
+    .assistants-container-title {
+        font-size: 1rem;
+    }
+
+    .assistants-container-subtitle {
+        font-size: 2rem;
+    }
+    
+    .assistants-container {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .search-input {
+        width: 90%;
+        margin-left: 5%;
+        background-color: rgba(1, 1, 1, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
+    }
+
+    
+}

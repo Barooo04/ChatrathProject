@@ -2,11 +2,11 @@
 @media (max-width: 1100px) {
     
     .menu-appear.view {
-        height: 24vh;
+        height: 42vh;
     }
 
     .menu-item {
-        height: 4vh;
+        height: 6vh;
     }
 
     .why-coaching {
@@ -204,6 +204,12 @@
         font-size: 0.8rem !important;
     }
 
+    .menu-appear {
+        width: 90%;
+        right: 5%;
+        top: 90px;
+    }
+
     .ai-assistant {
         padding: 5px;
         font-size: 0.8rem !important;
@@ -271,7 +277,11 @@
     .why-nick-overlay-top, .why-nick-overlay-bottom {
         display: none;
     }
- 
+
+    .why-nick-title {
+        text-align: center;
+    }
+
     .wrapper {
         display: none;
     }

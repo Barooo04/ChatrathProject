@@ -42,3 +42,19 @@
     font-size: 14px;
     color: rgb(203, 203, 203);
 } 
+
+@media (max-width: 768px) {
+    .assistant-card {
+        width: 250px;
+        height: auto;
+    }
+
+    .assistant-icon {
+        width: 200px;
+        height: 100px;
+    }
+
+    .assistant-name {
+        font-size: 14px;
+    }
+}

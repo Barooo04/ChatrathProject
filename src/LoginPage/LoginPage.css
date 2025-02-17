@@ -118,3 +118,29 @@ button {
     text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+
+    .background .shape {
+        height: 150px;
+        width: 150px;
+    }
+
+    .background .shape:first-child {
+        left: 10px;
+        top: 10px;
+    }
+
+    form {
+        width: 300px;
+        height: 420px;
+        padding: 25px 17px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    .back-button {
+        bottom: 0;
+    }
+}

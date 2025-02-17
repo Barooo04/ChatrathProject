@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserDashboard.css';
+import './UserDashboardResponsive.css';
 import Loader from '../Loader/Loader';
 import AssistantCard from './AssistantCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +18,7 @@ function UserDashboard({ user, onLogout }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [viewMode, setViewMode] = useState('card');
+    const [searchTerm, setSearchTerm] = useState('');
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
@@ -98,6 +100,12 @@ function UserDashboard({ user, onLogout }) {
         setShowPasswordPopup(true);
     };
 
+    // Funzione per filtrare gli assistenti
+    const filteredAssistants = assistants.filter(assistant =>
+        assistant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        assistant.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
         {isLoading ? (
@@ -132,10 +140,17 @@ function UserDashboard({ user, onLogout }) {
                     </div>
                 </div>
             </div>
+            <input 
+                type="text" 
+                placeholder="Search assistants..." 
+                value={searchTerm} 
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+            />
             <div className="assistants-container">
                 {viewMode === 'card' ? (
-                    assistants.length > 0 ? (
-                        assistants.map(assistant => (
+                    filteredAssistants.length > 0 ? (
+                        filteredAssistants.map(assistant => (
                             <AssistantCard 
                                 key={assistant.id} 
                                 assistant={assistant} 
@@ -155,8 +170,8 @@ function UserDashboard({ user, onLogout }) {
                         </thead>
                         <tbody> 
                             {
-                                assistants.length > 0 ? (
-                                    assistants.map(assistant => (
+                                filteredAssistants.length > 0 ? (
+                                    filteredAssistants.map(assistant => (
                                         <AssistantTable
                                             key={assistant.id} 
                                             assistant={assistant} 
