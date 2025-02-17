@@ -100,8 +100,10 @@
 
 /* Mobile */
 @media (max-width: 769px) {
-    video {
-        display: none;
+    body {
+        video {
+            display: none !important;
+        }
     }
 
     .horizontal-scroll-container {
@@ -236,12 +238,12 @@
         width: 80%;
     }
 
-    .hero-title, .coaching-subtitle, .why-nick-subtitle, .how-ai-coaching-works-subtitle, .testimonials-subtitle, .understand-threshold-subtitle {
+    .hero-title, .coaching-subtitle, .why-nick-subtitle, .how-ai-coaching-works-subtitle, .testimonials-subtitle, .understand-threshold-subtitle, .best-coaching-program-title, .best-coaching-program-subtitle, .responsible-ai-title {
         font-size: 2rem;
         text-align: center;
     }
 
-    .coaching-title, .why-nick-title, .how-ai-coaching-works-title, .testimonials-title, .understand-threshold-title {
+    .coaching-title, .why-nick-title, .how-ai-coaching-works-title, .testimonials-title, .understand-threshold-title, .best-coaching-program-title, .responsible-ai-text {
         font-size: 1rem;
     }
 
@@ -263,7 +265,11 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 80px;
+        margin-top: 10vh;
+    }
+
+    .why-nick-overlay-top, .why-nick-overlay-bottom {
+        display: none;
     }
  
     .wrapper {
@@ -272,55 +278,45 @@
 
     .wrapper-mobile {
         display: flex;
+        padding: 0;
+    }
+
+    .myCardSwiper {
+        height: auto;
+        z-index: 100;
+    }
+
+    .myCardSwiper .swiper-slide {
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+        -webkit-backdrop-filter: blur(8px);
     }
 
     .wrapper-mobile .card {
-        background-color: white;
-        width: 300px;
+        background-color: transparent;
+        height: 100%;
         display: flex;
         align-items: center;
-        padding: 10px; 
-        opacity: 0;
+        padding: 40px; 
+        opacity: 1;
         pointer-events: none;
-        position: absolute; 
         justify-content: space-between;
-        border-radius: 100px 20px 20px 100px;
-        animation: animate 15s linear infinite;
-        animation-delay: calc(var(--delay) * 3s);
+        animation: none;
+        animation-delay: 0;
     }
 
-    .wrapper-mobile .card:last-child {
-        animation-delay: calc(var(--delay) * -3s);
-    }
-
-    @keyframes animate {
-        0% {
-            opacity: 0;
-            transform: translateY(100%) scale(0.5);
-        }
-        5%, 20% {
-            opacity: 0.4;
-            transform: translateY(100%) scale(0.7);
-        }
-        25%, 40% {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0%) scale(1);
-        }
-        45%, 60% {
-            opacity: 0.4;
-            transform: translateY(-100%) scale(0.7);
-        }
-        65%, 100%{
-            opacity: 0;
-            transform: translateY(-100%) scale(0.5);
-        }
+    .wrapper-mobile .card .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap: 5vh;
     }
 
     .wrapper-mobile .card .img {
         height: 90px;
         width: 90px;
-        position: absolute;
         left: 10px;
         top: 10px;
         background-color: white;
@@ -332,13 +328,143 @@
         justify-content: center;
     }
 
-    .horizontal-scroll-container {
-        height: 100vh;
+    .card .details {
+        margin-left: 0;
+    }   
+
+    .how-ai-coaching-works {
+        margin-top: 0;
+        padding-top: 0;
     }
 
-    .horizontal-scroll-cards-wrapper {
-        width: 200px;
-        height: 200px;
+    .horizontal-scroll-section, .horizontal-scroll-overlay video {
+        display: none;
+    }
+
+    .how-ai-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .how-ai-mobile-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .how-ai-mobile-title {
+        font-size: 1.5rem;
+        color: #1b49ff;
+        text-align: center;
+    }
+
+    .how-ai-mobile-text {
+        font-size: 0.8rem;
+        color: white;
+        text-align: center;
+        max-width: 80%;
+    }
+
+    .how-ai-mobile .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .how-ai-mobile .grid-item {
+        background-color: transparent;
+        border: 2px solid #e0ff33; /* Assicurati che il colore corrisponda a quello del bordo del Card */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(224, 255, 51, 0.3);
+        padding: 20px 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .how-ai-mobile .grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(224, 255, 51, 0.5);
+    }
+
+    .how-ai-mobile .grid-item-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .how-ai-mobile .card-icon {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .horizontal-card-title-mobile {
+        font-size: 1rem;
+        color: #1b49ff;
+    }
+
+    .horizontal-card-description-mobile {
+        font-size: 0.8rem;
+        color: white;
+    }
+
+    .view-more-button {
+        font-size: 0.8rem;
+        width: 70%;
+        color: white;
+        background: linear-gradient(45deg, #1b49ff, #e0ff33); 
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .popup {
+        background: white;
+        width: 50%;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+    
+    .close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        cursor: pointer;
+        font-size: 24px;
+        background: linear-gradient(45deg, #1b49ff, #e0ff33); 
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
 
     .testimonials-content {
@@ -347,6 +473,10 @@
 
     .testimonial-card {
         padding: 100px 50px;
+    }
+    
+    .understand-threshold-title {
+        text-align: center;
     }
 
     .understand-threshold-image {
@@ -357,4 +487,93 @@
         margin: 0;
         margin-top: 50px;
     }
+
+    .best-coaching-program {
+        margin-top: 30vh;
+        width: 100%;
+    }
+
+    .best-coaching-program-content {
+        width: 100%;
+    }
+
+    .best-coaching-program-subtitle-span {
+        font-size: 1rem;
+    }
+
+    .best-coaching-program-text {
+        font-size: 0.8rem;
+    }
+
+    .timeline-container {
+        width: 100%;
+    }
+
+    .timeline-line {
+        left: 100%;
+    }
+
+    .timeline-element {
+        width: 95%;
+        left: 0%;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .timeline-element.left {
+        padding: 10px;
+        left: 0;
+    }
+
+    .timeline-element.right {
+        padding: 10px;
+        left: 0%;
+    }
+
+    .timeline-content {
+        padding: 10px 20px;
+    }
+
+    .responsible-ai {
+        margin-top: 20vh;
+        margin-bottom: 50vh;
+    }
+
+    .responsible-ai-overlay {
+        display: none;
+    }
+
+    .responsible-ai-video {
+        display: none;
+    }
+
+    .responsible-ai-cards {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .responsible-ai-card {
+        max-width: 100%;
+    }
+
+    .footer {
+        width: 90%;
+        margin-left: 5%;
+        padding: 7px 10px;
+        border-radius: 10px;
+    }
+
+    .footer h1 {
+        font-size: 1rem;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+
+    .footer-privacy-credits {
+        font-size: 0.8rem;
+    }
 }
+

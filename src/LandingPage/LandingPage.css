@@ -501,11 +501,13 @@ video {
 
 .wrapper-mobile {
     display: none;
-    width: 30%; /* Larghezza per lo scroller */
-    height: 20vh; /* Altezza per occupare tutto il container */
-    position: relative; /* Posizione relativa per il blocco */
+    width: 100%;
+    height: 60vh;
+    position: relative;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), gray, rgba(0, 0, 0, 0));
 }
 
 .wrapper .card {
@@ -674,6 +676,10 @@ video {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.2rem;
+}
+
+.how-ai-mobile {
+    display: none;
 }
 
 .horizontal-scroll-section {
@@ -987,6 +993,7 @@ video {
     justify-content: center;
     gap: 40px;
     background: black;
+    margin-top: 100px;
 }
 
 .understand-threshold-content {

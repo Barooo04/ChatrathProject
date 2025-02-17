@@ -43,45 +43,7 @@ function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
     const nickSectionRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-// Funzione per determinare lo sfondo sottostante
-function updateBackground() {
-    const myElement = document.getElementById('myElement');
-    if (!myElement) {
-        console.warn('Elemento myElement non trovato nel DOM');
-        return;
-    }
-
-    const boundingRect = myElement.getBoundingClientRect();
-    const elementsBelow = document.elementsFromPoint(boundingRect.left + boundingRect.width / 2, boundingRect.top + boundingRect.height / 2);
-
-    let isOverBlackBackground = false;
-
-    for (const element of elementsBelow) {
-        const style = window.getComputedStyle(element);
-        const backgroundColor = style.backgroundColor;
-
-        // Controlla se il colore di sfondo è nero o simile
-        if (backgroundColor === 'rgb(0, 0, 0)' || backgroundColor === 'rgba(0, 0, 0, 0.7)') {
-            isOverBlackBackground = true;
-            break;
-        }
-    }
-
-    if (isOverBlackBackground) {
-        myElement.classList.add('gradient-blur');
-        myElement.classList.remove('black-opacity');
-    } else {
-        myElement.classList.add('black-opacity');
-        myElement.classList.remove('gradient-blur');
-    }
-}
-
-
-// Chiamare la funzione all'inizio e ogni volta che è necessario aggiornare
-updateBackground();
-window.addEventListener('scroll', updateBackground);
-window.addEventListener('resize', updateBackground);
+    const [selectedStep, setSelectedStep] = useState(null);
     
     useEffect(() => {
         // Simula un caricamento di 2 secondi
@@ -279,20 +241,23 @@ window.addEventListener('resize', updateBackground);
         );
     };
 
+
+    const startColor = { h: 210, s: 100, l: 50 }; // Blu neon
+    const endColor = { h: 60, s: 100, l: 50 }; 
+
+    const getInterpolatedColor = (index, total) => {
+        if (index === 0) return 'rgb(0, 123, 255)'; // Prima card: blu neon
+        if (index === total - 1) return 'rgba(224, 255, 51, 1)'; // Ultima card: giallo neon
+        
+        // Calcola il colore intermedio
+        const progress = index / (total - 1);
+        const h = startColor.h + (endColor.h - startColor.h) * progress;
+        return `hsl(${h}, 100%, 50%)`;
+    };
+
     const Card = ({ card, index, totalCards }) => {
         // Colori neon di base (in formato HSL per facilitare l'interpolazione)
-        const startColor = { h: 210, s: 100, l: 50 }; // Blu neon
-        const endColor = { h: 60, s: 100, l: 50 };    // Giallo neon
-
-        const getInterpolatedColor = (index, total) => {
-            if (index === 0) return 'rgb(0, 123, 255)'; // Prima card: blu neon
-            if (index === total - 1) return 'rgba(224, 255, 51, 1)'; // Ultima card: giallo neon
-            
-            // Calcola il colore intermedio
-            const progress = index / (total - 1);
-            const h = startColor.h + (endColor.h - startColor.h) * progress;
-            return `hsl(${h}, 100%, 50%)`;
-        };
+   // Giallo neon
 
         const cardColor = getInterpolatedColor(index, totalCards);
 
@@ -342,6 +307,14 @@ window.addEventListener('resize', updateBackground);
 
     const closeModal = () => {
         setIsModalOpen(false);
+    };
+
+    const openPopup = (step) => {
+        setSelectedStep(step);
+    };
+
+    const closePopup = () => {
+        setSelectedStep(null);
     };
 
     return (
@@ -550,141 +523,148 @@ window.addEventListener('resize', updateBackground);
                             </p>
                         </div>
                         <div className="wrapper-mobile">
-                            <div className="card" style={{'--delay': '-1'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-star"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">Time</span>
-                                        <p>Save time and create energy for what matters most</p>
+                            <Swiper
+                                spaceBetween={30}
+                                centeredSlides={true}
+                                autoplay={{
+                                    delay: 3000,
+                                    disableOnInteraction: false,
+                                }}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                navigation={true}
+                                modules={[Autoplay, Pagination, Navigation]}
+                                className='myCardSwiper'
+                            >
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-star"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Time</span>
+                                                <p>Save time and create energy for what matters most</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-    
-                            </div>
-                            <div className="card" style={{'--delay': '0'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-rocket"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">Team</span>
-                                        <p>Improve team performance</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-rocket"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Team</span>
+                                                <p>Improve team performance</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-    
-                            </div>
-                            <div className="card" style={{'--delay': '1'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-brain"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">Mindset</span>
-                                        <p>Address mindsets such as being too controlling, protective or people-pleasing</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-brain"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Mindset</span>
+                                                <p>Address mindsets such as being too controlling, protective or people-pleasing</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-    
-                            </div>
-                            <div className="card" style={{'--delay': '2'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-cogs"></i></div>
-                                    <div className="details"> 
-                                        <span className="title" >Purpose</span>
-                                        <p>Connect your work with your purpose</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-cogs"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Purpose</span>
+                                                <p>Connect your work with your purpose</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-    
-                            </div>
-                            <div className="card" style={{'--delay': '3'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-check"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">Contribution</span>
-                                        <p>Add more value to your organization</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-check"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Contribution</span>
+                                                <p>Add more value to your organization</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="card" style={{'--delay': '4.14'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-check"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">AI</span>
-                                        <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-check"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">AI</span>
+                                                <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="card" style={{'--delay': '5.14'}}>
-                                <div className="content">
-                                    <div className="img"><i className="fas fa-check"></i></div>
-                                    <div className="details"> 
-                                        <span className="title">Integrated</span>
-                                        <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="card">
+                                        <div className="content">
+                                            <div className="img"><i className="fas fa-check"></i></div>
+                                            <div className="details"> 
+                                                <span className="title">Integrated</span>
+                                                <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </SwiperSlide>
+                            </Swiper>
                         </div>
                         <div className="why-nick-overlay-bottom"></div>
 
                     </div>
 
                     <HorizontalScrollCarousel />
-                    <div style={{display: 'none', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
-                        <h2 style={{color: 'white', fontSize: '3rem', fontWeight: 'bold'}}>DETAILED STEPS</h2>
+
+                    <div className="how-ai-mobile">
+                        <div className="how-ai-mobile-content">
+                            <h3 className="how-ai-mobile-title">HOW AI COACHING WORKS</h3>
+                            <p className="how-ai-mobile-text">
+                                Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.
+                                We offer a six-month coaching program delivered by Nick and AI coaches.
+                                The program is for a group of up to five people.
+                            </p>
+                        </div>
+                        <div className="grid-container">
+                            {stepsData.map((step, index) => (
+                                <div 
+                                    key={index} 
+                                    className="grid-item"
+                                    style={{
+                                        borderColor: getInterpolatedColor(index, stepsData.length),
+                                        boxShadow: `0 0 10px ${getInterpolatedColor(index, stepsData.length)}80,
+                                                    0 0 20px ${getInterpolatedColor(index, stepsData.length)}40,
+                                                    0 0 30px ${getInterpolatedColor(index, stepsData.length)}20`,
+                                    }}
+                                >
+                                    <div className="grid-item-content">
+                                        <div className="card-icon">
+                                            <i className={step.icon} ></i>
+                                        </div>
+                                        <h3 className="horizontal-card-title-mobile">{step.title}</h3>
+                                        <p className="horizontal-card-description-mobile">{step.description}</p>
+                                        <button className="view-more-button" onClick={() => openPopup(step)}>View More</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>  
                     </div>
+
                     <div style={{display: 'none', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
-                        <div className="steps-container" style={{maxWidth: '80%'}}>
-                            <h3 className="how-ai-coaching-works-title-2">STEP 1: JOIN (Weeks 1-2)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}
-                               dangerouslySetInnerHTML={{ __html: `
-                                   Each participant completes their intake and goal-setting process:<br />
-                                   - Onboarding videos and reflections<br />
-                                   - Intake forms<br />
-                                   - 1:1 goal-setting and tracking meeting with Nick<br />
-                                   - Participate in 1:1 goal-setting and tracking meeting with Nick
-                               ` }}
-                            />    
-                        </div>
-                        <div className="steps-container" style={{maxWidth: '80%'}}>
-                            <h3 className="how-ai-coaching-works-title-2">STEP 2: KICK-OFF (Weeks 3-4)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}
-                               dangerouslySetInnerHTML={{ __html: `
-                                   Threshold coaching develops and releases two types of AI coaches: <br />
-                                   - A custom AI coach private to each participant<br />
-                                   - Dozens of generic AI coaches, including "How do I improve mental focus?" "How do I lead situationally?" and "How do I master conflict?"<br /><br/>
-                                   - Your group attends Masterclass I: Lead Self (live with Nick)<br />
-                                   - Individually, you submit a Virtual Check in, with Nick providing custom<br />
-                                   feedback the next day (via WhatsApp, email or Video depending on individual<br />
-                                   preference)` }}
-                            />    
-                        </div>
-                        <div className="steps-container" style={{maxWidth: '80%'}}>
-                            <h3 className="how-ai-coaching-works-title-2">STEP 3: IMPLEMENT (Months 2-5)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}
-                               dangerouslySetInnerHTML={{ __html: `
-                                   Your group attends Masterclass II: Lead others (live with Nick).<br />
-                                   Individually:<br />
-                                   - Submit two Virtual Check-Ins per month to Nick, receiving custom feedback<br />
-                                   the next day (via WhatsApp, email or Video depending on individual<br />
-                                   preference)<br /><br />
-                                   - Complete Capability Builds 1, 2 and 3 (recorded workshops on Productivity<br />
-                                   Through Stillness, Thinking Independently and Leading in Complexity; these<br />
-                                   Capability Builds integrate with the Virtual Check-Ins)<br />
-                                   Threshold Coaching updates your custom AI coach based on your Virtual<br />
-                                   Check-In feedback.` }}
-                            />    
-                        </div>
-                        <div className="steps-container" style={{maxWidth: '80%'}}>
-                            <h3 className="how-ai-coaching-works-title-2">STEP 4: SUSTAIN SUCCESS (Month 6)</h3>
-                            <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}
-                               dangerouslySetInnerHTML={{ __html: `
-                                   Wrap-up of six-month program, including feedback<br />
-                                   Individually Complete Capability Build 4 (the 77 Minute Program, which sets<br />
-                                   you up for sustained action planning aligned to your purpose)<br />
-                                   As a group, attend Masterclass III: <br />
-                                   - Lead others part 2, or Lead organization (topic depending on your context)<br />
-                                   - Set goals for your next phase, leveraging the 77 Minute Program<br />
-                                   - Submit feedback, including about impact made` }}
-                            />    
-                        </div>
+                        {stepsData.map((step, index) => (
+                            <div className="steps-container" style={{maxWidth: '80%'}}>
+                                <h3 className="how-ai-coaching-works-title-2">STEP {index + 1}: {step.title}</h3>
+                                <p className="how-ai-coaching-works-text" style={{color: 'rgb(173, 173, 173)'}}
+                                   dangerouslySetInnerHTML={{ __html: step.text }}
+                                />
+                            </div>
+                        ))}
                     </div>
 
                     <div className="testimonials-section" id='testimonials'>
@@ -756,7 +736,7 @@ window.addEventListener('resize', updateBackground);
                                 - <span style={{fontWeight: 'bold', color: 'white'}}>Maturing consciousness:</span> Leadership excellence will increasingly be fueled not only by skill and mindset, but also by stage of adult psychological development.  Master higher-order styles of leadership to navigate ambiguity and complexity well
                             </p>                            
                             <div className="understand-threshold-image-mobile">
-                                <img src={book} alt="Understand the Threshold" />
+                                <img src={book2} alt="Understand the Threshold" />
                             </div>
                         </div>
                         <div className="understand-threshold-image">
@@ -892,6 +872,16 @@ window.addEventListener('resize', updateBackground);
                         <p>|</p>
                         <p><a className="footer-terms" href="https://www.hi-dev.it" target="_blank" rel="noopener noreferrer"> Powered by HiDev</a></p>
                     </div>
+
+                    {selectedStep && (
+                        <div className="overlay">
+                            <div className="popup">
+                                <span className="close" onClick={closePopup}>&times;</span>
+                                <h3>{selectedStep.title}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: selectedStep.text }}></p>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
         </>
