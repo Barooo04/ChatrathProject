@@ -147,6 +147,13 @@ function LandingPage() {
 
     const testimonialsData = [
         {
+            name: "Karen",
+            role: "Executive Director",
+            description: "Before working with Nick, I was highly logical and driven but I didn't show emotion much and struggled to connect with my team. I needed to be more flexible, and just be more human. After just two hours of coaching, my team became more open, engagement deepened, and our overall trajectory improved. I now lead with both logic and emotion—creating stronger bonds and better results. In just two months, our departmental ARR doubled, and I attribute $2–3M of this directly to Nick's leadership coaching input.",
+            location: "Asia-Pacific",
+            sector: "Financial services"
+        },
+        {
             name: "Charles",
             role: "Founder",
             description: "I came to Nick doing well but my communication wasn't cutting through.  Others have tried to coach me on this, but after ten minutes with Nick I was ready to practice something new.  Seriously impressive as I'm used to people saying 'three bags full' to me. Nick stood toe to toe with me and gave me constructive, insightful, actionable input",
@@ -216,8 +223,8 @@ function LandingPage() {
                 </video>
                 <div className="how-ai-coaching-works" id='how-ai-coaching-works'>
                     <div className="how-ai-coaching-works-content">
-                        <h3 className="how-ai-coaching-works-title">HOW AI COACHING WORKS</h3>
-                        <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%'}}>
+                        <h3 className="how-ai-coaching-works-title">How AI Business Scaling works</h3>
+                        <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%', fontSize: '1.2rem'}}>
                             Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.<br />
                             We offer a six-month coaching program delivered by Nick and AI coaches.<br />
                             The program is for a group of up to five people.
@@ -327,7 +334,7 @@ function LandingPage() {
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0px'}}>
                             <img src={logo} alt="Logo" className="logo" onClick={() => moveTo('home')}/>
                             <img src={logo} alt="Logo" className="logo-mobile" onClick={() => moveTo('home')}/>
-                            <p style={{color: 'white', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'Palatino Linotype'}}>Threshold Coaching</p>
+                            <p style={{color: 'white', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'Palatino Linotype'}}>Threshold</p>
                         </div>
                         <ul>
                             <li><a className="ai-assistant" href="/dashboard"><span>Client</span> Login</a></li>
@@ -370,8 +377,8 @@ function LandingPage() {
                         <img src={nick1} alt="Nick" className="hero-image" />
                         <img src={nick1Responsive} alt="Nick" className="hero-image-mobile" />
                         <div className="hero-overlay">
-                            <h1 className='hero-title' id="title">Integrated AI-Human Leadership Coaching<br /></h1>
-                            <p className='hero-subtitle'>Accomplish your next level of success and satisfaction:
+                            <h1 className='hero-title' id="title">Integrated AI-Human Business Scaling<br /></h1>
+                            <p className='hero-subtitle'>Founders: Scale your business and along the way accomplish this:
                             </p>
                             <ul className='hero-subtitle'>
                                 <li>Create more time for what matters</li>
@@ -413,7 +420,7 @@ function LandingPage() {
                     <div className='why-coaching' id='coaching'>
                         <div className="coaching-content">
                             <div className="coaching-description">
-                                <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN COACHING?</h3>
+                                <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN BUSINESS SCALING?</h3>
                                 <h2 className="coaching-subtitle">Supercharge your team's effectiveness in a world that is increasingly AI-fueled</h2>
                                 <p className='coaching-text'>
                                     As AI accelerates, what need will there be for human leaders?<br />
@@ -422,10 +429,10 @@ function LandingPage() {
                                     Bloomers are more optimistic, seeing the disruption and taking the view that AI can unlock unprecedented human flourishing.
                                     <br /><br />
                                     I'm a cautious Bloomer: we humans can inspire responsible, sustainable growth, at least during the medium term.<br />
-                                    From chess to fraud detection to dermatology, AI-Human integration has outperformed AI-only or human-only approaches. Similarly, due to recent integrated AI-Human developments can enable greater growth in leaders and teams.<br /><br />
+                                    From chess to fraud detection to dermatology and beyond, AI-Human integration has outperformed AI-only or human-only approaches. Similarly, your business can grow significantly by harnessing the combined power of AI and humanity, rather than just one of these in isolation.<br /><br />
                                     An AI-Human coaching program will help your leaders gain new leadership operating
                                     systems, crossing the threshold to a more effective way of working.<br />
-                                    Participants will gain leadership capabilities and mindsets useful for your increasingly integrated human-AI contexts.
+                                    You will gain leadership capabilities and mindsets useful for scaling your business.
                                 </p>
                             </div>
                             <div className="coaching-card">
@@ -482,7 +489,7 @@ function LandingPage() {
                             </div>
                             <div className="card" style={{'--delay': '3'}}>
                                 <div className="content">
-                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="img"><i className="fas fa-chart-line"></i></div>
                                     <div className="details"> 
                                         <span className="title">Contribution</span>
                                         <p>Add more value to your organization</p>
@@ -491,7 +498,7 @@ function LandingPage() {
                             </div>
                             <div className="card" style={{'--delay': '4'}}>
                                 <div className="content">
-                                    <div className="img"><i className="fas fa-check"></i></div>
+                                    <div className="img"><i className="fas fa-robot"></i></div>
                                     <div className="details"> 
                                         <span className="title">AI</span>
                                         <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
@@ -510,16 +517,17 @@ function LandingPage() {
                         </div>
                         <div className="why-nick-content">
                             <h3 className="why-nick-title">WHY NICK</h3>
-                            <h2 className="why-nick-subtitle">Unlock Your Potential with Personalized Coaching.</h2>
+                            <h2 className="why-nick-subtitle">Unlock your business's potential with personalized, techno-human coaching.</h2>
                             <p className="why-nick-text">
                                 I'm Nick Chatrath.<br />
                                 I'm delighted you're here, because you and I are very similar. <br />
                                 We are both trying to perform as well as we can and have a positive impact on the world around us, while enjoying life.
                                 <br /><br />
-                                I work with leaders who are looking for their next level of success. <br />
-                                I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br /> <br/>
-                                I'm here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>.
-                                I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.  They also appreciate the wide ranges of tools I bring to bear.
+                                I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br/>
+                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. I also deploy over 50 AI operator bots to coach you too, to the extent you want.<br/><br/>
+                                Who benefits most from working with me?  Founders, other leaders and managers and leaders who are looking for their next level of success.<br/>
+                                I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.<br/> 
+                                They also appreciate the wide ranges of tools I bring to bear.
                             </p>
                         </div>
                         <div className="wrapper-mobile">
@@ -584,7 +592,7 @@ function LandingPage() {
                                 <SwiperSlide>
                                     <div className="card">
                                         <div className="content">
-                                            <div className="img"><i className="fas fa-check"></i></div>
+                                            <div className="img"><i className="fas fa-chart-line"></i></div>
                                             <div className="details"> 
                                                 <span className="title">Contribution</span>
                                                 <p>Add more value to your organization</p>
@@ -595,7 +603,7 @@ function LandingPage() {
                                 <SwiperSlide>
                                     <div className="card">
                                         <div className="content">
-                                            <div className="img"><i className="fas fa-check"></i></div>
+                                            <div className="img"><i className="fas fa-robot"></i></div>
                                             <div className="details"> 
                                                 <span className="title">AI</span>
                                                 <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
@@ -624,7 +632,7 @@ function LandingPage() {
 
                     <div className="how-ai-mobile">
                         <div className="how-ai-mobile-content">
-                            <h3 className="how-ai-mobile-title">HOW AI COACHING WORKS</h3>
+                            <h3 className="how-ai-mobile-title">How AI Business Scaling works</h3>
                             <p className="how-ai-mobile-text">
                                 Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.
                                 We offer a six-month coaching program delivered by Nick and AI coaches.
@@ -670,7 +678,7 @@ function LandingPage() {
                     <div className="testimonials-section" id='testimonials'>
                         <div className="testimonials-content">
                             <h3 className="testimonials-title">TESTIMONIALS</h3>
-                            <h2 className="testimonials-subtitle">What Our Clients Say</h2>
+                            <h2 className="testimonials-subtitle">What our clients say</h2>
                             <p className="testimonials-text">
                                 Our clients have experienced significant improvements in their leadership effectiveness and personal development.
                             </p>
@@ -714,7 +722,7 @@ function LandingPage() {
                         </div>
                         <div className="understand-threshold-content" style={{textAlign: 'right'}}>
                             <h3 className="understand-threshold-title">UNDERSTANDING THE THRESHOLD</h3>
-                            <h2 className="understand-threshold-subtitle">What is the Threshold?</h2>
+                            <h2 className="understand-threshold-subtitle">What is the threshold?</h2>
                             <p className="understand-threshold-text">
                             The Threshold (published by Diversion Books) is an inspiring and practical framework for how you can thrive as a leader in the Age of AI, by nurturing the qualities that make you uniquely human.<br />
                                 Available at good book shops
@@ -727,7 +735,7 @@ function LandingPage() {
                     <div className="understand-threshold" id='understand-threshold'>
                         <div className="understand-threshold-content" style={{textAlign: 'left'}}>
                             <h3 className="understand-threshold-title">UNDERSTANDING THE THRESHOLD</h3>
-                            <h2 className="understand-threshold-subtitle">What are the four pathways to the Threshold?</h2>
+                            <h2 className="understand-threshold-subtitle">What are the four pathways to the threshold?</h2>
                             <p className="understand-threshold-text">
                                 As AI accelerates, the most effective human leadership approaches will be the following four pathways:<br /><br />
                                 - <span style={{fontWeight: 'bold', color: 'white'}}>Cultivating stillness:</span> Create spaces where productivity and silence meet<br />
@@ -746,12 +754,12 @@ function LandingPage() {
 
                     <div className="best-coaching-program" id='best-coaching-program'>
                         <div className="best-coaching-program-content">
-                            <h3 className="best-coaching-program-title"> SELECTING THE BEST COACHING PROGRAM</h3>
+                            <h3 className="best-coaching-program-title"> SELECTING THE BEST PARTNER TO SCALE YOUR BUSINESS</h3>
                             <h2 className="best-coaching-program-subtitle">Finding and working with the<br/> <span className="best-coaching-program-subtitle-span">Best Leadership Coaching Program</span></h2>
                             <p className="best-coaching-program-text">
-                                Choosing the best leadership coaching program is a pivotal decision that can redefine the growth, performance and influence of your team. <br/>
-                                The right program doesn't just provide guidance—it empowers you to unlock potential, overcome challenges, and achieve extraordinary results.<br/>
-                                Finding that ideal program requires thoughtful consideration. 
+                                Choosing the best scaling partner is a pivotal decision that can redefine the growth, performance and influence of your business. 
+                                The right partner doesn't just provide guidance—they empower you to unlock potential, overcome challenges, and achieve extraordinary results.
+                                Finding that ideal partner requires thoughtful consideration.
                             </p>
                         </div>
                         <div className="time-line">
@@ -789,7 +797,7 @@ function LandingPage() {
                                     <div className="timeline-content">
                                         <h4><span>3.</span> Research Your Options</h4>
                                         <p>
-                                            Investigate programs with proven results and diverse methodologies.<br/><br/>
+                                            Investigate partners with proven results and diverse methodologies.<br/><br/>
                                             - Seek testimonials from leaders with similar challenges and review the program structure.<br/><br/>
                                             - Does it offer a balance of personalized coaching, group dynamics, and tools for tracking progress?<br/><br/>
                                             Ensure the program aligns with your values and leadership style, including the integration of human and AI-driven coaching approaches.
@@ -800,7 +808,7 @@ function LandingPage() {
                                     <div className="timeline-content">
                                         <h4><span>4.</span> Move Forward</h4>
                                         <p>
-                                            Once you've shortlisted programs, schedule meetings with potential providers.<br/><br/>
+                                            Once you've shortlisted partners, schedule meetings with potential providers.<br/><br/>
                                             Prepare questions, such as:<br/><br/>
                                             - How do you tailor coaching to individual and team dynamics?<br/><br/>
                                             - What tools or methods do you use to track and measure progress?<br/><br/>
@@ -813,10 +821,9 @@ function LandingPage() {
                                 </div>
                                 <div className="timeline-element left">
                                     <div className="timeline-content">
-                                        <h4><span>5.</span> Why Threshold Coaching Stands Above the Rest</h4>
+                                        <h4><span>5.</span> Why the Threshold AI compounding flywheel stands above the rest</h4>
                                         <p>
-                                            At Threshold Coaching, we combine personalized human insight with the power of AI to
-                                            deliver a transformational group coaching experience:
+                                            At Threshold, we combine personalized human insight with the power of AI to deliver a transformational group experience:<br/><br/>
                                             - <span style={{fontWeight: 'bold'}}>Holistic Leadership Mastery:</span> Our unique program blends decades of leadership
                                             expertise with innovative methods to meet the demands of modern leadership – at the
                                             levels of lead self, lead others and lead organization.<br/><br/>
@@ -825,9 +832,8 @@ function LandingPage() {
                                             mindsets.<br/><br/>
                                             - <span style={{fontWeight: 'bold'}}>Real, Measurable Results:</span> Whether your challenge is time, team, money, or mindset,
                                             we deliver coaching that creates lasting impact.<br/><br/>
-                                            Experience coaching that's bold, dynamic, and designed to propel you forward. If you're
-                                            looking for reliable, inspiring, innovative coaching program that will help you deliver, you've
-                                            found your match in Threshold Coaching.
+                                            Experience an approach to business scaling that's bold, dynamic, and designed to propel you forward.<br/>
+                                            If you're looking for reliable, inspiring, innovative partner that will help you deliver, you've found your match at Threshold.
                                         </p>
                                     </div>
                                 </div>
@@ -841,7 +847,7 @@ function LandingPage() {
                         <div className="responsible-ai-content">
                             <h3 className="responsible-ai-title">RESPONSIBLE AI</h3>
                             <p className="responsible-ai-text">
-                                At Threshold Coaching, we believe in the transformative potential of AI to empower leaders while keeping humanity at the heart of every interaction. Our commitment to responsible AI ensures that our coaching solutions are not only innovative but also ethical, safe, and inclusive.
+                                At Threshold, we believe in the transformative potential of AI to empower leaders while keeping humanity at the heart of every interaction. Our commitment to responsible AI ensures that our coaching solutions are not only innovative but also ethical, safe, and inclusive.
                                 For example:
                             </p>
                             <div className="responsible-ai-cards">
