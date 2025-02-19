@@ -39,22 +39,28 @@
 }
 
 .assistant-description {
-    font-size: 14px;
+    font-size: 14px !important;
     color: rgb(203, 203, 203);
 } 
 
 @media (max-width: 768px) {
+
     .assistant-card {
-        width: 250px;
+        width: 150px;
         height: auto;
+        padding: 10px;
     }
 
     .assistant-icon {
-        width: 200px;
-        height: 100px;
+        width: 120px;
+        height: 70px;
     }
 
     .assistant-name {
-        font-size: 14px;
+        font-size: 14px !important;
+    }
+
+    .assistant-description {
+        font-size: 10px !important;
     }
 }

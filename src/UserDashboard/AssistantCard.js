@@ -114,7 +114,7 @@ function AssistantCard({ assistant, user }) {
                 <img className="assistant-icon" src={getImageSrc(assistant.group)} alt={assistant.name} />
                 <div className="assistant-info">
                     <h2 className="assistant-name">{assistant.name}</h2>
-                    <p className="assistant-description">{assistant.description}</p>
+                    <p className="assistant-description" >{assistant.description}</p>
                 </div>
             </div>
             {showPopup && (
