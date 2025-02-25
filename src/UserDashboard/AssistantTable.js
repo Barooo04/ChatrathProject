@@ -78,6 +78,8 @@ function AssistantTable({ assistant, user }) {
                     return "rgb(90, 196, 87)";
                 case "leadothers":
                     return "rgb(94, 27, 136)";
+                case "Tailored":
+                    return "rgb(247, 107, 107)";
                 default:
                     return "rgb(78, 78, 78)"; // colore di default
             }

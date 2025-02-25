@@ -147,7 +147,7 @@ function LandingPage() {
 
     const testimonialsData = [
         {
-            name: "Karen",
+            name: "Luna",
             role: "Executive Director",
             description: "Before working with Nick, I was highly logical and driven but I didn't show emotion much and struggled to connect with my team. I needed to be more flexible, and just be more human. After just two hours of coaching, my team became more open, engagement deepened, and our overall trajectory improved. I now lead with both logic and emotion—creating stronger bonds and better results. In just two months, our departmental ARR doubled, and I attribute $2–3M of this directly to Nick's leadership coaching input.",
             location: "Asia-Pacific",
