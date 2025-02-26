@@ -282,6 +282,18 @@
         text-align: center;
     }
 
+    .why-nick-text-mobile {
+        display:inline;
+        font-size: 0.8rem; /* Dimensione del testo */
+        color: rgb(173, 173, 173); /* Colore del testo */
+        text-align: center; /* Giustifica il testo */
+        margin-top: 10px; /* Spazio sopra il testo */
+    }
+
+    .why-nick-text {
+        display: none;
+    }
+
     .wrapper {
         display: none;
     }
@@ -297,9 +309,13 @@
     }
 
     .myCardSwiper .swiper-slide {
-        background: rgba(0, 0, 0, 0.25);
+        background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
         -webkit-backdrop-filter: blur(8px);
+    }
+
+    .myCardSwiper .swiper-button-next, .myCardSwiper .swiper-button-prev {
+        color: white !important;
     }
 
     .wrapper-mobile .card {
@@ -321,7 +337,7 @@
         align-items: center;
         justify-content: center;
         height: 100%;
-        gap: 5vh;
+        gap: 2.5vh;
     }
 
     .wrapper-mobile .card .img {
@@ -340,7 +356,24 @@
 
     .card .details {
         margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }   
+
+    .wrapper-mobile .card .title-card-mobile {
+        background: linear-gradient(45deg, #1b49ff, white, #e0ff33); /* Gradiente lineare */
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .wrapper-mobile .card .text-card-mobile {
+
+        color: white;
+    }
 
     .how-ai-coaching-works {
         margin-top: 0;
@@ -482,7 +515,12 @@
     }
 
     .testimonial-card {
-        padding: 100px 50px;
+        padding: 50px 40px;
+    }
+
+    .myTestimonialsSwiper .swiper-button-next,
+    .myTestimonialsSwiper .swiper-button-prev {
+        font-size: 0.5rem !important;
     }
     
     .understand-threshold-title {

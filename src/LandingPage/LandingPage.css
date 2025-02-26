@@ -490,6 +490,10 @@ video {
     margin-top: 10px; /* Spazio sopra il testo */
 }
 
+.why-nick-text-mobile {
+    display: none;
+}
+
 .wrapper {
     width: 30%; /* Larghezza per lo scroller */
     height: 80vh; /* Altezza per occupare tutto il container */

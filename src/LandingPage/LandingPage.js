@@ -529,6 +529,17 @@ function LandingPage() {
                                 I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.<br/> 
                                 They also appreciate the wide ranges of tools I bring to bear.
                             </p>
+                            <p className="why-nick-text-mobile">
+                                I'm Nick Chatrath.<br />
+                                I'm delighted you're here, because you and <br/> I are very similar. <br />
+                                We are both trying to perform as well as we can and have a positive impact on the world around us, <br/>while enjoying life.
+                                <br /><br />
+                                I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br/>
+                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. I also deploy over 50 AI operator bots to coach you too, to the extent you want.<br/><br/>
+                                Who benefits most from working with me?  Founders, other leaders and managers and leaders who are looking for their next level of success.<br/>
+                                I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.<br/> 
+                                They also appreciate the wide ranges of tools <br/> I bring to bear.
+                            </p>
                         </div>
                         <div className="wrapper-mobile">
                             <Swiper
@@ -550,8 +561,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-star"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Time</span>
-                                                <p>Save time and create energy for what matters most</p>
+                                                <span className="title-card-mobile">Time</span>
+                                                <p className="text-card-mobile">Save time and create energy for what matters most</p>
                                             </div>
                                         </div>
                                     </div>
@@ -561,8 +572,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-rocket"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Team</span>
-                                                <p>Improve team performance</p>
+                                                <span className="title-card-mobile">Team</span>
+                                                <p className="text-card-mobile">Improve team performance</p>
                                             </div>
                                         </div>
                                     </div>
@@ -572,8 +583,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-brain"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Mindset</span>
-                                                <p>Address mindsets such as being too controlling, protective or people-pleasing</p>
+                                                <span className="title-card-mobile">Mindset</span>
+                                                <p className="text-card-mobile">Address mindsets such as being too controlling, protective or people-pleasing</p>
                                             </div>
                                         </div>
                                     </div>
@@ -583,8 +594,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-cogs"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Purpose</span>
-                                                <p>Connect your work with your purpose</p>
+                                                <span className="title-card-mobile">Purpose</span>
+                                                <p className="text-card-mobile">Connect your work with your purpose</p>
                                             </div>
                                         </div>
                                     </div>
@@ -594,8 +605,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-chart-line"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Contribution</span>
-                                                <p>Add more value to your organization</p>
+                                                <span className="title-card-mobile">Contribution</span>
+                                                <p className="text-card-mobile">Add more value to your organization</p>
                                             </div>
                                         </div>
                                     </div>
@@ -605,8 +616,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-robot"></i></div>
                                             <div className="details"> 
-                                                <span className="title">AI</span>
-                                                <p>Leverage always-on AI coaches, including a custom AI coach only for you</p>
+                                                <span className="title-card-mobile">AI</span>
+                                                <p className="text-card-mobile">Leverage always-on AI coaches, including a custom AI coach only for you</p>
                                             </div>
                                         </div>
                                     </div>
@@ -616,8 +627,8 @@ function LandingPage() {
                                         <div className="content">
                                             <div className="img"><i className="fas fa-check"></i></div>
                                             <div className="details"> 
-                                                <span className="title">Integrated</span>
-                                                <p>Benefit from LLMs configured via human-in-the-loop coding and training</p>
+                                                <span className="title-card-mobile">Integrated</span>
+                                                <p className="text-card-mobile">Benefit from LLMs configured via human-in-the-loop coding and training</p>
                                             </div>
                                         </div>
                                     </div>
