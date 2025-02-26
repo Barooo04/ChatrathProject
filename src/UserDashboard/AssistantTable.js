@@ -71,15 +71,15 @@ function AssistantTable({ assistant, user }) {
         const getBackgroundColor = (group) => {
             switch (group) {
                 case "overarching":
-                    return "rgb(208, 214, 36)";
+                    return "linear-gradient(to right, rgb(208, 214, 36), transparent, transparent, transparent, transparent, rgb(208, 214, 36))";
                 case "leadself":
-                    return "rgb(107, 149, 247)";
+                    return "linear-gradient(to right, rgb(107, 149, 247), transparent, transparent, transparent, transparent, rgb(107, 149, 247))";
                 case "leadorganization":
-                    return "rgb(90, 196, 87)";
+                    return "linear-gradient(to right, rgb(90, 196, 87), transparent, transparent, transparent, transparent, rgb(90, 196, 87))";
                 case "leadothers":
-                    return "rgb(94, 27, 136)";
-                case "Tailored":
-                    return "rgb(247, 107, 107)";
+                    return "linear-gradient(to right, rgb(94, 27, 136), transparent, transparent, transparent, transparent, rgb(94, 27, 136))";
+                case "tailored":
+                    return "linear-gradient(to right, rgba(27, 73, 255, 1), rgba(224, 255, 51, 1))";
                 default:
                     return "rgb(78, 78, 78)"; // colore di default
             }
@@ -91,7 +91,7 @@ function AssistantTable({ assistant, user }) {
                 key={assistant.id} 
                 onClick={handleRowClick}
                 className="assistant-row"
-                style={{ background: `linear-gradient(to right, ${getBackgroundColor(assistant.group)}, transparent, transparent, transparent, transparent, ${getBackgroundColor(assistant.group)})` }}
+                style={{ background: getBackgroundColor(assistant.group) }}
             >
                 <td>{assistant.name}</td>
                 <td>{assistant.description}</td>

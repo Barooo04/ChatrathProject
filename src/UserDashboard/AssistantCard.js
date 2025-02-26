@@ -7,7 +7,7 @@ import leadself from "../Images/IconCard/leadself.png";
 import leadorganization from "../Images/IconCard/leadorganization.png";
 import leadothers from "../Images/IconCard/leadothers.png";
 import overarching from "../Images/IconCard/overarching.png";
-
+import tailored from "../Images/IconCard/tailored.png";
 
 function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
@@ -84,8 +84,8 @@ function AssistantCard({ assistant, user }) {
                 return "rgb(90, 196, 87)";
             case "leadothers":
                 return "rgb(94, 27, 136)";
-            case "Tailored":
-                return "rgb(247, 107, 107)";
+            case "tailored":
+                return "linear-gradient(45deg, rgba(27, 73, 255, 1), rgba(224, 255, 51, 1))";
             default:
                 return "rgb(78, 78, 78)"; // colore di default
         }
@@ -101,6 +101,8 @@ function AssistantCard({ assistant, user }) {
                 return leadorganization;
             case "leadothers":
                 return leadothers;
+            case "tailored":
+                return tailored;
             default:
                 return ""; // colore di default
         }
@@ -111,7 +113,7 @@ function AssistantCard({ assistant, user }) {
             <div
                 className="assistant-card"
                 onClick={handleCardClick}
-                style={{ backgroundColor: getBackgroundColor(assistant.group) }}
+                style={{ background: getBackgroundColor(assistant.group) }}
             >
                 <img className="assistant-icon" src={getImageSrc(assistant.group)} alt={assistant.name} />
                 <div className="assistant-info">
