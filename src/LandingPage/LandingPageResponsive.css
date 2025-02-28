@@ -304,14 +304,13 @@
     }
 
     .myCardSwiper {
-        height: auto;
+        height: 50vh;
         z-index: 100;
+        background-color: transparent !important;
     }
 
     .myCardSwiper .swiper-slide {
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
-        -webkit-backdrop-filter: blur(8px);
+        background-color: transparent !important;
     }
 
     .myCardSwiper .swiper-button-next, .myCardSwiper .swiper-button-prev {
@@ -320,15 +319,17 @@
 
     .wrapper-mobile .card {
         background-color: transparent;
-        height: 100%;
         display: flex;
         align-items: center;
-        padding: 40px; 
+        padding: 20px; 
         opacity: 1;
         pointer-events: none;
         justify-content: space-between;
         animation: none;
         animation-delay: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px); /* Aggiunge un effetto blur allo sfondo */
+        -webkit-backdrop-filter: blur(8px);
     }
 
     .wrapper-mobile .card .content {
@@ -516,6 +517,16 @@
 
     .testimonial-card {
         padding: 50px 40px;
+    }
+
+    .myTestimonialsSwiper {
+        height: 100vh !important;
+    }
+
+    .testimonial-card {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+
     }
 
     .myTestimonialsSwiper .swiper-button-next,
