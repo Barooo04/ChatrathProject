@@ -382,7 +382,7 @@
     }
 
     .horizontal-scroll-section, .horizontal-scroll-overlay video {
-        display: none;
+        display: none !important;
     }
 
     .how-ai-mobile {

@@ -346,7 +346,7 @@ function LandingPage() {
                         
                                     <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why integrated AI-Human coaching</p>
                                     <p className='menu-item' onClick={() => { moveTo('nick'); setIsMenuOpen(false); }}>2. Why Nick</p> 
-                                    <p className='menu-item' onClick={() => { moveTo('how-ai-coaching-works'); setIsMenuOpen(false); }}>3. How AI coaching works</p>
+                                    <p className='menu-item' onClick={() => { moveTo('how-ai-coaching-works'); setIsMenuOpen(false); }}>3. How AI Business Scaling works</p>
                                     <p className='menu-item' onClick={() => { moveTo('testimonials'); setIsMenuOpen(false); }}>4. Testimonials</p>
                                     <p className='menu-item' onClick={() => { moveTo('understand-threshold'); setIsMenuOpen(false); }}>5. Understanding The Threshold</p>
                                     <p className='menu-item' onClick={() => { moveTo('best-coaching-program'); setIsMenuOpen(false); }}>6. Selecting the best coaching program</p>   
