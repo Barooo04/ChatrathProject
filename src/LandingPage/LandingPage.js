@@ -217,7 +217,7 @@ function LandingPage() {
             <section ref={targetRef} className="horizontal-scroll-section">
                     <div className="horizontal-scroll-overlay"></div>
 
-                <video autoPlay loop muted>
+                <video autoPlay loop muted preload='none'>
                     <source src={bg3} type="video/mp4" />
                     Il tuo browser non supporta i video.
                 </video>
