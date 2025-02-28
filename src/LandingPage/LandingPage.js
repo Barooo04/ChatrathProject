@@ -213,11 +213,16 @@ function LandingPage() {
         
         const x = useTransform(scrollYProgress, [0, 1], ["60%", "-30%"]);
         
+        // Funzione per rilevare se l'utente è su un dispositivo mobile
+        const isMobile = () => {
+            return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        };
+
         return (
             <section ref={targetRef} className="horizontal-scroll-section">
                     <div className="horizontal-scroll-overlay"></div>
 
-                <video autoPlay loop muted preload='none'>
+                <video loop muted {...(!isMobile() && { autoPlay: true })}>
                     <source src={bg3} type="video/mp4" />
                     Il tuo browser non supporta i video.
                 </video>
