@@ -381,7 +381,7 @@
         padding-top: 0;
     }
 
-    .horizontal-scroll-section, .horizontal-scroll-overlay video {
+    .horizontal-scroll-section, .horizontal-scroll-section video {
         display: none !important;
     }
 
