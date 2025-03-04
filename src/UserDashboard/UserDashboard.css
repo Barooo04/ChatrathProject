@@ -324,5 +324,55 @@
     color: black;
 }
 
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.assistant-card.tailored {
+    background: linear-gradient(
+        -45deg,
+        rgba(27, 73, 255, 0.8),
+        rgba(224, 255, 51, 0.8),
+        rgba(27, 73, 255, 0.8),
+        rgba(224, 255, 51, 0.8)
+    );
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.assistant-card.tailored::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 70%
+    );
+    animation: rotate 7s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 
