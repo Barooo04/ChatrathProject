@@ -84,6 +84,12 @@ function AssistantCard({ assistant, user }) {
                 return "rgb(90, 196, 87)";
             case "leadothers":
                 return "rgb(94, 27, 136)";
+            case "productmarketfit":
+                return "rgb(255, 87, 51)";  // Arancione acceso
+            case "growthengine":
+                return "rgb(147, 51, 255)";  // Viola brillante
+            case "scaling":
+                return "rgb(51, 255, 189)";  // Turchese
             case "tailored":
                 return "linear-gradient(45deg, rgba(27, 73, 255, 1), rgba(224, 255, 51, 1))";
             default:
