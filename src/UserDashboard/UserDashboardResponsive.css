@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .dashboard-container {
         background: linear-gradient(to bottom, gray, #000000, gray, #000000);
     }
@@ -47,5 +47,38 @@
         background-color: rgba(1, 1, 1, 0.7); /* Sfondo più scuro ma ancora semi-trasparente */
     }
 
+    .legend-container {
+        display: none;
+    }
+
+    .legend-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 90%;
+        margin-left: 5%;
+        background-color: rgba(1, 1, 1, 0.7);
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        margin-bottom: 10px;
+    }   
+
+    .legend-mobile-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }   
+
+    .legend-mobile-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }   
+
+    .legend-mobile-text {
+        font-size: 12px;
+    }   
+    
     
 }

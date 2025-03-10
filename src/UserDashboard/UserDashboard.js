@@ -174,6 +174,37 @@ function UserDashboard({ user, onLogout }) {
                     </div>
                 </div>
             </div>
+
+            <div className="legend-mobile">
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(208, 214, 36)" }}></div>
+                    <span className="legend-mobile-text">Start here: Onboarding</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(255, 87, 51)" }}></div>
+                    <span className="legend-mobile-text">Find product-market fit</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(147, 51, 255)" }}></div>
+                    <span className="legend-mobile-text">Design a growth engine</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(51, 255, 189)" }}></div>
+                    <span className="legend-mobile-text">Scale with intention</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(107, 149, 247)" }}></div>
+                    <span className="legend-mobile-text">Lead Self</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(94, 27, 136)" }}></div>
+                    <span className="legend-mobile-text">Lead Others</span>
+                </div>
+                <div className="legend-mobile-item">
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(90, 196, 87)" }}></div>
+                    <span className="legend-mobile-text">Lead Organization</span>
+                </div>
+            </div>
             <input 
                 type="text" 
                 placeholder="Search assistants..." 

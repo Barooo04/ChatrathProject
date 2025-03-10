@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .chat-container {
         padding: 10px;
         background: linear-gradient(to bottom, gray, #000000, gray, #000000);
