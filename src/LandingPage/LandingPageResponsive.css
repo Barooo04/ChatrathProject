@@ -450,8 +450,13 @@
         padding: 0;
     }
 
+    .testimonials-section {
+        height: 120vh !important;
+    }
+
     .testimonials-content {
         width: 100%;
+        
     }
 
     .testimonial-card {
