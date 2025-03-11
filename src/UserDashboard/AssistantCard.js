@@ -120,6 +120,7 @@ function AssistantCard({ assistant, user }) {
                 className={`assistant-card ${assistant.group === 'tailored' ? 'tailored' : ''}`}
                 onClick={handleCardClick}
                 style={{ backgroundColor: assistant.group !== 'tailored' ? getBackgroundColor(assistant.group) : 'transparent' }}
+                id={assistant.group}
             >
                 <img className="assistant-icon" src={getImageSrc(assistant.group)} alt={assistant.name} />
                 <div className="assistant-info">

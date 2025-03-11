@@ -92,6 +92,7 @@ function AssistantTable({ assistant, user }) {
     return (
         <>
             <tr 
+                id={assistant.group}
                 key={assistant.id} 
                 onClick={handleRowClick}
                 className="assistant-row"
