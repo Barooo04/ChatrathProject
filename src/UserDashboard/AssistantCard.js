@@ -8,6 +8,9 @@ import leadorganization from "../Images/IconCard/leadorganization.png";
 import leadothers from "../Images/IconCard/leadothers.png";
 import overarching from "../Images/IconCard/overarching.png";
 import tailored from "../Images/IconCard/tailored.png";
+import growthengine from "../Images/IconCard/growthengine.png";
+import scaling from "../Images/IconCard/scaling.png";
+import productmarketfit from "../Images/IconCard/productmarketfit.png";
 
 function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
@@ -79,17 +82,17 @@ function AssistantCard({ assistant, user }) {
             case "overarching":
                 return "rgb(208, 214, 36)";
             case "leadself":
-                return "rgb(107, 149, 247)";
+                return "rgb(123, 155, 231)";
             case "leadorganization":
                 return "rgb(90, 196, 87)";
             case "leadothers":
-                return "rgb(94, 27, 136)";
+                return "rgb(165, 86, 226)";
             case "productmarketfit":
                 return "rgb(255, 87, 51)";  // Arancione acceso
             case "growthengine":
-                return "rgb(147, 51, 255)";  // Viola brillante
+                return "rgb(251, 142, 209)";  // Viola brillante
             case "scaling":
-                return "rgb(51, 255, 189)";  // Turchese
+                return "rgb(101, 235, 204)";  // Turchese
             case "tailored":
                 return "linear-gradient(45deg, rgba(27, 73, 255, 1), rgba(224, 255, 51, 1))";
             default:
@@ -107,6 +110,12 @@ function AssistantCard({ assistant, user }) {
                 return leadorganization;
             case "leadothers":
                 return leadothers;
+            case "productmarketfit":
+                return productmarketfit;
+            case "growthengine":
+                return growthengine;
+            case "scaling":
+                return scaling;
             case "tailored":
                 return tailored;
             default:

@@ -163,11 +163,11 @@ function UserDashboard({ user, onLogout }) {
                         <span className="legend-text">Find product-market fit</span>
                     </div>
                     <div className="legend-item" onClick={() => scrollToAssistantType('growthengine')} style={{ cursor: 'pointer' }}>
-                        <div className="legend-dot" style={{ backgroundColor: "rgb(147, 51, 255)" }}></div>
+                        <div className="legend-dot" style={{ backgroundColor: "rgb(251, 142, 209)" }}></div>
                         <span className="legend-text">Design a growth engine</span>
                     </div>
                     <div className="legend-item" onClick={() => scrollToAssistantType('scaling')} style={{ cursor: 'pointer' }}>
-                        <div className="legend-dot" style={{ backgroundColor: "rgb(51, 255, 189)" }}></div>
+                        <div className="legend-dot" style={{ backgroundColor: "rgb(101, 235, 204)" }}></div>
                         <span className="legend-text">Scale with intention</span>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ function UserDashboard({ user, onLogout }) {
                         <span className="legend-text">Lead Self</span>
                     </div>
                     <div className="legend-item" onClick={() => scrollToAssistantType('leadothers')} style={{ cursor: 'pointer' }}>
-                        <div className="legend-dot" style={{ backgroundColor: "rgb(94, 27, 136)" }}></div>
+                        <div className="legend-dot" style={{ backgroundColor: "rgb(165, 86, 226)" }}></div>
                         <span className="legend-text">Lead Others</span>
                     </div>
                     <div className="legend-item" onClick={() => scrollToAssistantType('leadorganization')} style={{ cursor: 'pointer' }}>
@@ -197,11 +197,11 @@ function UserDashboard({ user, onLogout }) {
                     <span className="legend-mobile-text">Find product-market fit</span>
                 </div>
                 <div className="legend-mobile-item" onClick={() => scrollToAssistantType('growthengine')} style={{ cursor: 'pointer' }}>
-                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(147, 51, 255)" }}></div>
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(251, 142, 209)" }}></div>
                     <span className="legend-mobile-text">Design a growth engine</span>
                 </div>
                 <div className="legend-mobile-item" onClick={() => scrollToAssistantType('scaling')} style={{ cursor: 'pointer' }}>
-                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(51, 255, 189)" }}></div>
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(101, 235, 204)" }}></div>
                     <span className="legend-mobile-text">Scale with intention</span>
                 </div>
                 <div className="legend-mobile-item" onClick={() => scrollToAssistantType('leadself')} style={{ cursor: 'pointer' }}>
@@ -209,7 +209,7 @@ function UserDashboard({ user, onLogout }) {
                     <span className="legend-mobile-text">Lead Self</span>
                 </div>
                 <div className="legend-mobile-item" onClick={() => scrollToAssistantType('leadothers')} style={{ cursor: 'pointer' }}>
-                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(94, 27, 136)" }}></div>
+                    <div className="legend-mobile-dot" style={{ backgroundColor: "rgb(165, 86, 226)" }}></div>
                     <span className="legend-mobile-text">Lead Others</span>
                 </div>
                 <div className="legend-mobile-item" onClick={() => scrollToAssistantType('leadorganization')} style={{ cursor: 'pointer' }}>

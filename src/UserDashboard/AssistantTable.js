@@ -77,13 +77,15 @@ function AssistantTable({ assistant, user }) {
                 case "leadorganization":
                     return "linear-gradient(to right, rgb(90, 196, 87), transparent, transparent, transparent, transparent, rgb(90, 196, 87))";
                 case "leadothers":
-                    return "linear-gradient(to right, rgb(94, 27, 136), transparent, transparent, transparent, transparent, rgb(94, 27, 136))";
+                    return "linear-gradient(to right, rgb(165, 86, 226), transparent, transparent, transparent, transparent, rgb(165, 86, 226))";
                 case "productmarketfit":
                     return "linear-gradient(to right, rgb(255, 87, 51), transparent, transparent, transparent, transparent, rgb(255, 87, 51))";
                 case "growthengine":
-                    return "linear-gradient(to right, rgb(147, 51, 255), transparent, transparent, transparent, transparent, rgb(147, 51, 255))";
+                    return "linear-gradient(to right, rgb(251, 142, 209), transparent, transparent, transparent, transparent, rgb(251, 142, 209))";
                 case "scaling":
-                    return "linear-gradient(to right, rgb(51, 255, 189), transparent, transparent, transparent, transparent, rgb(51, 255, 189))";
+                    return "linear-gradient(to right, rgb(101, 235, 204), transparent, transparent, transparent, transparent, rgb(101, 235, 204))";
+                    case "tailored":
+                        return "linear-gradient(to right, rgba(27, 73, 255, 1), rgba(224, 255, 51, 1))";
                 default:
                     return "rgb(78, 78, 78)"; // colore di default
             }

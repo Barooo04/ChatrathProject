@@ -389,6 +389,10 @@
     border-radius: 10px;
 }
 
+.legend-mobile {
+    display: none;
+}
+
 .legend-item {
     display: flex;
     align-items: center;

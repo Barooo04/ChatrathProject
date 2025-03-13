@@ -40,9 +40,13 @@
 
 .assistant-description {
     font-size: 14px !important;
-    color: rgb(203, 203, 203);
+    color: rgb(75, 74, 74) !important;
     margin-top: 10px;
-} 
+}
+
+#tailored .assistant-description {
+    color: rgb(128, 128, 128) !important;
+}
 
 @media (max-width: 1000px) {
 
