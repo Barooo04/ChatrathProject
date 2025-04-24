@@ -231,7 +231,7 @@ function LandingPage() {
             <section ref={targetRef} className="horizontal-scroll-section">
                     <div className="horizontal-scroll-overlay"></div>
 
-                <video loop muted {...(!isMobile() && { autoPlay: true })}>
+                <video loop muted {...(!isMobile() && { autoPlay: true })} style={{ display: isMobile() ? 'none' : 'block' }}>
                     <source src={bg3} type="video/mp4" />
                     Il tuo browser non supporta i video.
                 </video>
