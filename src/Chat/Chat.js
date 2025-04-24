@@ -237,12 +237,18 @@ function Chat() {
             </div>
             <div className="input-container">
                 <form onSubmit={handleSubmit} className="input-form">
-                    <input
-                        type="text"
+                    <textarea
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
                         placeholder="Type a message..."
                         className="message-input"
+                        rows="2"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                                e.preventDefault();
+                                handleSubmit(e);
+                            }
+                        }}
                     />
                     <button className="send-button" onClick={handleSubmit}>Send</button>
                 </form>

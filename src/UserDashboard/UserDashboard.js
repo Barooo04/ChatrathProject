@@ -45,7 +45,7 @@ function UserDashboard({ user, onLogout }) {
             } finally {
                 setTimeout(() => {
                     setIsLoading(false);
-                }, 1500);
+                }, 600);
             }
         };
 

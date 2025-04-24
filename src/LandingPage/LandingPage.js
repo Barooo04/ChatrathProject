@@ -46,10 +46,10 @@ function LandingPage() {
     const [selectedStep, setSelectedStep] = useState(null);
     
     useEffect(() => {
-        // Simula un caricamento di 2 secondi
+        // Simula un caricamento di 0.5 secondi
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1500);
+        }, 600);
 
         return () => clearTimeout(timer);
     }, []);
@@ -76,12 +76,21 @@ function LandingPage() {
 
     const moveTo = (id, offset = 100) => {
         setTimeout(() => {
-            const section = document.getElementById(id);
+            let targetId = id;
+            
+            // Gestione speciale per how-ai-coaching-works
+            if (id === 'how-ai-coaching-works') {
+                // Controlla se lo schermo è mobile o tablet (larghezza minore di 1024px)
+                const isMobileOrTablet = window.innerWidth < 1024;
+                targetId = isMobileOrTablet ? 'how-ai-coaching-works2' : 'how-ai-coaching-works';
+            }
+
+            const section = document.getElementById(targetId);
             if (section) {
                 const scrollPromise = new Promise((resolve) => {
                     let scrollPosition;
 
-                    if (id === 'responsible-ai') {
+                    if (targetId === 'responsible-ai') {
                         scrollPosition = document.body.scrollHeight - window.innerHeight;
                     } else {
                         const rect = section.getBoundingClientRect();
@@ -95,7 +104,7 @@ function LandingPage() {
 
                     // Funzione per controllare se lo scroll è completato
                     const checkIfScrollFinished = () => {
-                        if (id === 'responsible-ai') {
+                        if (targetId === 'responsible-ai') {
                             // Controlla se siamo in fondo alla pagina
                             if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
                                 resolve();
@@ -646,7 +655,7 @@ function LandingPage() {
 
                     <HorizontalScrollCarousel />
 
-                    <div className="how-ai-mobile">
+                    <div className="how-ai-mobile" id='how-ai-coaching-works2'>
                         <div className="how-ai-mobile-content">
                             <h3 className="how-ai-mobile-title">How AI Business Scaling works</h3>
                             <p className="how-ai-mobile-text">
@@ -732,7 +741,7 @@ function LandingPage() {
                         </Swiper>
                     </div>
 
-                    <div className="understand-threshold" id='understand-threshold'>
+                    <div className="understand-threshold" id='understand-threshold-1'>
                         <div className="understand-threshold-image">
                             <img src={book} alt="Understand the Threshold" />
                         </div>
@@ -748,7 +757,7 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="understand-threshold" id='understand-threshold'>
+                    <div className="understand-threshold" id='understand-threshold-2'>
                         <div className="understand-threshold-content" style={{textAlign: 'left'}}>
                             <h3 className="understand-threshold-title">UNDERSTANDING THE THRESHOLD</h3>
                             <h2 className="understand-threshold-subtitle">What are the four pathways to the threshold?</h2>

@@ -9,11 +9,11 @@ function Loader() {
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress((prev) => {
-                if (prev < 100) return prev + 1;
+                if (prev < 98) return prev + 2; // Incremento fino a 98
                 clearInterval(interval);
-                return 100;
+                return 100; // Forza il valore a 100 quando raggiunge 98
             });
-        }, 10); // Incremento della percentuale ogni 20ms
+        }, 10); // Incremento ogni 10ms
 
         return () => clearInterval(interval);
     }, []);
@@ -21,10 +21,10 @@ function Loader() {
     useEffect(() => {
         if (progress === 100) {
             const timer = setTimeout(() => {
-                setIsVisible(false); // Rimuove il loader dopo 1 secondo
-            }, 1000);
+                setIsVisible(false); // Ridotto il delay dopo il completamento
+            }, 100); // Ridotto il delay dopo il completamento
 
-            return () => clearTimeout(timer); // Pulisce il timer al dismount del componente
+            return () => clearTimeout(timer);
         }
     }, [progress]);
 

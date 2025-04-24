@@ -203,7 +203,7 @@
     }
 
     .coaching-card {
-        width: 80%;
+        width: 50%;
     }
 
     .why-nick {
@@ -451,7 +451,7 @@
     }
 
     .testimonials-section {
-        height: 120vh !important;
+        height: 80vh !important;
     }
 
     .testimonials-content {
@@ -464,7 +464,7 @@
     }
 
     .myTestimonialsSwiper {
-        height: 100vh !important;
+        height: 30vh !important;
     }
 
     .testimonial-card {
@@ -539,7 +539,6 @@
 
     .responsible-ai {
         margin-top: 20vh;
-        margin-bottom: 50vh;
     }
 
     .responsible-ai-overlay {
@@ -577,6 +576,71 @@
 
     .footer-privacy-credits {
         font-size: 0.8rem;
+    }
+
+    .understand-threshold {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .understand-threshold-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0;
+        order: 2;
+    }
+
+    .understand-threshold-content {
+        width: 100%;
+        text-align: center !important;
+        order: 1;
+    }
+
+    .understand-threshold-image-mobile {
+        display: none;
+    }
+
+    .understand-threshold-title {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .understand-threshold-subtitle {
+        text-align: center;
+    }
+
+    .understand-threshold-text {
+        text-align: center;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .coaching-card {
+        width: 80%;
+    }
+
+    .testimonials-section {
+        height: 90vh !important;
+    }
+
+    .myTestimonialsSwiper {
+        height: 80vh !important;
+    }
+
+    .responsible-ai {
+        margin-bottom: 20vh;
+    }
+
+    .responsible-ai-overlay {
+        display: none;
+    }
+
+    .responsible-ai-title {
+        color: #e0ff33;
     }
 }
 

@@ -86,7 +86,7 @@ function AdminDashboard({ user, onLogout }) {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 1500);
+        }, 600);
     }, []);
 
     useEffect(() => {
