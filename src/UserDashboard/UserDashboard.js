@@ -19,6 +19,7 @@ function UserDashboard({ user, onLogout }) {
     const [successMessage, setSuccessMessage] = useState('');
     const [viewMode, setViewMode] = useState('card');
     const [searchTerm, setSearchTerm] = useState('');
+    const [useAnthropic, setUseAnthropic] = useState(false);
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
@@ -51,6 +52,19 @@ function UserDashboard({ user, onLogout }) {
 
         fetchAssistants();
     }, [user.id]);
+
+    useEffect(() => {
+        const savedService = localStorage.getItem('chatService');
+        if (savedService) {
+            setUseAnthropic(savedService === 'anthropic');
+        }
+    }, []);
+
+    const handleServiceChange = (service) => {
+        const isAnthropic = service === 'anthropic';
+        setUseAnthropic(isAnthropic);
+        localStorage.setItem('chatService', service);
+    };
 
     const handlePasswordChange = async () => {
         // Resetta i messaggi
@@ -128,6 +142,20 @@ function UserDashboard({ user, onLogout }) {
             <nav className="dashboard-nav">
                 <h1 className="dashboard-nav-title">Welcome back, {user.name}!</h1>
                 <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
+                    <div className="service-switch">
+                        <button 
+                            className={`switch-button ${!useAnthropic ? 'active' : ''}`}
+                            onClick={() => handleServiceChange('default')}
+                        >
+                            Default
+                        </button>
+                        <button 
+                            className={`switch-button ${useAnthropic ? 'active' : ''}`}
+                            onClick={() => handleServiceChange('anthropic')}
+                        >
+                            Anthropic
+                        </button>
+                    </div>
                     <p className="change-password" onClick={openPasswordPopup}>Change your password</p>
                     <button className="dashboard-nav-logout" onClick={onLogout}>Logout</button>
                 </div>

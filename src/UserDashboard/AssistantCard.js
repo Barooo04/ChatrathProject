@@ -15,6 +15,7 @@ import productmarketfit from "../Images/IconCard/productmarketfit.png";
 function AssistantCard({ assistant, user }) {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
+    const useAnthropic = localStorage.getItem('chatService') === 'anthropic';
     const API_URL = process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
@@ -23,16 +24,22 @@ function AssistantCard({ assistant, user }) {
         const sessionKey = `chat_session_${user.id}_${assistant.id}`;
         const existingSession = localStorage.getItem(sessionKey);
 
+        console.log('🎯 Click su assistente:', assistant.name);
+        console.log('🔄 Servizio selezionato:', useAnthropic ? 'Anthropic' : 'Default');
+
         if (existingSession) {
+            console.log('📝 Sessione esistente trovata');
             setShowPopup(true);
             return;
         }
 
+        console.log('🆕 Creazione nuova sessione');
         await createNewSession();
     };
 
     const createNewSession = async () => {
         try {
+            console.log('📤 Creazione metadata per la sessione');
             const metadataResponse = await fetch(`${API_URL}/api/metadata`, {
                 method: 'POST',
                 headers: {
@@ -56,15 +63,17 @@ function AssistantCard({ assistant, user }) {
                 threadId: data.threadId
             }));
 
+            console.log('✅ Sessione creata con successo');
             navigate(`/chat/${assistant.token}`, { state: { threadId: data.threadId } });
         } catch (error) {
-            console.error('Errore:', error);
+            console.error('❌ Errore nella creazione della sessione:', error);
         }
     };
 
     const handleContinue = () => {
         const sessionKey = `chat_session_${user.id}_${assistant.id}`;
         const sessionData = JSON.parse(localStorage.getItem(sessionKey));
+        console.log('🔄 Ripresa sessione esistente');
         setShowPopup(false);
         navigate(`/chat/${assistant.token}`, { state: { threadId: sessionData.threadId } });
     };
@@ -73,6 +82,7 @@ function AssistantCard({ assistant, user }) {
         const sessionKey = `chat_session_${user.id}_${assistant.id}`;
         localStorage.removeItem(sessionKey);
         localStorage.removeItem(`chat_${assistant.token}`);
+        console.log('🆕 Inizio nuova chat');
         setShowPopup(false);
         createNewSession();
     };

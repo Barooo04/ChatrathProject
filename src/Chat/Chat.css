@@ -300,3 +300,29 @@
 .skip-button:hover {
     background-color: red !important;
 }
+
+.service-switch {
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.switch-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.switch-button.active {
+    background: linear-gradient(45deg, #1b49ff 0%, #e0ff33 100%);
+    color: white;
+}
+
+.switch-button:hover {
+    opacity: 0.8;
+}
