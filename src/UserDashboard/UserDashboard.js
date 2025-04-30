@@ -142,20 +142,6 @@ function UserDashboard({ user, onLogout }) {
             <nav className="dashboard-nav">
                 <h1 className="dashboard-nav-title">Welcome back, {user.name}!</h1>
                 <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
-                    <div className="service-switch">
-                        <button 
-                            className={`switch-button ${!useAnthropic ? 'active' : ''}`}
-                            onClick={() => handleServiceChange('default')}
-                        >
-                            Default
-                        </button>
-                        <button 
-                            className={`switch-button ${useAnthropic ? 'active' : ''}`}
-                            onClick={() => handleServiceChange('anthropic')}
-                        >
-                            Anthropic
-                        </button>
-                    </div>
                     <p className="change-password" onClick={openPasswordPopup}>Change your password</p>
                     <button className="dashboard-nav-logout" onClick={onLogout}>Logout</button>
                 </div>
@@ -163,20 +149,38 @@ function UserDashboard({ user, onLogout }) {
             <div className="assistants-container-content">
                 <h1 className="assistants-container-title">ALL YOUR ASSISTANTS</h1>
                 <h3 className="assistants-container-subtitle">Select an assistant to start chatting!</h3>
-                <div className="view-mode-buttons">
-                    <div className="view-mode-button-overlay">
-                        <button 
-                            className={viewMode === 'card' ? 'view-mode-button active' : 'view-mode-button inactive'} 
-                            onClick={() => setViewMode('card')}
-                        >
-                            Card View
-                        </button>
-                        <button 
-                            className={viewMode === 'line' ? 'view-mode-button active' : 'view-mode-button inactive'} 
-                            onClick={() => setViewMode('line')}
-                        >
-                            Line View
-                        </button>
+                <div className="view-switches">
+                    <div className="view-mode-buttons">
+                        <div className="view-mode-button-overlay">
+                            <button 
+                                className={`view-mode-button ${viewMode === 'card' ? 'active' : 'inactive'}`} 
+                                onClick={() => setViewMode('card')}
+                            >
+                                Card View
+                            </button>
+                            <button 
+                                className={`view-mode-button ${viewMode === 'line' ? 'active' : 'inactive'}`} 
+                                onClick={() => setViewMode('line')}
+                            >
+                                Line View
+                            </button>
+                        </div>
+                    </div>
+                    <div className="view-mode-buttons">
+                        <div className="view-mode-button-overlay">
+                            <button 
+                                className={`view-mode-button ${!useAnthropic ? 'active' : 'inactive'}`}
+                                onClick={() => handleServiceChange('default')}
+                            >
+                                Default
+                            </button>
+                            <button 
+                                className={`view-mode-button ${useAnthropic ? 'active' : 'inactive'}`}
+                                onClick={() => handleServiceChange('anthropic')}
+                            >
+                                Anthropic
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
