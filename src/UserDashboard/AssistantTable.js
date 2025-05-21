@@ -32,6 +32,12 @@ function AssistantTable({ assistant, user }) {
     
         const createNewSession = async () => {
             try {
+                if (useAnthropic) {
+                    // Per Anthropic, non creiamo i metadata qui, verranno creati in Chat.js
+                    navigate(`/chat/${assistant.token}`);
+                    return;
+                }
+
                 const metadataResponse = await fetch(`${API_URL}/api/metadata`, {
                     method: 'POST',
                     headers: {
@@ -40,21 +46,22 @@ function AssistantTable({ assistant, user }) {
                     body: JSON.stringify({
                         userId: user.id,
                         assistantId: assistant.id,
-                        assistantName: assistant.name
+                        assistantName: assistant.name,
+                        isAnthropic: false
                     }),
                 });
-    
+
                 if (!metadataResponse.ok) {
                     throw new Error('Errore nel salvare i metadata');
                 }
-    
+
                 const data = await metadataResponse.json();
                 const sessionKey = `chat_session_${user.id}_${assistant.id}`;
                 localStorage.setItem(sessionKey, JSON.stringify({
                     active: true,
                     threadId: data.threadId
                 }));
-    
+
                 navigate(`/chat/${assistant.token}`, { state: { threadId: data.threadId } });
             } catch (error) {
                 console.error('Errore:', error);

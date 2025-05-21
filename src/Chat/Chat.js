@@ -99,7 +99,6 @@ function Chat() {
                     });
                     
                     if (response.ok) {
-                        const data = await response.json();
                         setThreadId(null); // Per Anthropic, threadId è sempre null
                     }
                 } else {
@@ -114,7 +113,7 @@ function Chat() {
                             assistantId
                         })
                     });
-
+                
                     if (response.ok) {
                         const data = await response.json();
                         if (data.exists && data.threadId) {

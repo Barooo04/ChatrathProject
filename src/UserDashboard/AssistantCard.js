@@ -46,6 +46,14 @@ function AssistantCard({ assistant, user }) {
     const createNewSession = async () => {
         try {
             console.log('📤 Creazione metadata per la sessione');
+            
+            if (useAnthropic) {
+                // Per Anthropic, non creiamo i metadata qui, verranno creati in Chat.js
+                console.log('✅ Navigazione alla chat Anthropic');
+                navigate(`/chat/${assistant.token}`);
+                return;
+            }
+
             const metadataResponse = await fetch(`${API_URL}/api/metadata`, {
                 method: 'POST',
                 headers: {
@@ -54,7 +62,8 @@ function AssistantCard({ assistant, user }) {
                 body: JSON.stringify({
                     userId: user.id,
                     assistantId: assistant.id,
-                    assistantName: assistant.name
+                    assistantName: assistant.name,
+                    isAnthropic: false
                 }),
             });
 
