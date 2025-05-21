@@ -180,7 +180,7 @@ function Chat() {
                     },
                     body: JSON.stringify({
                         messages: anthropicMessages,
-                        system: assistantPrompt || `You are ${assistantName}, an AI assistant.`,
+                        system: "MANDATORY: use maximum around 50 words per answer. " + (assistantPrompt || `You are ${assistantName}, an AI assistant.`),
                         model: 'claude-3-haiku-20240307',
                         temperature: 0.2,
                         max_tokens: 1024
