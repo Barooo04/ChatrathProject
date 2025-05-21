@@ -82,44 +82,65 @@ function Chat() {
         const createMetadata = async () => {
             if (!userId || !assistantId || !assistantName) return;
             
-            // Se stiamo usando Anthropic, non creiamo una sessione persistente
-            if (useAnthropic) {
-                const tempThreadId = Math.random().toString(36).substring(7);
-                setThreadId(tempThreadId);
-                return;
-            }
-            
-            // Controlla se esiste una sessione nel localStorage
-            const sessionKey = `chat_session_${userId}_${assistantId}`;
-            const existingSession = localStorage.getItem(sessionKey);
-
-            if (existingSession) {
-                const sessionData = JSON.parse(existingSession);
-                setThreadId(sessionData.threadId);
-                return;
-            }
-
             try {
-                const response = await fetch(`${API_URL}/api/metadata`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        userId,
-                        assistantId,
-                        assistantName
-                    })
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    setThreadId(data.threadId);
+                if (useAnthropic) {
+                    // Per Anthropic, creiamo una nuova riga nel DB con threadId null
+                    const response = await fetch(`${API_URL}/api/metadata`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId,
+                            assistantId,
+                            assistantName,
+                            isAnthropic: true
+                        })
+                    });
                     
-                    localStorage.setItem(sessionKey, JSON.stringify({
-                        active: true,
-                        threadId: data.threadId
-                    }));
+                    if (response.ok) {
+                        const data = await response.json();
+                        setThreadId(null); // Per Anthropic, threadId è sempre null
+                    }
+                } else {
+                    // Per il servizio Default, controlliamo se esiste una chat aperta
+                    const response = await fetch(`${API_URL}/api/metadata/check`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId,
+                            assistantId
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.exists && data.threadId) {
+                            // Se esiste una chat aperta, usiamo il suo threadId
+                            setThreadId(data.threadId);
+                        } else {
+                            // Se non esiste una chat aperta, ne creiamo una nuova
+                            const newResponse = await fetch(`${API_URL}/api/metadata`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    userId,
+                                    assistantId,
+                                    assistantName,
+                                    isAnthropic: false
+                                })
+                            });
+                            
+                            if (newResponse.ok) {
+                                const newData = await newResponse.json();
+                                setThreadId(newData.threadId);
+                            }
+                        }
+                    }
                 }
             } catch (error) {
                 console.error('Errore durante la creazione dei metadata:', error);
@@ -227,14 +248,37 @@ function Chat() {
 
     const handleFeedbackSubmit = async () => {
         try {
-            if (!useAnthropic && !threadId) {
-                console.error('ThreadId non disponibile');
+            if (useAnthropic) {
+                // Per Anthropic, salviamo il feedback solo se c'è una recensione
+                if (rating !== 3 || comment.trim() !== '') {
+                    const response = await fetch(`${API_URL}/api/feedback`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            assistantId,
+                            userId,
+                            rating,
+                            comment,
+                            threadId: null,
+                            isAnthropic: true
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error('Errore dal server:', errorData);
+                    }
+                }
+                // In ogni caso, naviga alla dashboard
+                navigate('/dashboard');
                 return;
             }
 
-            // Se stiamo usando Anthropic, non salviamo il feedback nel database
-            if (useAnthropic) {
-                navigate('/dashboard');
+            // Per il servizio Default, manteniamo la logica esistente
+            if (!threadId) {
+                console.error('ThreadId non disponibile');
                 return;
             }
 
@@ -248,7 +292,8 @@ function Chat() {
                     userId,
                     rating,
                     comment,
-                    threadId
+                    threadId,
+                    isAnthropic: false
                 })
             });
 
@@ -325,39 +370,40 @@ function Chat() {
                 <div className="feedback-modal-overlay">
                     <div className="feedback-modal">
                         <h2>Feedback for {assistantName}</h2>
-                        {!useAnthropic && (
-                            <p>How did you find with {assistantName}? Select a rating with the stars</p>
-                        )}
-                        
-                        {!useAnthropic && (
-                            <div className="rating-container">
-                                {[1, 2, 3, 4, 5].map((star) => (
-                                    <span
-                                        key={star}
-                                        className={`star ${star <= rating ? 'selected' : ''}`}
-                                        onClick={() => setRating(star)}
-                                    >
-                                        <FontAwesomeIcon icon={faStar} className={`star-icon ${star <= rating ? 'selected' : ''}`}/>
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-
-                        {!useAnthropic && (
-                            <textarea
-                                placeholder="Write a comment..."
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                            />
-                        )}
+                        <p>{useAnthropic ? 
+                            "How was your experience with this conversation? Leave a rating before starting a new one." : 
+                            "How did you find with " + assistantName + "? Select a rating with the stars"}
+                        </p>
+                        <div className="rating-container">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <span
+                                    key={star}
+                                    className={`star ${star <= rating ? 'selected' : ''}`}
+                                    onClick={() => setRating(star)}
+                                >
+                                    <FontAwesomeIcon icon={faStar} className={`star-icon ${star <= rating ? 'selected' : ''}`}/>
+                                </span>
+                            ))}
+                        </div>
+                        <textarea
+                            placeholder="Write a comment..."
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        />
                         
                         {useAnthropic && (
                             <p className='feedback-modal-subtitle'>*By leaving this chat, you won't be able to continue this conversation. You can just start a new one.</p>
                         )}
 
                         <div className="modal-buttons">
-                            <button onClick={handleFeedbackSubmit}>Leave Chat</button>
-                            <button onClick={() => navigate('/dashboard')} className='skip-button'>Skip</button>
+                            {useAnthropic ? (
+                                <button onClick={handleFeedbackSubmit}>Leave Chat</button>
+                            ) : (
+                                <>
+                                    <button onClick={handleFeedbackSubmit}>Leave Chat</button>
+                                    <button onClick={() => navigate('/dashboard')} className='skip-button'>Skip</button>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

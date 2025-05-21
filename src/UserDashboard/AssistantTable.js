@@ -10,9 +10,17 @@ function AssistantTable({ assistant, user }) {
         ? 'http://localhost:3001'  // URL locale
         : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
 
+    const useAnthropic = localStorage.getItem('chatService') === 'anthropic';
+
         const handleRowClick = async () => {
             const sessionKey = `chat_session_${user.id}_${assistant.id}`;
             const existingSession = localStorage.getItem(sessionKey);
+
+        if (useAnthropic) {
+            // Con Anthropic, crea sempre una nuova sessione senza popup
+            await createNewSession();
+            return;
+        }
     
             if (existingSession) {
                 setShowPopup(true);

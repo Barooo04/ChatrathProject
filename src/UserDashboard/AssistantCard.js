@@ -27,6 +27,12 @@ function AssistantCard({ assistant, user }) {
         console.log('🎯 Click su assistente:', assistant.name);
         console.log('🔄 Servizio selezionato:', useAnthropic ? 'Anthropic' : 'Default');
 
+        if (useAnthropic) {
+            // Con Anthropic, crea sempre una nuova sessione senza popup
+            await createNewSession();
+            return;
+        }
+
         if (existingSession) {
             console.log('📝 Sessione esistente trovata');
             setShowPopup(true);
