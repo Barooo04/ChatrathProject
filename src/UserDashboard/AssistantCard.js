@@ -21,26 +21,39 @@ function AssistantCard({ assistant, user }) {
         : 'https://chatrathbackend-kcux.onrender.com'; // URL di produzione
 
     const handleCardClick = async () => {
-        const sessionKey = `chat_session_${user.id}_${assistant.id}`;
-        const existingSession = localStorage.getItem(sessionKey);
-
-        console.log('🎯 Click su assistente:', assistant.name);
-        console.log('🔄 Servizio selezionato:', useAnthropic ? 'Anthropic' : 'Default');
-
         if (useAnthropic) {
             // Con Anthropic, crea sempre una nuova sessione senza popup
             await createNewSession();
             return;
         }
 
-        if (existingSession) {
-            console.log('📝 Sessione esistente trovata');
-            setShowPopup(true);
-            return;
-        }
+        try {
+            // Prima controlla nel database
+            const checkResponse = await fetch(`${API_URL}/api/metadata/check`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: user.id,
+                    assistantId: assistant.id
+                })
+            });
 
-        console.log('🆕 Creazione nuova sessione');
-        await createNewSession();
+            const checkData = await checkResponse.json();
+            
+            if (checkData.exists && checkData.threadId) {
+                // Se esiste nel database, mostra il popup
+                setShowPopup(true);
+            } else {
+                // Se non esiste nel database, crea una nuova sessione
+                await createNewSession();
+            }
+        } catch (error) {
+            console.error('Errore nel controllo della sessione:', error);
+            // In caso di errore, procedi con una nuova sessione
+            await createNewSession();
+        }
     };
 
     const createNewSession = async () => {
