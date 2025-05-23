@@ -327,7 +327,11 @@ function Chat() {
                     <p onClick={() => setShowFeedbackModal(true)}>Back to Dashboard</p>
                 </div>
             </div>
-            <div className="messages-container">
+            <div className="messages-container"
+                style={{
+                    maxHeight: 'calc(100vh - 320px)'
+                }}
+            >
                 {messages.map((message, index) => (
                     <div key={index} className={`message ${message.isUser ? 'user-message' : 'assistant-message'}`}>
                         {message.isUser ? (
@@ -353,7 +357,8 @@ function Chat() {
                         onChange={(e) => setInputMessage(e.target.value)}
                         placeholder="Type a message..."
                         className="message-input"
-                        rows="2"
+                        rows={4}
+                        style={{overflowY: 'auto'}}
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' && !e.shiftKey) {
                                 e.preventDefault();
