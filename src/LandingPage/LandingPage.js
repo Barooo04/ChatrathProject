@@ -247,7 +247,7 @@ function LandingPage() {
                         <h3 className="how-ai-coaching-works-title">How AI Business Scaling works</h3>
                         <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%', fontSize: '1.2rem'}}>
                             We deliver business value via a rare combination of technology (AI strategy and implementation), and humanity (leadership, team and culture transformation).
-                            We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create.  See a selection here <a href="https://scale.threshold.coach/vault" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline', color: 'grey'}}>https://scale.threshold.coach/vault</a>.
+                            We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create.
                             We work with a global network of senior associates, including trusted coaches, trusted AI implementation partner forms including customer developers.
                             With our input, you can save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets. <br /><br />
                         </p>
@@ -672,7 +672,7 @@ function LandingPage() {
                             <h3 className="how-ai-mobile-title">How AI Business Scaling works</h3>
                             <p className="how-ai-mobile-text">
                                 We deliver business value via a rare combination of technology (AI strategy and implementation), and humanity (leadership, team and culture transformation).
-                                We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create.  See a selection here <a href="https://scale.threshold.coach/vault" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline', color: 'grey'}}>https://scale.threshold.coach/vault</a>.
+                                We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create. 
                                 We work with a global network of senior associates, including trusted coaches, trusted AI implementation partner forms including customer developers.
                                 With our input, you can save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets. <br /><br />
                             </p>
