@@ -204,6 +204,13 @@ function LandingPage() {
             location: "MENA",
             sector: "Technology"
         },
+        {
+            name: "Jens",
+            role: "Senior Leader",
+            description: "We learned more about AI from Nick in a week than we had learned in an entire year",
+            location: "Europe",
+            sector: "Global Leading Technology Firm"
+        },
     ];
 
     const progressCircle = useRef(null);
@@ -239,7 +246,12 @@ function LandingPage() {
                     <div className="how-ai-coaching-works-content">
                         <h3 className="how-ai-coaching-works-title">How AI Business Scaling works</h3>
                         <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%', fontSize: '1.2rem'}}>
-                            Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.<br />
+                            We deliver business value via a rare combination of technology (AI strategy and implementation), and humanity (leadership, team and culture transformation).
+                            We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create.  See a selection here <a href="https://scale.threshold.coach/vault" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline', color: 'grey'}}>https://scale.threshold.coach/vault</a>.
+                            We work with a global network of senior associates, including trusted coaches, trusted AI implementation partner forms including customer developers.
+                            With our input, you can save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets. <br /><br />
+                        </p>
+                        <p className="how-ai-coaching-works-text" style={{width: '80%', marginLeft: '10%', fontSize: '1.2rem'}}>
                             We offer a six-month coaching program delivered by Nick and AI coaches.<br />
                             The program is for a group of up to five people.
                         </p>
@@ -358,12 +370,12 @@ function LandingPage() {
                     </nav>
                     <div className={`menu-appear ${!isMenuOpen ? '' : 'view'}`}>
                         
-                                    <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why integrated AI-Human coaching</p>
+                                    <p className='menu-item' onClick={() => { moveTo('coaching'); setIsMenuOpen(false); }}>1. Why integrate AI and humanity?</p>
                                     <p className='menu-item' onClick={() => { moveTo('nick'); setIsMenuOpen(false); }}>2. Why Nick</p> 
                                     <p className='menu-item' onClick={() => { moveTo('how-ai-coaching-works'); setIsMenuOpen(false); }}>3. How AI Business Scaling works</p>
                                     <p className='menu-item' onClick={() => { moveTo('testimonials'); setIsMenuOpen(false); }}>4. Testimonials</p>
                                     <p className='menu-item' onClick={() => { moveTo('understand-threshold'); setIsMenuOpen(false); }}>5. Understanding The Threshold</p>
-                                    <p className='menu-item' onClick={() => { moveTo('best-coaching-program'); setIsMenuOpen(false); }}>6. Selecting the best coaching program</p>   
+                                    <p className='menu-item' onClick={() => { moveTo('best-coaching-program'); setIsMenuOpen(false); }}>6. Selecting the best business scaling partner</p>   
                                     <p className='menu-item' onClick={() => { moveTo('responsible-ai'); setIsMenuOpen(false); }}>7. Responsible AI</p>
                            
                         
@@ -392,7 +404,7 @@ function LandingPage() {
                         <img src={nick1Responsive} alt="Nick" className="hero-image-mobile" />
                         <div className="hero-overlay">
                             <h1 className='hero-title' id="title">Integrated AI-Human Business Scaling<br /></h1>
-                            <p className='hero-subtitle'>Founders: Scale your business and along the way accomplish this:
+                            <p className='hero-subtitle'>Scale your business and along the way accomplish this:
                             </p>
                             <ul className='hero-subtitle'>
                                 <li>Create more time for what matters</li>
@@ -434,8 +446,8 @@ function LandingPage() {
                     <div className='why-coaching' id='coaching'>
                         <div className="coaching-content">
                             <div className="coaching-description">
-                                <h3 className="coaching-title">WHY INTEGRATED AI-HUMAN BUSINESS SCALING?</h3>
-                                <h2 className="coaching-subtitle">Supercharge your team's effectiveness in a world that is increasingly AI-fueled</h2>
+                                <h3 className="coaching-title">WHY INTEGRATE AI AND HUMANITY?</h3>
+                                <h2 className="coaching-subtitle">Supercharge your company's impact in a world that is increasingly AI-fuelled</h2>
                                 <p className='coaching-text'>
                                     As AI accelerates, what need will there be for human leaders?<br />
                                     Doomers think that AI will wipe out our species.<br />
@@ -531,17 +543,17 @@ function LandingPage() {
                         </div>
                         <div className="why-nick-content">
                             <h3 className="why-nick-title">WHY NICK</h3>
-                            <h2 className="why-nick-subtitle">Unlock your business's potential with personalized, techno-human coaching.</h2>
+                            <h2 className="why-nick-subtitle">Unlock your business's potential with personalised, techno-human approaches</h2>
                             <p className="why-nick-text">
                                 I'm Nick Chatrath.<br />
                                 I'm delighted you're here, because you and I are very similar. <br />
                                 We are both trying to perform as well as we can and have a positive impact on the world around us, while enjoying life.
                                 <br /><br />
                                 I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br/>
-                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. I also deploy over 50 AI operator bots to coach you too, to the extent you want.<br/><br/>
+                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. We deliver an automation potential audits, we deploy custom AI implementations and we inspire transformation at the levels of leader, team and culture.<br/><br/>
                                 Who benefits most from working with me?  Founders, other leaders and managers and leaders who are looking for their next level of success.<br/>
                                 I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.<br/> 
-                                They also appreciate the wide ranges of tools I bring to bear.
+                                They also appreciate the wide ranges of tools we bring to bear.
                             </p>
                             <p className="why-nick-text-mobile">
                                 I'm Nick Chatrath.<br />
@@ -659,7 +671,12 @@ function LandingPage() {
                         <div className="how-ai-mobile-content">
                             <h3 className="how-ai-mobile-title">How AI Business Scaling works</h3>
                             <p className="how-ai-mobile-text">
-                                Save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets.
+                                We deliver business value via a rare combination of technology (AI strategy and implementation), and humanity (leadership, team and culture transformation).
+                                We operate on the delicate, beautiful, competitively vital threshold between technology and humanity.  Nick's book, keynotes, conferences and advisory illustrate the continuing value we create.  See a selection here <a href="https://scale.threshold.coach/vault" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline', color: 'grey'}}>https://scale.threshold.coach/vault</a>.
+                                We work with a global network of senior associates, including trusted coaches, trusted AI implementation partner forms including customer developers.
+                                With our input, you can save 10% of time per week, fix underperforming teams, increase your leaders' or managers' contribution, and enhance their mindsets. <br /><br />
+                            </p>
+                            <p className="how-ai-mobile-text">
                                 We offer a six-month coaching program delivered by Nick and AI coaches.
                                 The program is for a group of up to five people.
                             </p>
@@ -705,7 +722,7 @@ function LandingPage() {
                             <h3 className="testimonials-title">TESTIMONIALS</h3>
                             <h2 className="testimonials-subtitle">What our clients say</h2>
                             <p className="testimonials-text">
-                                Our clients have experienced significant improvements in their leadership effectiveness and personal development.
+                            Our clients have experienced significant improvements in EBITDA, leadership effectiveness, personal development and AI impact.
                             </p>
                         </div>
                         <Swiper
@@ -780,7 +797,7 @@ function LandingPage() {
                     <div className="best-coaching-program" id='best-coaching-program'>
                         <div className="best-coaching-program-content">
                             <h3 className="best-coaching-program-title"> SELECTING THE BEST PARTNER TO SCALE YOUR BUSINESS</h3>
-                            <h2 className="best-coaching-program-subtitle">Finding and working with the<br/> <span className="best-coaching-program-subtitle-span">Best Leadership Coaching Program</span></h2>
+                            <h2 className="best-coaching-program-subtitle">Finding and working with the<br/> <span className="best-coaching-program-subtitle-span">Best AI-Human Leadership partner</span></h2>
                             <p className="best-coaching-program-text">
                                 Choosing the best scaling partner is a pivotal decision that can redefine the growth, performance and influence of your business. 
                                 The right partner doesn't just provide guidance—they empower you to unlock potential, overcome challenges, and achieve extraordinary results.
