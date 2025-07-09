@@ -550,7 +550,7 @@ function LandingPage() {
                                 We are both trying to perform as well as we can and have a positive impact on the world around us, while enjoying life.
                                 <br /><br />
                                 I'm a human Venn Diagram, operating at the intersection of business, technology and human transformation. <br/>
-                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. We deliver an automation potential audits, we deploy custom AI implementations and we inspire transformation at the levels of leader, team and culture.<br/><br/>
+                                Find me here on <a href="https://www.linkedin.com/in/nickchatrath/" target="_blank" rel="noopener noreferrer" className="linkedin-link"> LinkedIn</a>. We deliver automation potential audits, we deploy custom AI implementations and we inspire transformation at the levels of leader, team and culture.<br/><br/>
                                 Who benefits most from working with me?  Founders, other leaders and managers and leaders who are looking for their next level of success.<br/>
                                 I recently summarised all the feedback I have received as a coach in the past few years, and was surprised by the results: Clients view me as a practical, energetic, observant, forensically positive, caring, challenging coach who kick-starts profound and lasting change.<br/> 
                                 They also appreciate the wide ranges of tools we bring to bear.
